@@ -1,10 +1,29 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
 
+/* Raga scusate ma mi dava fastidio che le card si ridimensionassero a scatti */
+
+.product-container {
+  width: 75%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.dualia-card {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
 .dualia-card-img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  display: block;
+}
+
+.dualia-card-img img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -16,4 +35,36 @@
 
 .dualia-card-price {
   margin: 0;
+}
+
+/*** RESPONSIVE ***/
+h1 {
+  font-size: 4rem;
+}
+
+.dualia-card {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 710px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  .dualia-card-50 {
+    flex: 1 1 calc(50%);
+    max-width: calc(50%);
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  h1 {
+    font-size: 5.5rem;
+  }
+
+  .dualia-card-33 {
+    flex: 1 1 calc(33%);
+    max-width: calc(33%);
+  }
 }
