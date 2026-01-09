@@ -6,7 +6,7 @@ const Jumbotron = ({ title, subtitle, imageSrc, imageAlt }) => {
             <img
                 src={imageSrc}
                 alt={imageAlt}
-                className="w-100 h-100 position-absolute top-0 start-0 object-fit-cover"
+                className="w-100 position-absolute top-0 start-0 object-fit-cover"
                 style={{ zIndex: 0 }}
             />
             <div

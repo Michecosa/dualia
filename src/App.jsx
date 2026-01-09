@@ -1,5 +1,5 @@
 import Jumbotron from './components/Jumbotron';
-import myImage from './assets/'
+import myImage from './assets/jumbotron_image.jpeg'
 function App() {
   return (
     <>
@@ -7,11 +7,11 @@ function App() {
         <Jumbotron
           title="Minimal Luxury for Inner Balance"
           subtitle="two colors one balance"
-          imgSrc={myImage}
-        
+          imageSrc={myImage}
+          imageAlt="Dualia Background"
         />
       </div>
-      
+
     </>
   );
 }
