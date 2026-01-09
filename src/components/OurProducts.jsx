@@ -6,10 +6,26 @@ export default function OurProducts() {
       <div className="container">
         <h1>Our Products</h1>
         <div className="row gap-1 justify-content-center">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            img="https://picsum.photos/400"
+            title="Incenso chill vibes"
+            price="€19,99"
+          />
+          <Card
+            img="https://picsum.photos/400"
+            title="Incenso chill vibes"
+            price="€19,99"
+          />
+          <Card
+            img="https://picsum.photos/400"
+            title="Incenso chill vibes"
+            price="€19,99"
+          />
+          <Card
+            img="https://picsum.photos/400"
+            title="Incenso chill vibes"
+            price="€19,99"
+          />
         </div>
         <button className="btn btn-dark">View all</button>
       </div>
