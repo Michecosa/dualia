@@ -1,3 +1,5 @@
+import Jumbotron from './components/Jumbotron';
+import myImage from './assets/'
 function App() {
   return (
     <>
