@@ -1,7 +1,15 @@
 function App() {
   return (
     <>
-      <div>Ciao</div>
+      <div>Ciao
+        <Jumbotron
+          title="Minimal Luxury for Inner Balance"
+          subtitle="two colors one balance"
+          imgSrc={myImage}
+        
+        />
+      </div>
+      
     </>
   );
 }
