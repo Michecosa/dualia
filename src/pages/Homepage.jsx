@@ -1,9 +1,12 @@
 import OurProducts from "../components/OurProducts";
-
+import Jumbotron from "../components/Jumbotron";
 export default function Homepage() {
   return (
     <>
-      <OurProducts />
+      <div>
+        <Jumbotron />
+        <OurProducts />
+      </div>
     </>
   );
 }
