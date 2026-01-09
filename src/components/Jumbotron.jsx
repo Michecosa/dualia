@@ -1,5 +1,5 @@
 import React from 'react';
-import jumbotronImage from '../assets/jumbotron_image.jpeg';
+import jumbotronImage from '../assets/Jumbotron_photo.jpeg';
 
 function Jumbotron() {
     return (

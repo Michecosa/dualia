@@ -19,3 +19,9 @@
     height: 100%;
 }
 
+.jumbotron-overlay h1{
+    font-size: 500% !important;
+}
+.jumbotron-overlay p {
+    font-size: 200% !important;
+}
