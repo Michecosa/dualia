@@ -1,7 +1,11 @@
+import Jumbotron from "../components/Jumbotron"
 export default function Homepage() {
   return (
     <>
-      <div></div>
+      <div>
+
+       <Jumbotron />
+      </div>
     </>
   );
 }
