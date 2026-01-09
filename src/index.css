@@ -52,8 +52,8 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .dualia-card-33 {
-    flex: 1 1 calc(33%);
-    max-width: calc(33%);
+  .dualia-card-25 {
+    flex: 1 1 calc(25%);
+    max-width: calc(25%);
   }
 }
