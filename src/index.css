@@ -2,7 +2,7 @@
 @import url("bootstrap-icons");
 
 .jumbotron {
-    height: 80vh;
+    height: 70vh;
 }
 
 .jumbotron img {
@@ -12,4 +12,9 @@
 .jumbotron-overlay {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
