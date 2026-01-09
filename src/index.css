@@ -1,2 +1,15 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
+
+.jumbotron {
+    height: 80vh;
+}
+
+.jumbotron img {
+    z-index: 0;
+}
+
+.jumbotron-overlay {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
