@@ -1,2 +1,19 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
+
+.dualia-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.dualia-card-title {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.dualia-card-price {
+  margin: 0;
+}

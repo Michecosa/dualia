@@ -5,7 +5,12 @@ export default function OurProducts() {
     <>
       <div className="container">
         <h1>Our Products</h1>
-        <Card />
+        <div className="row gap-1 justify-content-center">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
         <button className="btn btn-dark">View all</button>
       </div>
     </>
