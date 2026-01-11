@@ -21,7 +21,7 @@ export default function Header() {
                             {/* menù */}
                             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href="#">Home</a>
+                                    <a className="nav-link nav_home" aria-current="page" href="#">Home</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">Products</a>

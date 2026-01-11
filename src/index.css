@@ -211,7 +211,19 @@ footer a:hover {
 }
 
 /* header */
+@media (max-width: 767.99px) {
+  .nav_home {
+    padding-top: 16px;
+  }
+
+  .search_button {
+    margin-left: -0.75rem;
+  }
+}
+
+
 @media screen and (min-width: 768px) {
+
   .search-input {
     position: absolute;
     right: 100%;
