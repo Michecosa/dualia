@@ -69,6 +69,7 @@
     flex: 1 1 calc(25%);
     max-width: calc(25%);
   }
+
   .jumbotron {
     height: 70vh;
   }
@@ -81,43 +82,55 @@
 
 
 .jumbotron-overlay {
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .jumbotron-overlay h1 {
-    font-size: 700% !important;
+  font-size: 700% !important;
 }
+
 .jumbotron-overlay p {
-    font-size: 200% !important;
+  font-size: 200% !important;
+}
+
+
+/* footer */
+footer {
+  padding: 1rem 0 1rem;
+}
+
+footer p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem
 }
 
 
 @media screen and (max-width: 618px) {
 
-    .jumbotron-overlay h1 {
-        font-size: 450% !important;
-    }
+  .jumbotron-overlay h1 {
+    font-size: 450% !important;
+  }
 
-    .jumbotron-overlay p {
-        font-size: 100% !important;
-    }
+  .jumbotron-overlay p {
+    font-size: 100% !important;
+  }
 
 }
 
 @media screen and (max-width: 500px) {
-    
-    .jumbotron-overlay h1 {
-            font-size: 300% !important;
-        }
-    
-        .jumbotron-overlay p {
-            font-size: 100% !important;
-        }
-    
+
+  .jumbotron-overlay h1 {
+    font-size: 300% !important;
+  }
+
+  .jumbotron-overlay p {
+    font-size: 100% !important;
+  }
+
 }
