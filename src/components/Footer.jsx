@@ -22,11 +22,11 @@ const footerLinks = [
 export default function Footer() {
 
     return (
-        <footer>
+        <footer className="mt-5">
             <div className="container">
                 <div className="row">
                     {/* newsletter */}
-                    <div className="footer_newsletter col-xs-12 col-md-6">
+                    <div className="footer_newsletter col-xs-12 col-md-4">
                         <h6 className="intestazione_newsletter">Newsletter</h6>
                         <p>Occasional notes about light, time and space.</p>
 
@@ -56,8 +56,24 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* icone social */}
+                    {/* supporto clienti */}
                     <div className="col-xs-12 col-md-3">
+                        <h6>Customer care</h6>
+                        <ul className="footer_support list-unstyled">
+                            {
+                                supportLinks.map((link) => (
+                                    <li key={link.id}>
+                                        <small className="copyright_content">
+                                            <a href={link.url}>{link.name}</a>
+                                        </small>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* icone social */}
+                    <div className="col-xs-12 col-md-2">
                         <h6>Follow</h6>
                         <ul className="footer_social list-unstyled">
                             {

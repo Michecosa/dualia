@@ -1,7 +1,55 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
 
-.btn-dualia-dark {
+
+/* Header */
+.navbar {
+  width: 100%;
+  background-color: white;
+}
+
+.navbar a {
+  color: black;
+}
+
+#logo_header {
+  width: auto;
+  height: 50px;
+}
+
+.header_icons {
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+.search_button {
+  border: none;
+  background-color: white;
+}
+
+.search-input {
+  width: 150px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 2px 10px;
+  margin-right: 0.5rem;
+  outline: none;
+  position: absolute;
+  right: 100%;
+  z-index: 10
+}
+
+.search-input:focus {
+  border-color: black;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.btn-dualia-dark,
+.btn_newsletter {
   background-color: black;
   color: white;
   border-radius: 0;
@@ -9,6 +57,7 @@
   padding-block: 0.5rem;
 }
 
+.btn-dualia-dark:hover,
 .btn-dualia-dark:hover {
   background-color: rgb(52, 52, 52);
   color: white;
@@ -50,56 +99,6 @@
   margin: 0;
 }
 
-/*** RESPONSIVE ***/
-
-.dualia-card {
-  flex: 1 1 100%;
-  max-width: 100%;
-}
-
-@media screen and (min-width: 710px) {
-  .dualia-card-50 {
-    flex: 1 1 calc(50%);
-    max-width: calc(50%);
-  }
-}
-
-@media screen and (min-width: 1080px) {
-  .dualia-card-25 {
-    flex: 1 1 calc(25%);
-    max-width: calc(25%);
-  }
-
-  .jumbotron {
-    height: 70vh;
-  }
-
-  .jumbotron img {
-    z-index: 0;
-  }
-}
-
-
-
-.jumbotron-overlay {
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.jumbotron-overlay h1 {
-  font-size: 700% !important;
-}
-
-.jumbotron-overlay p {
-  font-size: 200% !important;
-}
-
-
 /* footer */
 footer {
   padding: 2rem 0 1rem;
@@ -109,6 +108,11 @@ footer p {
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   margin-right: 1rem;
+}
+
+footer a {
+  color: black;
+  text-decoration: none;
 }
 
 /* newsletter */
@@ -129,10 +133,6 @@ footer p {
 
 .btn_newsletter {
   padding: 0.25rem 0.75rem;
-}
-
-.btn_newsletter:hover {
-  background-color: black;
 }
 
 /* social */
@@ -165,6 +165,139 @@ footer p {
 .footer_policy,
 .copyright {
   font-size: 0.75rem;
+}
+
+/* footer mobile */
+.nav-link {
+  margin-left: 0.9rem;
+}
+
+.header_icons {
+  margin-left: 0.6rem;
+}
+
+/*
+.header_icons {
+  display: none !important;
+}
+*/
+
+
+footer h6 {
+  text-align: center;
+}
+
+.intestazione_newsletter {
+  margin-right: 13rem !important;
+}
+
+
+
+.footer_newsletter,
+.footer_support {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsletter_form {
+  margin-bottom: 2rem;
+}
+
+.footer_social {
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer_policy {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/*** RESPONSIVE ***/
+
+.dualia-card {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 710px) {
+  .dualia-card-50 {
+    flex: 1 1 calc(50%);
+    max-width: calc(50%);
+  }
+}
+
+/* tablet */
+@media screen and (min-width: 768px) {
+
+  footer h6 {
+    text-align: left;
+  }
+
+  .footer_newsletter,
+  .footer_support {
+    align-items: flex-start;
+  }
+
+  .newsletter_form {
+    margin-bottom: 0;
+    max-width: 90%;
+  }
+
+  .footer_social {
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+
+  .footer_policy {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+/* tablet lg */
+@media (max-width: 991px) {
+  footer .container {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .dualia-card-25 {
+    flex: 1 1 calc(25%);
+    max-width: calc(25%);
+  }
+
+  .jumbotron {
+    height: 70vh;
+  }
+
+  .jumbotron img {
+    z-index: 0;
+  }
+}
+
+.jumbotron-overlay {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.jumbotron-overlay h1 {
+  font-size: 700% !important;
+}
+
+.jumbotron-overlay p {
+  font-size: 200% !important;
 }
 
 @media screen and (max-width: 618px) {
