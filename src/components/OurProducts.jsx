@@ -7,7 +7,7 @@ import img4 from "../assets/immagini_dualia/giardino_zen_black.jpeg";
 export default function OurProducts() {
   return (
     <>
-      <div className="product-container mt-5">
+      <div className="product-container my-5">
         <h1 className="mb-3">Our Products</h1>
         <div className="row">
           <Card img={img1} title="Cascading incense holder" price="€59,99" />
