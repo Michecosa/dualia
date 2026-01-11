@@ -88,7 +88,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className="separatore mb-4 mt-3">
+                    <div className="separatore mb-4">
                     </div>
 
                     {/* policy */}
