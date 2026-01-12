@@ -1,22 +1,30 @@
+import { Link } from "react-router-dom";
+
+const exploreLinks = [
+    { id: 1, name: "Catalog" },
+    { id: 2, name: "Promotions" },
+    { id: 4, name: "About us" },
+]
+
 const supportLinks = [
-    { id: 1, name: "Shipping & returns", url: "/" },
-    { id: 2, name: "Order tracking", url: "/" },
-    { id: 4, name: "Contact", url: "/" },
+    { id: 1, name: "Shipping & returns" },
+    { id: 2, name: "Order tracking" },
+    { id: 4, name: "Contact" },
 ]
 
 const socialLinks = [
-    { id: 1, logo: "bi bi-instagram", url: "#" },
-    { id: 2, logo: "bi bi-pinterest", url: "#" },
-    { id: 3, logo: "bi bi-spotify", url: "#" }
+    { id: 1, logo: "bi bi-instagram" },
+    { id: 2, logo: "bi bi-pinterest" },
+    { id: 3, logo: "bi bi-spotify" }
 ];
 
 const footerLinks = [
-    { id: 1, name: "Legal notice", url: "/" },
-    { id: 2, name: "Privacy policy", url: "/" },
-    { id: 3, name: "Conditions", url: "/" },
-    { id: 4, name: "Terms of service", url: "/" },
-    { id: 5, name: "Shipping policy", url: "/" },
-    { id: 6, name: "Cookie preferences", url: "/" }
+    { id: 1, name: "Legal notice" },
+    { id: 2, name: "Privacy policy" },
+    { id: 3, name: "Conditions" },
+    { id: 4, name: "Terms of service" },
+    { id: 5, name: "Shipping policy" },
+    { id: 6, name: "Cookie preferences" }
 ];
 
 export default function Footer() {
@@ -40,15 +48,15 @@ export default function Footer() {
                         </form>
                     </div>
 
-                    {/* supporto clienti */}
+                    {/* esplora */}
                     <div className="col-xs-12 col-md-3">
-                        <h6>Customer care</h6>
+                        <h6>Explore</h6>
                         <ul className="footer_support list-unstyled">
                             {
-                                supportLinks.map((link) => (
+                                exploreLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <a href={link.url}>{link.name}</a>
+                                            <Link to="/">{link.name}</Link>
                                         </small>
                                     </li>
                                 ))
@@ -64,7 +72,7 @@ export default function Footer() {
                                 supportLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <a href={link.url}>{link.name}</a>
+                                            <Link to="/">{link.name}</Link>
                                         </small>
                                     </li>
                                 ))
@@ -79,9 +87,9 @@ export default function Footer() {
                             {
                                 socialLinks.map((icon) => (
                                     <li key={icon.id}>
-                                        <a href={icon.url}>
+                                        <Link to="/">
                                             <i className={icon.logo}></i>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             }
@@ -98,7 +106,7 @@ export default function Footer() {
                                 footerLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <a href={link.url}>{link.name}</a>
+                                            <Link to="#">{link.name}</Link>
                                         </small>
                                     </li>
                                 ))
@@ -109,10 +117,10 @@ export default function Footer() {
                         <div className="copyright text-center">
 
                             <small className="copyright_content">© 2026,
-                                <a href="/">Dualia  - </a>
+                                <Link to="#">Dualia  - </Link>
                             </small>
                             <small className="copyright_content">
-                                <a href="/">Powered by Pilates Team</a>
+                                <Link to="#">Powered by Pilates Team</Link>
                             </small>
                         </div>
                     </div>

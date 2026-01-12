@@ -10,10 +10,10 @@ export default function OurProducts() {
       <div className="product-container my-5">
         <h1 className="mb-3">Our Products</h1>
         <div className="row">
-          <Card img={img1} title="Cascading incense holder" price="€59,99" />
-          <Card img={img2} title="Luxury ashtray" price="€999,99" />
-          <Card img={img3} title="Floor lamp" price="€199,99" />
-          <Card img={img4} title="Zen garden" price="€19,99" />
+          <Card img={img1} title="Cascading incense holder" price="€59,99" path="/product/cascading-incense-holder" />
+          <Card img={img2} title="Luxury ashtray" price="€999,99" path="/product/luxury-ashtray" />
+          <Card img={img3} title="Floor lamp" price="€199,99" path="/product/floor-lamp" />
+          <Card img={img4} title="Zen garden" price="€19,99" path="/product/zen-garden" />
         </div>
         <div className="d-flex justify-content-center">
           <button className="btn btn-dualia-dark">View all</button>
