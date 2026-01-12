@@ -319,3 +319,28 @@ footer a:hover {
     font-size: 100% !important;
   }
 }
+
+/*  AboutUs  */
+.dualia-img img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 20px 0px;
+}
+
+.wave {
+  color: rgb(231, 231, 231);
+}
+
+.wave-bottom {
+  rotate: 180deg;
+  margin-top: -1rem;
+}
+
+.wave-top {
+  margin-bottom: -3rem;
+}
+
+.dualia-about {
+  background-color: rgb(231, 231, 231);
+}
