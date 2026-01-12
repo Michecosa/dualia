@@ -1,3 +1,9 @@
+const exploreLinks = [
+    { id: 1, name: "Catalog", url: "/" },
+    { id: 2, name: "Promotions", url: "/" },
+    { id: 4, name: "About us", url: "/" },
+]
+
 const supportLinks = [
     { id: 1, name: "Shipping & returns", url: "/" },
     { id: 2, name: "Order tracking", url: "/" },
@@ -40,12 +46,12 @@ export default function Footer() {
                         </form>
                     </div>
 
-                    {/* supporto clienti */}
+                    {/* esplora */}
                     <div className="col-xs-12 col-md-3">
-                        <h6>Customer care</h6>
+                        <h6>Explore</h6>
                         <ul className="footer_support list-unstyled">
                             {
-                                supportLinks.map((link) => (
+                                exploreLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
                                             <a href={link.url}>{link.name}</a>
