@@ -91,7 +91,7 @@ export default function ProductDetail() {
                             className="btn"
                             onClick={decrementQuantity}
                             disabled={quantity === 1}
-                            style={{ border: 'none', fontSize: '1.5rem' }}
+                            style={{ border: 'none', fontSize: '1.2rem' }}
                         >
                             −
                         </button>
@@ -99,7 +99,7 @@ export default function ProductDetail() {
                         <button
                             className="btn"
                             onClick={incrementQuantity}
-                            style={{ border: 'none', fontSize: '1rem' }}
+                            style={{ border: 'none', fontSize: '1.2rem' }}
                         >
                             +
                         </button>
