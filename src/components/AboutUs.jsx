@@ -29,30 +29,30 @@ export default function AboutUs() {
                             <div className="dualia-img">
                                 <img src={Miniera} alt="" />
                             </div>
-                            <h3>Essenzialità</h3>
+                            <h3>Essentiality</h3>
                             <p>
-                                Ogni pezzo è selezionato per la sua capacità di comunicare senza eccessi.
-                                Forme pure che lasciano spazio al respiro.
+                                Every piece is selected for its ability to communicate without excess.
+                                Pure forms that leave room to breathe.
                             </p>
                         </div>
                         <div className="col-12 col-md-4">
                             <div className="dualia-img">
                                 <img src={Falegname} alt="" />
                             </div>
-                            <h3>Qualità</h3>
+                            <h3>Quality</h3>
                             <p>
-                                Materiali naturali, lavorazioni artigianali e attenzione ai dettagli.
-                                Oggetti pensati per durare nel tempo.
+                                Natural materials, craftsmanship, and attention to detail.
+                                Objects designed to last over time.
                             </p>
                         </div>
                         <div className="col-12 col-md-4">
                             <div className="dualia-img">
                                 <img src={ArtWall} alt="" />
                             </div>
-                            <h3>Equilibrio</h3>
+                            <h3>Balance</h3>
                             <p>
-                                L’armonia nasce dal dialogo tra gli elementi. Palette ridotte e
-                                proporzioni studiate per creare spazi sereni.
+                                Harmony is born from the dialogue between elements. Minimal palettes
+                                and carefully studied proportions to create serene spaces.
                             </p>
                         </div>
                     </div>
