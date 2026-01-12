@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Logo from "../assets/Loghi_Dualia/logo_dualia_header.png";
 
 export default function Header() {
@@ -21,10 +22,10 @@ export default function Header() {
                             {/* menù */}
                             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link nav_home" aria-current="page" href="#">Home</a>
+                                    <NavLink className="nav-link nav_home" aria-current="page" to={"/"}>Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Products</a>
+                                    <NavLink className="nav-link" to={"/products"}>Products</NavLink>
                                 </li>
                             </ul>
                             <div className="header_icons d-flex align-items-center gap-3">
