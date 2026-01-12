@@ -12,7 +12,9 @@ export default function Header() {
                 <nav className="navbar navbar-expand-md">
                     <div className="container-fluid">
                         {/* logo */}
-                        <img id="logo_header" src={Logo} alt="#" />
+                        <NavLink to="/">
+                            <img id="logo_header" src={Logo} alt="#" />
+                        </NavLink>
 
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -46,9 +48,9 @@ export default function Header() {
                                         <i className="bi bi-search"></i>
                                     </a>
                                 </button>
-                                {/* account icon */}
+                                {/* wishlist icon */}
                                 <a href="#" className="icon_link" aria-label="Person">
-                                    <i className="bi bi-person"></i>
+                                    <i className="bi bi-heart"></i>
                                 </a>
                                 {/* cart icon */}
                                 <a href="#" className="icon_link" aria-label="Cart">

@@ -3,6 +3,7 @@ import img1 from "../assets/immagini_dualia/porta_incenso_black.jpeg";
 import img2 from "../assets/immagini_dualia/luxury_ashtray_black.jpeg";
 import img3 from "../assets/immagini_dualia/floor_lamp_black.jpeg";
 import img4 from "../assets/immagini_dualia/giardino_zen_black.jpeg";
+import { useState } from "react";
 
 const products = [
     {
@@ -55,6 +56,8 @@ export default function ProductDetail() {
         );
     }
 
+    const [favorite, setFavorite] = useState(false)
+
     return (
         <div className="container my-5">
             <div className="row">
@@ -82,8 +85,11 @@ export default function ProductDetail() {
                         <strong>Dimensions:</strong> {product.dimensions}
                     </p>
 
-                    <button className="btn btn-dualia-dark btn-lg me-3">Add to Cart</button>
-                    <button className="btn btn-outline-dark btn-lg">Add to Wishlist</button>
+                    <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
+                    <button className="btn btn-outline-dark py-2"
+                        onClick={() => setFavorite(!favorite)}>
+                        <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
+                    </button>
                 </div>
             </div>
         </div>
