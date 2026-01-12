@@ -101,16 +101,18 @@ export default function ProductDetail() {
                         <h5 className="mb-3">Quantity:</h5>
                         <div className="d-flex align-items-center">
                             <button
-                                className="btn btn-outline-dark"
+                                className="btn"
                                 onClick={decrementQuantity}
                                 disabled={quantity === 1}
+                                style={{ border: 'none', fontSize: '1.5rem' }}
                             >
-                                -
+                                −
                             </button>
                             <span className="mx-4 fs-4 fw-bold">{quantity}</span>
                             <button
-                                className="btn btn-outline-dark"
+                                className="btn"
                                 onClick={incrementQuantity}
+                                style={{ border: 'none', fontSize: '1.5rem' }}
                             >
                                 +
                             </button>
