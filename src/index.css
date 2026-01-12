@@ -1,6 +1,13 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
 
+
+/* pop-up */
+.modal-title {
+  width: 95%;
+  text-align: center;
+}
+
 /* Header */
 .navbar {
   width: 100%;

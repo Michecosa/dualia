@@ -12,6 +12,12 @@ function Jumbotron() {
             <div className="jumbotron-overlay position-relative p-5">
                 <h1 className="display-1 fw-bold text-white fs-1"> D U A L I A </h1>
                 <p className="lead text-white fs-5"> Two colors One balance </p>
+                <div className="container text-center p-5 mt-5">
+                    <p className='lead text-white fs-5'>
+                        "Perfection is achieved, not when there is nothing more to add, <br />
+                        but when there is nothing left to take away."
+                    </p>
+                </div>
             </div>
         </div>
     );
