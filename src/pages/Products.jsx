@@ -22,7 +22,7 @@ export default function Products() {
   if (loading) return <p>loading...</p>;
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row gap-3 justify-content-center">
         {products.map((p) => (
           <Card
