@@ -81,13 +81,6 @@ export default function ProductDetail() {
                     <h3 className="text-muted mb-4">{product.price}</h3>
                     <p className="lead mb-4">{product.description}</p>
 
-                    <h5 className="mb-3">Features:</h5>
-                    <ul className="mb-4">
-                        {product.features.map((feature, index) => (
-                            <li key={index}>{feature}</li>
-                        ))}
-                    </ul>
-
                     <p className="mb-4">
                         <strong>Dimensions:</strong> {product.dimensions}
                     </p>
