@@ -74,6 +74,12 @@
 .dualia-card {
   flex: 1 1 100%;
   max-width: 100%;
+  transition: transform 0.25s ease;
+}
+
+.dualia-card:hover {
+  transform: scale(1.03);
+  cursor: pointer;
 }
 
 .dualia-card-img {
@@ -161,7 +167,6 @@ footer a:hover {
   background-color: #e3be85;
   color: black;
   border-color: #e3be85;
-  ;
 }
 
 /* social */
@@ -226,7 +231,6 @@ footer a:hover {
 }
 
 @media screen and (min-width: 768px) {
-
   .search-input {
     position: absolute;
     right: 100%;
