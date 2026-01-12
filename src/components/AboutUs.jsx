@@ -65,13 +65,7 @@ export default function AboutUs() {
                         fill="currentColor"></path>
                 </svg>
             </div>
-            <div className="container text-center p-5 mt-5">
-                <h2>
-                    "Perfection is achieved, not when there is nothing more to add, <br />
-                    but when there is nothing left to take away."
-                </h2>
-                <p className="text-body-secondary p-3">— Antoine de Saint-Exupéry</p>
-            </div>
+
             <div className="container pb-5">
                 <h2 className="text-center p-5">
                     Our Promise
