@@ -12,7 +12,6 @@ const products = [
         price: "€59,99",
         image: img1,
         description: "A minimalist cascading incense holder that creates a mesmerizing waterfall effect. Handcrafted with precision for a balanced meditation experience.",
-        features: ["Handcrafted ceramic", "Creates waterfall effect", "Includes 20 incense cones", "Easy to clean"],
         dimensions: "15cm x 10cm x 8cm"
     },
     {
@@ -21,7 +20,6 @@ const products = [
         price: "€999,99",
         image: img2,
         description: "An exclusive luxury ashtray combining elegant design with functionality. Perfect for those who appreciate refined aesthetics.",
-        features: ["Premium materials", "Modern design", "Easy maintenance", "Gift box included"],
         dimensions: "20cm x 20cm x 5cm"
     },
     {
@@ -30,7 +28,6 @@ const products = [
         price: "€199,99",
         image: img3,
         description: "Contemporary floor lamp that brings warmth and style to any space. Adjustable brightness for the perfect ambiance.",
-        features: ["Adjustable brightness", "Energy efficient LED", "Minimalist design", "Stable base"],
         dimensions: "150cm height"
     },
     {
@@ -39,7 +36,6 @@ const products = [
         price: "€19,99",
         image: img4,
         description: "A desktop zen garden for moments of tranquility. Perfect for meditation and stress relief.",
-        features: ["Natural sand", "Wooden rake included", "Decorative stones", "Compact size"],
         dimensions: "25cm x 18cm x 5cm"
     }
 ];
