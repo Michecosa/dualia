@@ -85,26 +85,24 @@ export default function ProductDetail() {
                         <strong>Dimensions:</strong> {product.dimensions}
                     </p>
 
-                    <div className="mb-4">
-                        <h5 className="mb-3">Quantity:</h5>
-                        <div className="d-flex align-items-center">
-                            <button
-                                className="btn"
-                                onClick={decrementQuantity}
-                                disabled={quantity === 1}
-                                style={{ border: 'none', fontSize: '1.5rem' }}
-                            >
-                                −
-                            </button>
-                            <span className="mx-4 fs-4 fw-bold">{quantity}</span>
-                            <button
-                                className="btn"
-                                onClick={incrementQuantity}
-                                style={{ border: 'none', fontSize: '1.5rem' }}
-                            >
-                                +
-                            </button>
-                        </div>
+                    <div className="mb-4 d-flex align-items-center">
+                        <strong className="me-3">Quantity:</strong>
+                        <button
+                            className="btn"
+                            onClick={decrementQuantity}
+                            disabled={quantity === 1}
+                            style={{ border: 'none', fontSize: '1.5rem' }}
+                        >
+                            −
+                        </button>
+                        <span className="mx-3 fs-5 fw-bold">{quantity}</span>
+                        <button
+                            className="btn"
+                            onClick={incrementQuantity}
+                            style={{ border: 'none', fontSize: '1rem' }}
+                        >
+                            +
+                        </button>
                     </div>
 
                     <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
