@@ -20,7 +20,7 @@ const products = [
         title: "Luxury ashtray",
         price: "€999,99",
         image: img2,
-        description: "An exclusive luxury ashtray combining elegant design with functionality. Perfect for those who appreciate refined aesthetics.Lorem10kdfhds;fdsj;gfahf;asdkhgaghsdsdo;ighDSF ;FOIHEWI FHSE;E EHSOI;FH owi;fhoesifh so;dFH;sdfh;so HFS;odhf sdhF;OIS ALGADJLA/G FVE;ITHV;EOT HERIOT;HREIO THA;EOHT;EROTH AER;OITHA;EROITH ;REOTHRE;O THER;OTIHREOGTHAE;ROHT",
+        description: "An exclusive luxury ashtray combining elegant design with functionality. Perfect for those who appreciate refined aesthetics.",
         features: ["Premium materials", "Modern design", "Easy maintenance", "Gift box included"],
         dimensions: "20cm x 20cm x 5cm"
     },
