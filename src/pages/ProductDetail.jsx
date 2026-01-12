@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
+import { useState } from 'react'
 import img1 from "../assets/immagini_dualia/porta_incenso_black.jpeg";
 import img2 from "../assets/immagini_dualia/luxury_ashtray_black.jpeg";
 import img3 from "../assets/immagini_dualia/floor_lamp_black.jpeg";
 import img4 from "../assets/immagini_dualia/giardino_zen_black.jpeg";
+
+
+
 
 const products = [
     {
@@ -45,7 +49,18 @@ const products = [
 
 export default function ProductDetail() {
     const { id } = useParams();
+    const [quantity, setQuantity] = useState(1);
     const product = products.find(p => p.id === id);
+
+    const incrementQuantity = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const decrementQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
 
     if (!product) {
         return (
@@ -81,6 +96,26 @@ export default function ProductDetail() {
                     <p className="mb-4">
                         <strong>Dimensions:</strong> {product.dimensions}
                     </p>
+
+                    <div className="mb-4">
+                        <h5 className="mb-3">Quantity:</h5>
+                        <div className="d-flex align-items-center">
+                            <button
+                                className="btn btn-outline-dark"
+                                onClick={decrementQuantity}
+                                disabled={quantity === 1}
+                            >
+                                -
+                            </button>
+                            <span className="mx-4 fs-4 fw-bold">{quantity}</span>
+                            <button
+                                className="btn btn-outline-dark"
+                                onClick={incrementQuantity}
+                            >
+                                +
+                            </button>
+                        </div>
+                    </div>
 
                     <button className="btn btn-dualia-dark btn-lg me-3">Add to Cart</button>
                     <button className="btn btn-outline-dark btn-lg">Add to Wishlist</button>
