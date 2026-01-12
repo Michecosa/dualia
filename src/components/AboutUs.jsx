@@ -65,7 +65,6 @@ export default function AboutUs() {
                         fill="currentColor"></path>
                 </svg>
             </div>
-
             <div className="container pb-5">
                 <h2 className="text-center p-5">
                     Our Promise
