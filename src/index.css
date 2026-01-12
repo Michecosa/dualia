@@ -105,6 +105,11 @@
   margin: 0;
 }
 
+/* product detail */
+.btn-plus:hover {
+  font-weight: 900;
+}
+
 /* footer */
 footer {
   background-color: black;

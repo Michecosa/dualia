@@ -88,16 +88,16 @@ export default function ProductDetail() {
                     <div className="mb-4 d-flex align-items-center">
                         <strong className="me-3">Quantity:</strong>
                         <button
-                            className="btn"
+                            className="btn btn-plus"
                             onClick={decrementQuantity}
                             disabled={quantity === 1}
-                            style={{ border: 'none', fontSize: '1.2rem' }}
+                            style={{ border: 'none', fontSize: '1.2rem', }}
                         >
                             −
                         </button>
                         <span className="mx-3 fs-5 fw-bold">{quantity}</span>
                         <button
-                            className="btn"
+                            className="btn btn-plus"
                             onClick={incrementQuantity}
                             style={{ border: 'none', fontSize: '1.2rem' }}
                         >

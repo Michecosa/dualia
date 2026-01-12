@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <nav className="navbar navbar-expand-md">
+                <nav className="navbar navbar-expand-md shadow-sm">
                     <div className="container-fluid">
                         {/* logo */}
                         <NavLink to="/">
