@@ -1,6 +1,10 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
 
+modal-content {
+  width: 80%;
+  margin: 0 auto;
+}
 
 /* pop-up */
 .modal-title {
@@ -58,16 +62,17 @@
 .btn-dualia-dark,
 .btn_newsletter {
   background-color: black;
-  color: white;
+  color: #e3be85;
   border-radius: 0;
   padding-inline: 1.7rem;
   padding-block: 0.5rem;
 }
 
+
 .btn-dualia-dark:hover,
-.btn-dualia-dark:hover {
-  background-color: rgb(52, 52, 52);
-  color: white;
+.btn-dualia-dark:active {
+  background-color: rgb(52, 52, 52) !important;
+  color: #e3be85 !important;
 }
 
 /* Raga scusate ma mi dava fastidio che le card si ridimensionassero a scatti */
@@ -175,10 +180,11 @@ footer a:hover {
   padding: 0.25rem 0.75rem;
 }
 
-.btn_newsletter:hover {
-  background-color: #e3be85;
-  color: black;
-  border-color: #e3be85;
+.btn_newsletter:hover,
+.btn_newsletter:active {
+  background-color: #e3be85 !important;
+  color: black !important;
+  border-color: #e3be85 !important;
 }
 
 /* social */
@@ -215,6 +221,16 @@ footer a:hover {
 .footer_policy,
 .copyright {
   font-size: 0.75rem;
+}
+
+/* product detail */
+.btn_wishlist {
+  background-color: black;
+}
+
+.btn_wishlist .bi-heart,
+.btn_wishlist .bi-heart-fill {
+  color: #e3be85;
 }
 
 /*** RESPONSIVE ***/
