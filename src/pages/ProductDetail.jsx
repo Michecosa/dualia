@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
+import { useState } from 'react'
 import img1 from "../assets/immagini_dualia/porta_incenso_black.jpeg";
 import img2 from "../assets/immagini_dualia/luxury_ashtray_black.jpeg";
 import img3 from "../assets/immagini_dualia/floor_lamp_black.jpeg";
 import img4 from "../assets/immagini_dualia/giardino_zen_black.jpeg";
-import { useState } from "react";
 
 const products = [
     {
@@ -20,7 +20,7 @@ const products = [
         title: "Luxury ashtray",
         price: "€999,99",
         image: img2,
-        description: "An exclusive luxury ashtray combining elegant design with functionality. Perfect for those who appreciate refined aesthetics.",
+        description: "An exclusive luxury ashtray combining elegant design with functionality. Perfect for those who appreciate refined aesthetics.Lorem10kdfhds;fdsj;gfahf;asdkhgaghsdsdo;ighDSF ;FOIHEWI FHSE;E EHSOI;FH owi;fhoesifh so;dFH;sdfh;so HFS;odhf sdhF;OIS ALGADJLA/G FVE;ITHV;EOT HERIOT;HREIO THA;EOHT;EROTH AER;OITHA;EROITH ;REOTHRE;O THER;OTIHREOGTHAE;ROHT",
         features: ["Premium materials", "Modern design", "Easy maintenance", "Gift box included"],
         dimensions: "20cm x 20cm x 5cm"
     },
@@ -46,7 +46,18 @@ const products = [
 
 export default function ProductDetail() {
     const { id } = useParams();
+    const [quantity, setQuantity] = useState(1);
     const product = products.find(p => p.id === id);
+
+    const incrementQuantity = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const decrementQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
 
     if (!product) {
         return (
@@ -85,11 +96,32 @@ export default function ProductDetail() {
                         <strong>Dimensions:</strong> {product.dimensions}
                     </p>
 
+                    <div className="mb-4">
+                        <h5 className="mb-3">Quantity:</h5>
+                        <div className="d-flex align-items-center">
+                            <button
+                                className="btn btn-outline-dark"
+                                onClick={decrementQuantity}
+                                disabled={quantity === 1}
+                            >
+                                -
+                            </button>
+                            <span className="mx-4 fs-4 fw-bold">{quantity}</span>
+                            <button
+                                className="btn btn-outline-dark"
+                                onClick={incrementQuantity}
+                            >
+                                +
+                            </button>
+                        </div>
+                    </div>
+
                     <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
                     <button className="btn btn-outline-dark py-2"
                         onClick={() => setFavorite(!favorite)}>
                         <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
                     </button>
+
                 </div>
             </div>
         </div>
