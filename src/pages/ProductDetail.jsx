@@ -58,36 +58,29 @@ export default function ProductDetail() {
                     <p className="lead mb-4">{product.description}</p>
 
                     <p className="mb-4">
-                        <strong>Dimensions:</strong> {product.dimensions}
-                    </p>
+                        <strong>Dimensions:</strong> {product.dimensions}</p>
 
                     <div className="mb-4 d-flex align-items-center">
                         <strong className="me-3">Quantity:</strong>
+
                         <button
                             className="btn btn-plus"
                             onClick={decrementQuantity}
                             disabled={quantity === 1}
-                            style={{ border: "none", fontSize: "1.2rem" }}
-                        >
-                            −
-                        </button>
+                            style={{ border: "none", fontSize: "1.2rem" }}> − </button>
+
                         <span className="mx-3 fs-5 fw-bold">{quantity}</span>
+
                         <button
                             className="btn btn-plus"
                             onClick={incrementQuantity}
-                            style={{ border: "none", fontSize: "1.2rem" }}
-                        >
-                            +
-                        </button>
+                            style={{ border: "none", fontSize: "1.2rem" }}> + </button>
                     </div>
 
-                    <button className="btn btn-dualia-dark rounded-1 me-2">
-                        Add to Cart
-                    </button>
-                    <button
-                        className="btn btn-outline-dark btn_wishlist py-2"
-                        onClick={() => setFavorite(!favorite)}
-                    >
+                    <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
+
+                    <button className="btn btn-outline-dark btn_wishlist py-2"
+                        onClick={() => setFavorite(!favorite)}>
                         <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
                     </button>
                 </div>

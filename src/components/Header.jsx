@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "../assets/Loghi_Dualia/logo_dualia_header.png";
 
 export default function Header() {
@@ -49,9 +49,9 @@ export default function Header() {
                                     </a>
                                 </button>
                                 {/* wishlist icon */}
-                                <a href="#" className="icon_link" aria-label="Person">
+                                <Link to="/wishlist" className="icon_link" aria-label="Heart Wishlist Page">
                                     <i className="bi bi-heart"></i>
-                                </a>
+                                </Link>
                                 {/* cart icon */}
                                 <a href="#" className="icon_link" aria-label="Cart">
                                     <i className="bi bi-bag"></i>
