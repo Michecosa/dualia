@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
+import { getwishlist, removeFromWishlist } from '../wishlistUtils';
+import { Link } from 'react-router-dom'
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    }, [wishlist]);
+        const setWishlist(getwishlist());
+    }, []);
 
-    const removeFromWishlist = (id) => {
-        const updateWishlist = wishlist.filter(item => item.id !== id);
-        setWishlist(updateWishlist);
+    const handleRemove = (productId) => {
+        removeFromWishlist(productId);
+        setWishlist(getWishlist); //ricarica la lista
     };
 
     return (
@@ -27,15 +29,19 @@ const Wishlist = () => {
                             className="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <strong>{item.name}</strong>
-                                <small> € {item.price}</small>
+                                - € {item.price}
                                 <small>{item.quantity}</small>
                             </div>
-                            <button className='btn btn-outline-dark btn_wishlist py-2'>Remove</button>
-                            onClick={() => removeFromWishlist(item.id)}
+                            <div>
 
-                            <button className='btn btn-outline-dark btn_wishlist py-2'>Buy</button>
-                            {/* onClick={()} => non so dove connetterlo */}
-
+                                <button className='btn btn-outline-dark btn_wishlist py-2'>Remove
+                                onClick={() => handleRemove(item.id)}
+                                </button>
+                                <Link
+                                    to={`/products/${item.productt_id}`}
+                                    className="btn btn-outline-dark">View
+                                </Link>
+                            </div>
                         </li>
                     ))}
                 </ul>
@@ -43,5 +49,6 @@ const Wishlist = () => {
         </div>
     );
 };
+
 
 export default Wishlist;
