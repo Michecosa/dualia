@@ -235,9 +235,7 @@ footer a:hover {
 
 /* #region cart */
 #shopping_cart {
-  .title{
-    margin-bottom: 5vh;
-}
+
 .card{
     margin: auto;
     max-width: 950px;
@@ -272,7 +270,6 @@ footer a:hover {
     background-color: #ddd;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    padding: 4vh;
     color: rgb(65, 65, 65);
 }
 @media(max-width:767px){

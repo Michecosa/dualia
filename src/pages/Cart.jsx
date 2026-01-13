@@ -1,4 +1,9 @@
+import { useState } from "react";
 export default function Cart() {
+    const [quantity, setQuantity] = useState(1);
+
+    const incrementQuantity = () => setQuantity(quantity + 1);
+    const decrementQuantity = () => quantity > 1 && setQuantity(quantity - 1);
 
     return (
         <section id="shopping_cart" className="py-5">
@@ -8,7 +13,7 @@ export default function Cart() {
                         <div className="title">
                             <div className="row">
                                 <div className="col">
-                                    <h4><b>Shopping Cart</b></h4>
+                                    <h4 className="mb-3"><b>Shopping Cart</b></h4>
                                 </div>
                                 <div className="col text-end">
                                     3 items
@@ -24,9 +29,9 @@ export default function Cart() {
                                 <div className="col">
                                     <div className="row">Cotton T-shirt</div>
                                 </div>
-                                <div className="col">
+                                <div className="col text-decoration-none">
                                     <a href="#">-</a>
-                                    <a href="#" className="border">1</a>
+                                    <a href="#">1</a>
                                     <a href="#">+</a>
                                 </div>
                                 <div className="col">
@@ -44,10 +49,25 @@ export default function Cart() {
                                     <div className="row text-muted">Shirt</div>
                                     <div className="row">Cotton T-shirt</div>
                                 </div>
+
+
                                 <div className="col">
-                                    <a href="#">-</a>
-                                    <a href="#" className="border">1</a>
-                                    <a href="#">+</a>
+                                    <button
+                                        className="btn btn-plus"
+                                        onClick={decrementQuantity}
+                                        disabled={quantity === 1}
+                                        style={{ border: "none", fontSize: "1.2rem" }}
+                                    >
+                                        −
+                                    </button>
+                                    <span className="mx-3 fs-5 fw-bold">{quantity}</span>
+                                    <button
+                                        className="btn btn-plus"
+                                        onClick={incrementQuantity}
+                                        style={{ border: "none", fontSize: "1.2rem" }}
+                                    >
+                                        +
+                                    </button>
                                 </div>
                                 <div className="col">
                                     € 44.00 <span className="close">&#10005;</span>
@@ -83,7 +103,7 @@ export default function Cart() {
 
                     <div className="col-md-4 summary">
                         <div>
-                            <h5><b>Summary</b></h5>
+                            <h5 className="mb-3"><b>Summary</b></h5>
                         </div>
                         <hr />
                         <div className="row">
