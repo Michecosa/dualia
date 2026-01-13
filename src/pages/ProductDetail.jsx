@@ -81,7 +81,7 @@ export default function ProductDetail() {
                         </button>
                     </div>
 
-                    <button className="btn btn-dualia-dark rounded-1 me-2">
+                    <button className="btn btn-cart rounded-1 me-2">
                         Add to Cart
                     </button>
                     <button

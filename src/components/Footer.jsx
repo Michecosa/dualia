@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const exploreLinks = [
-    { id: 1, name: "Catalog" },
+    { id: 1, name: "Products" },
     { id: 2, name: "Promotions" },
     { id: 4, name: "About us" },
 ]
