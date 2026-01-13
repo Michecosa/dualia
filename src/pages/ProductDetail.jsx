@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { addToWishList,removeFromWishlist,isInWishList } from "../wishlistUtils";
+import { addToWishlist, removeFromWishlist, isInWishlist } from "../wishlistUtils";
 
 
 export default function ProductDetail() {
@@ -16,7 +16,7 @@ export default function ProductDetail() {
             .get(`http://localhost:3000/api/products/${id}`)
             .then((res) => {
                 setProduct(res.data);
-                setFavorite(isInWishList(res.data.product_id));
+                setFavorite(isInWishlist(res.data.product_id));
                 setLoading(false);
             })
             .catch(() => {
@@ -30,7 +30,7 @@ export default function ProductDetail() {
             removeFromWishlist(product.product_id)
             setFavorite(false);
         } else {
-            addToWishList(product);
+            addToWishlist(product);
             setFavorite(true);
         }
     };
@@ -62,7 +62,7 @@ export default function ProductDetail() {
                         src={product.url_image}
                         alt={product.name}
                         className="img-fluid rounded"
-                        style={{ width: "100%", objectFit: "cover" }}/>
+                        style={{ width: "100%", objectFit: "cover" }} />
                 </div>
                 <div className="col-lg-6">
                     <h1 className="mb-3">{product.name}</h1>
@@ -92,7 +92,7 @@ export default function ProductDetail() {
                     <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
 
                     <button className="btn btn-outline-dark btn_wishlist py-2"
-                        onClick={() => setFavorite(!favorite)}>
+                        onClick={toggleWishlist}>
                         <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
                     </button>
                 </div>

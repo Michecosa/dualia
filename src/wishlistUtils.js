@@ -1,4 +1,4 @@
-export const getwishlist = () => {
+export const getWishlist = () => {
     const wishlist = localStorage.getItem("wishlist");
     return wishlist ? JSON.parse(wishlist) : [];
 }
@@ -9,25 +9,25 @@ export const saveWishlist = (wishlist) => {
 };
 
 //aggiunge il prodotto alla wishlist
-export const addToWishList = (product) => {
-    const wishlist = getwishlist();
-    const exits = wishlist.find(p => p.product_id === product.product_id);
+export const addToWishlist = (product) => {
+    const wishlist = getWishlist();
+    const exists = wishlist.find(p => p.product_id === product.product_id);
 
-    if(!exists) {
+    if (!exists) {
         wishlist.push(product)
-        localStorage.setItem("wishlist", JASON.stringify(wishlist));
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
 };
 
 // rimuove un prodotto dalla wishlist
 export const removeFromWishlist = (productId) => {
-    const wishlist = getwishlist();
+    const wishlist = getWishlist();
     const newWishlist = wishlist.filter(p => p.product_id !== productId)
-    localStorage.setItem("wishlist", JASON.stringify(newWishlist));
+    localStorage.setItem("wishlist", JSON.stringify(newWishlist));
 };
 
 // controlla se un prodotto è nella wishlist
-export const isInWishList = (productId) => {
-    const wishlist = getwishlist();
+export const isInWishlist = (productId) => {
+    const wishlist = getWishlist();
     return wishlist.some(p => p.product_id === productId);
 };
