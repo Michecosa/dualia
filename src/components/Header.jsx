@@ -53,9 +53,9 @@ export default function Header() {
                                     <i className="bi bi-heart"></i>
                                 </a>
                                 {/* cart icon */}
-                                <a href="#" className="icon_link" aria-label="Cart">
+                                <NavLink to="/cart" className="icon_link" aria-label="Cart">
                                     <i className="bi bi-bag"></i>
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
