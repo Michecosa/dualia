@@ -89,13 +89,10 @@ export default function ProductDetail() {
                             style={{ border: "none", fontSize: "1.2rem" }}> + </button>
                     </div>
 
-                    <button className="btn btn-cart rounded-1 me-2">
-                        Add to Cart
-                    </button>
-                    <button
-                        className="btn btn-outline-dark btn_wishlist py-2"
-                        onClick={() => setFavorite(!favorite)}
-                    >
+                    <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
+
+                    <button className="btn btn-outline-dark btn_wishlist py-2"
+                        onClick={toggleWishlist}>
                         <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
                     </button>
                 </div>
