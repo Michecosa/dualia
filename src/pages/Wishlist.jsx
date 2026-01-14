@@ -1,0 +1,74 @@
+import { useEffect, useState } from 'react';
+import { getWishlist, removeFromWishlist } from '../wishlistUtils';
+import { Link } from 'react-router-dom';
+
+const Wishlist = () => {
+    const [wishlist, setWishlist] = useState([]);
+
+    useEffect(() => {
+        setWishlist(getWishlist());
+    }, []);
+
+    const handleRemove = (productId) => {
+        removeFromWishlist(productId);
+        setWishlist(getWishlist()); // Ricarica la lista
+    };
+
+    return (
+        <div className="container mt-5">
+            <h2 className="mb-4">Your Wishlist</h2>
+
+            {wishlist.length === 0 ? (
+                <div className="text-center py-5">
+                    <p className="lead">Your wishlist is empty.</p>
+                    <Link to="/products" className="btn btn-dark mt-3">
+                        Browse Products
+                    </Link>
+                </div>
+            ) : (
+                <div className="row">
+                    {wishlist.map(item => (
+                        <div key={item.product_id} className="col-md-6 col-lg-4 mb-4">
+                            <div className="card h-100">
+                                <Link to={`/products/${item.product_id}`}>
+                                    <img
+                                        src={item.url_image}
+                                        className="card-img-top"
+                                        alt={item.name}
+                                        style={{ height: '250px', objectFit: 'cover' }}
+                                    />
+                                </Link>
+                                <div className="card-body d-flex flex-column">
+                                    <h5 className="card-title">{item.name}</h5>
+                                    <p className="card-text text-muted">€{item.price}</p>
+
+                                    <div className="mt-auto d-flex gap-2">
+                                        {/* Bottone Shopping Bag - Aggiungi al carrello */}
+                                        <button
+                                            className="btn btn-dualia-dark rounded-1 flex-grow-1"
+                                            onClick={() => console.log('Add to cart:', item.product_id)}
+                                        >
+                                            <i className="bi bi-bag me-2"></i>
+                                            Add to Cart
+                                        </button>
+
+                                        {/* Bottone Cuore - Rimuovi dalla wishlist */}
+                                        <button
+                                            className="btn btn-outline-dark btn_wishlist py-2"
+                                            onClick={() => handleRemove(item.product_id)}
+                                            title="Remove from wishlist"
+                                        >
+                                            <i className="bi bi-heart-fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Wishlist;
