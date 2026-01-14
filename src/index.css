@@ -367,15 +367,47 @@ footer a:hover {
   max-width: 100%;
 }
 
+.dualia-card-res {
+  flex: 1 1 calc(85%);
+  max-width: calc(85%);
+}
+
 @media screen and (min-width: 710px) {
   .dualia-card-50 {
     flex: 1 1 calc(50%);
     max-width: calc(50%);
   }
+
+  .dualia-card-res {
+    flex: 1 1 calc(45%);
+    max-width: calc(45%);
+  }
+
+  .dualia-card-20 {
+    flex: 1 1 calc(50%);
+    max-width: calc(50%);
+  }
+}
+
+@media screen and (max-width: 710px) and (min-with: 576px) {
+  .dualia-card-50 {
+    flex: 1 1 calc(50%);
+    max-width: calc(50%);
+  }
+
+  .dualia-card-res {
+    flex: 1 1 calc(85%);
+    max-width: calc(85%);
+  }
+}
+
+.dualia-card-20 {
+  flex: 1 1 calc(50%);
+  max-width: calc(50%);
 }
 
 /* header */
-@media (max-width: 767.99px) {
+@media screen and (max-width: 767.99px) {
   .nav_home {
     padding-top: 1rem;
   }
@@ -426,6 +458,11 @@ footer a:hover {
   .dualia-card-25 {
     flex: 1 1 calc(25%);
     max-width: calc(25%);
+  }
+
+  .dualia-card-20 {
+    flex: 1 1 calc(16.66%);
+    max-width: calc(16.66%);
   }
 
   .jumbotron {
