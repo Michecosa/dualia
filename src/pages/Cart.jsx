@@ -2,7 +2,7 @@ export default function Cart() {
 
     return (
         <>
-            <div className="card_custom_cart mt-5">
+            <div className="card_custom_cart">
                 <div className="row">
                     <div className="col-md-9 cart">
                         <div className="row">
@@ -39,14 +39,6 @@ export default function Cart() {
                                 </div>
                             </div>
                         </div>
-                        {/* Bottone torna indietro */}
-                        <div>
-                            <button className="btn btn-back_to_shop">
-                                <i className="bi bi-arrow-left me-2"></i>
-                                Back to shop
-                            </button>
-                        </div>
-
                     </div>
 
                     {/* sommario */}
@@ -84,6 +76,14 @@ export default function Cart() {
                     </div>
 
                 </div>
+            </div>
+
+            {/* Bottone torna indietro */}
+            <div>
+                <button className="btn btn-back_to_shop">
+                    <i className="bi bi-arrow-left me-2"></i>
+                    Back to shop
+                </button>
             </div>
         </>
     );
