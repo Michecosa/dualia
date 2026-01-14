@@ -1,136 +1,90 @@
-import { useState } from "react";
 export default function Cart() {
-    const [quantity, setQuantity] = useState(1);
-
-    const incrementQuantity = () => setQuantity(quantity + 1);
-    const decrementQuantity = () => quantity > 1 && setQuantity(quantity - 1);
 
     return (
-        <section id="shopping_cart" className="py-5">
-            <div className="card">
+        <>
+            <div className="card_custom_cart mt-5">
                 <div className="row">
-                    <div className="col-md-8 cart">
-                        <div className="title">
-                            <div className="row">
-                                <div className="col">
-                                    <h4 className="mb-3"><b>Shopping Cart</b></h4>
-                                </div>
-                                <div className="col text-end">
-                                    3 items
-                                </div>
+                    <div className="col-md-9 cart">
+                        <div className="row">
+                            {/* carrello */}
+                            <div className="col-8">
+                                <h4 className="mt-3 mb-0">Shopping Cart</h4>
                             </div>
+
+                            <div className="col-4 align-self-end text-right text-muted text-end">
+                                <span>3 items</span>
+                            </div>
+
+                            {/* separatore */}
+                            <div className="separator"></div>
                         </div>
 
-                        <div className="row border-top border-bottom">
-                            <div className="row main align-items-center">
+                        {/* prodotto */}
+                        <div className="row border-bottom">
+                            <div className="row py-3 align-items-center">
                                 <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" alt="" />
+                                    <img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" />
+                                </div>
+
+                                <div className="col">
+                                    <div>Cotton T-shirt</div>
                                 </div>
                                 <div className="col">
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-                                <div className="col text-decoration-none">
                                     <a href="#">-</a>
                                     <a href="#">1</a>
                                     <a href="#">+</a>
                                 </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
+                                <div className="col d-flex">€ 44.00
+                                    <button className="close fw-bold">X</button>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="row">
-                            <div className="row main align-items-center">
-                                <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg" alt="" />
-                                </div>
-                                <div className="col">
-                                    <div className="row text-muted">Shirt</div>
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-
-
-                                <div className="col">
-                                    <button
-                                        className="btn btn-plus"
-                                        onClick={decrementQuantity}
-                                        disabled={quantity === 1}
-                                        style={{ border: "none", fontSize: "1.2rem" }}
-                                    >
-                                        −
-                                    </button>
-                                    <span className="mx-3 fs-5 fw-bold">{quantity}</span>
-                                    <button
-                                        className="btn btn-plus"
-                                        onClick={incrementQuantity}
-                                        style={{ border: "none", fontSize: "1.2rem" }}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
-                                </div>
-                            </div>
+                        {/* Bottone torna indietro */}
+                        <div>
+                            <button className="btn btn-back_to_shop">
+                                <i className="bi bi-arrow-left me-2"></i>
+                                Back to shop
+                            </button>
                         </div>
 
-                        <div className="row border-top border-bottom">
-                            <div className="row main align-items-center">
-                                <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg" alt="" />
-                                </div>
-                                <div className="col">
-                                    <div className="row text-muted">Shirt</div>
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-                                <div className="col">
-                                    <a href="#">-</a>
-                                    <a href="#" className="border">1</a>
-                                    <a href="#">+</a>
-                                </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="back-to-shop">
-                            <a href="#">&larr;</a>
-                            <span className="text-muted">Back to shop</span>
-                        </div>
                     </div>
 
-                    <div className="col-md-4 summary">
+                    {/* sommario */}
+                    <div class="col-md-3 summary">
                         <div>
-                            <h5 className="mb-3"><b>Summary</b></h5>
+                            <h4 className="mt-3">Summary</h4>
                         </div>
-                        <hr />
-                        <div className="row">
-                            <div className="col" style={{ paddingLeft: "0" }}>ITEMS 3</div>
-                            <div className="col text-right">€ 132.00</div>
+
+                        {/* separator */}
+                        <div className="separator"></div>
+
+                        <div class="row">
+                            <div class="col p-0 mb-4">ITEMS 3</div>
+                            <div class="col text-right">€ 132.00</div>
                         </div>
-                        <form>
+
+                        {/* form */}
+                        <form className="py-3">
                             <p>SHIPPING</p>
                             <select>
-                                <option className="text-muted">Standard-Delivery - €5.00</option>
+                                <option class="text-muted">Standard-Delivery - € 5.00</option>
                             </select>
                             <p>GIVE CODE</p>
-                            <input id="code" placeholder="Enter your code" />
+                            <input placeholder="Enter your code" />
                         </form>
 
-                        <div
-                            className="row"
-                            style={{ borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0" }}
-                        >
-                            <div className="col">TOTAL PRICE</div>
-                            <div className="col text-right">€ 137.00</div>
-                        </div>
+                        {/* separator */}
+                        <div className="separator"></div>
 
-                        <button className="btn">CHECKOUT</button>
+                        <div class="row">
+                            <div class="col p-0">TOTAL</div>
+                            <div class="col text-right">€ 137.00</div>
+                        </div>
+                        <button class="btn btn_checkout">CHECKOUT</button>
                     </div>
+
                 </div>
             </div>
-        </section>
+        </>
     );
 }
