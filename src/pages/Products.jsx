@@ -11,14 +11,11 @@ export default function Products() {
 
   const fetchProducts = (filters = {}) => {
     const cleanFilters = {};
-
     for (let key in filters) {
-      if (filters[key] !== "") {
+      if (filters[key] !== "" && filters[key] !== undefined) {
         cleanFilters[key] = filters[key];
       }
     }
-
-    setSearchParams(cleanFilters);
 
     axios
       .get(`http://localhost:3000/api/products/search`, {
@@ -32,8 +29,12 @@ export default function Products() {
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const paramsInUrl = {};
+    searchParams.forEach((value, key) => {
+      paramsInUrl[key] = value;
+    });
+    fetchProducts(paramsInUrl);
+  }, [searchParams]);
 
   if (loading) return <p>loading...</p>;
 
@@ -41,7 +42,18 @@ export default function Products() {
     <div className="container mt-5">
       <div id="p_daddy" className="row mb-3">
         <div className="col-3">
-          <SearchButton onSearch={fetchProducts} />
+          <SearchButton
+            onSearch={(newFilters) => {
+              const currentParams = {};
+              searchParams.forEach((value, key) => {
+                currentParams[key] = value;
+              });
+
+              const mergedFilters = { ...currentParams, ...newFilters };
+
+              setSearchParams(mergedFilters);
+            }}
+          />
         </div>
         <div className="col">
           <h2 className="mb-3">Products</h2>
