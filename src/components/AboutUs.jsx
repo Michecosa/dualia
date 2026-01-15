@@ -14,45 +14,53 @@ export default function AboutUs() {
                 </svg>
             </div>
             <section className="dualia-about">
-                <div className="container text-center ">
-                    <h1 className="m-5">Design Inspired <br /> by Balance</h1>
-                    <p>
-                        Dualia was born from the belief that the spaces we live in profoundly influence our well-being. <br />
-                        For this reason, we select furnishings that bring calm, harmony,
-                        <br />
-                        and essential beauty into the homes of those who, like us,
-                        believe in the power of simplicity.
-                    </p>
+                <div className="container text-center">
+                    <h1 className="mt-5 mb-3">Design Inspired <br /> by Balance</h1>
+                    <div className="d-flex justify-content-center">
+                        <p className="p-sub">
+                            Dualia was born from the belief that the spaces we live in profoundly influence our well-being. <br />
+                            For this reason, we select furnishings that bring calm, harmony,
+                            <br />
+                            and essential beauty into the homes of those who, like us,
+                            believe in the power of simplicity.
+                        </p>
+                    </div>
                     <div className="row dualia-values">
-                        <div className="col-12 col-md-4">
+                        <div className="col-12 col-lg-4">
                             <div className="dualia-img">
                                 <img src={Miniera} alt="" />
                             </div>
-                            <h3>Essentiality</h3>
-                            <p>
-                                Every piece is selected for its ability to communicate without excess.
-                                Pure forms that leave room to breathe.
-                            </p>
+                            <div className="d-flex flex-column align-items-center">
+                                <h3>Essentiality</h3>
+                                <p className="p-home">
+                                    Every piece is selected for its ability to communicate without excess.
+                                    Pure forms that leave room to breathe.
+                                </p>
+                            </div>
                         </div>
-                        <div className="col-12 col-md-4">
+                        <div className="col-12 col-lg-4">
                             <div className="dualia-img">
                                 <img src={Falegname} alt="" />
                             </div>
-                            <h3>Quality</h3>
-                            <p>
-                                Natural materials, craftsmanship, and attention to detail.
-                                Objects designed to last over time.
-                            </p>
+                            <div className="d-flex flex-column align-items-center">
+                                <h3>Quality</h3>
+                                <p className="p-home">
+                                    Natural materials, craftsmanship, and attention to detail.
+                                    Objects designed to last over time.
+                                </p>
+                            </div>
                         </div>
-                        <div className="col-12 col-md-4">
+                        <div className="col-12 col-lg-4">
                             <div className="dualia-img">
                                 <img src={ArtWall} alt="" />
                             </div>
-                            <h3>Balance</h3>
-                            <p>
-                                Harmony is born from the dialogue between elements. Minimal palettes
-                                and carefully studied proportions to create serene spaces.
-                            </p>
+                            <div className="d-flex flex-column align-items-center">
+                                <h3>Balance</h3>
+                                <p className="p-home">
+                                    Harmony is born from the dialogue between elements. Minimal palettes
+                                    and carefully studied proportions to create serene spaces.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +73,7 @@ export default function AboutUs() {
                         fill="currentColor"></path>
                 </svg>
             </div>
-            <div className="container pb-5">
+            <div className="container pb-5 mb-5">
                 <h2 className="text-center p-5">
                     Our Promise
                 </h2>

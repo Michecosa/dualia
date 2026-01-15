@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-export default function Card({ img, title, price, path }) {
+export default function Card({ img, title, price, path, bestSellers, prodRes }) {
   return (
     <>
-      <div className="dualia-card dualia-card-50 dualia-card-25 flex-grow-1 mb-4">
+      <div className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4`}>
         <Link
           to={path}
           className="m-0 p-0 text-decoration-none"

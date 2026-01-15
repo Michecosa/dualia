@@ -1,136 +1,162 @@
-import { useState } from "react";
-export default function Cart() {
-    const [quantity, setQuantity] = useState(1);
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-    const incrementQuantity = () => setQuantity(quantity + 1);
-    const decrementQuantity = () => quantity > 1 && setQuantity(quantity - 1);
+export default function Cart() {
+    const navigate = useNavigate();
+    const [cart, setCart] = useState([]);
+
+    // Carica il carrello dal localStorage
+    useEffect(() => {
+        const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        setCart(savedCart);
+    }, []);
+
+    // Funzione per aumentare la quantità
+    const increaseQuantity = (productId) => {
+        const updatedCart = cart.map(item =>
+            item.product_id === productId
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+        );
+        setCart(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    };
+
+    // Funzione per diminuire la quantità
+    const decreaseQuantity = (productId) => {
+        const updatedCart = cart.map(item =>
+            item.product_id === productId && item.quantity > 1
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+        );
+        setCart(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    };
+
+    // Funzione per rimuovere un prodotto
+    const removeItem = (productId) => {
+        const updatedCart = cart.filter(item => item.product_id !== productId);
+        setCart(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    };
+
+    // Calcola il subtotale
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const shipping = 5.00;
+    const total = subtotal + shipping;
+    const itemsCount = cart.reduce((count, item) => count + item.quantity, 0);
 
     return (
-        <section id="shopping_cart" className="py-5">
-            <div className="card">
+        <>
+            <div className="card_custom_cart">
                 <div className="row">
-                    <div className="col-md-8 cart">
-                        <div className="title">
-                            <div className="row">
-                                <div className="col">
-                                    <h4 className="mb-3"><b>Shopping Cart</b></h4>
-                                </div>
-                                <div className="col text-end">
-                                    3 items
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="row border-top border-bottom">
-                            <div className="row main align-items-center">
-                                <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" alt="" />
-                                </div>
-                                <div className="col">
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-                                <div className="col text-decoration-none">
-                                    <a href="#">-</a>
-                                    <a href="#">1</a>
-                                    <a href="#">+</a>
-                                </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="col-md-9 cart">
                         <div className="row">
-                            <div className="row main align-items-center">
-                                <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg" alt="" />
-                                </div>
-                                <div className="col">
-                                    <div className="row text-muted">Shirt</div>
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-
-
-                                <div className="col">
-                                    <button
-                                        className="btn btn-plus"
-                                        onClick={decrementQuantity}
-                                        disabled={quantity === 1}
-                                        style={{ border: "none", fontSize: "1.2rem" }}
-                                    >
-                                        −
-                                    </button>
-                                    <span className="mx-3 fs-5 fw-bold">{quantity}</span>
-                                    <button
-                                        className="btn btn-plus"
-                                        onClick={incrementQuantity}
-                                        style={{ border: "none", fontSize: "1.2rem" }}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
-                                </div>
+                            <div className="col-8">
+                                <h4 className="mt-3 mb-0">Shopping Cart</h4>
                             </div>
-                        </div>
 
-                        <div className="row border-top border-bottom">
-                            <div className="row main align-items-center">
-                                <div className="col-2">
-                                    <img className="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg" alt="" />
-                                </div>
-                                <div className="col">
-                                    <div className="row text-muted">Shirt</div>
-                                    <div className="row">Cotton T-shirt</div>
-                                </div>
-                                <div className="col">
-                                    <a href="#">-</a>
-                                    <a href="#" className="border">1</a>
-                                    <a href="#">+</a>
-                                </div>
-                                <div className="col">
-                                    € 44.00 <span className="close">&#10005;</span>
-                                </div>
+                            <div className="col-4 align-self-end text-right text-muted text-end">
+                                <span>{itemsCount} items</span>
                             </div>
+
+                            <div className="separator"></div>
                         </div>
 
-                        <div className="back-to-shop">
-                            <a href="#">&larr;</a>
-                            <span className="text-muted">Back to shop</span>
-                        </div>
+                        {/* Mostra messaggio se il carrello è vuoto */}
+                        {cart.length === 0 ? (
+                            <div className="text-center py-5">
+                                <p className="lead">Ups! Your cart is empty.</p>
+                            </div>
+                        ) : (
+                            // Mappa tutti i prodotti nel carrello
+                            cart.map(item => (
+                                <div key={item.product_id} className="row border-bottom">
+                                    <div className="row py-3 align-items-center">
+                                        <div className="col-2">
+                                            <img
+                                                className="img-fluid rounded-1"
+                                                src={item.url_image}
+                                                alt={item.name}
+                                                style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                                            />
+                                        </div>
+
+                                        <div className="col">
+                                            <div>{item.name}</div>
+                                        </div>
+
+                                        <div className="col">
+                                            <button
+                                                className="btn btn-sm"
+                                                onClick={() => decreaseQuantity(item.product_id)}
+                                            >
+                                                -
+                                            </button>
+                                            <span className="mx-2">{item.quantity}</span>
+                                            <button
+                                                className="btn btn-sm"
+                                                onClick={() => increaseQuantity(item.product_id)}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+
+                                        <div className="col d-flex">
+                                            € {(item.price * item.quantity).toFixed(2)}
+                                            <button
+                                                className="close fw-bold ms-auto"
+                                                onClick={() => removeItem(item.product_id)}
+                                            >
+                                                X
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        )}
                     </div>
 
-                    <div className="col-md-4 summary">
+                    {/* sommario */}
+                    <div className="col-md-3 summary">
                         <div>
-                            <h5 className="mb-3"><b>Summary</b></h5>
+                            <h4 className="mt-3">Summary</h4>
                         </div>
-                        <hr />
+
+                        <div className="separator"></div>
+
                         <div className="row">
-                            <div className="col" style={{ paddingLeft: "0" }}>ITEMS 3</div>
-                            <div className="col text-right">€ 132.00</div>
+                            <div className="col p-0 mb-4">ITEMS {itemsCount}</div>
+                            <div className="col text-right">€ {subtotal.toFixed(2)}</div>
                         </div>
-                        <form>
+
+                        {/* form */}
+                        <form className="py-3">
                             <p>SHIPPING</p>
                             <select>
-                                <option className="text-muted">Standard-Delivery - €5.00</option>
+                                <option className="text-muted">Standard-Delivery - € {shipping.toFixed(2)}</option>
                             </select>
                             <p>GIVE CODE</p>
-                            <input id="code" placeholder="Enter your code" />
+                            <input placeholder="Enter your code" />
                         </form>
 
-                        <div
-                            className="row"
-                            style={{ borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0" }}
-                        >
-                            <div className="col">TOTAL PRICE</div>
-                            <div className="col text-right">€ 137.00</div>
-                        </div>
+                        <div className="separator"></div>
 
-                        <button className="btn">CHECKOUT</button>
-                    </div>
-                </div>
+                        <div className="row">
+                            <div className="col p-0">TOTAL</div>
+                            <div className="col text-right">€ {total.toFixed(2)}</div>
+                        </div>
+                        <button className="btn btn_checkout" onClick={() => navigate("/checkout")}>CHECKOUT</button>
+                    </div>                </div>
             </div>
-        </section>
+
+            {/* Bottone torna indietro */}
+            <div>
+                <button className="btn btn-back_to_shop" onClick={() => navigate("/products")}>
+                    <i className="bi bi-arrow-left me-2"></i>
+                    Back to shop
+                </button>
+            </div>
+        </>
     );
 }

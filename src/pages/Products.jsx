@@ -25,6 +25,7 @@ export default function Products() {
   if (loading) return <p>loading...</p>;
 
   return (
+
     <div className="container mt-5">
 
 
@@ -45,6 +46,7 @@ export default function Products() {
               />
             ))}
           </div></div>
+
       </div>
 
 

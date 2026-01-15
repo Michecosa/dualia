@@ -30,7 +30,7 @@ const footerLinks = [
 export default function Footer() {
 
     return (
-        <footer className="mt-5">
+        <footer>
             <div className="container">
                 <div className="row">
                     {/* newsletter */}
