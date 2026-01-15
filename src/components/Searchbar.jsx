@@ -1,3 +1,4 @@
+import SliderPrice from "./SliderPrice";
 
 
 export default function Searchbar() {
@@ -11,8 +12,8 @@ export default function Searchbar() {
     return (
         <>
 
-            <div className="container-fluid">
-                <h4 className="mb-4">Advanced Search</h4>
+            <div className="container-fluid pt-3">
+                <h5 className="mb-4">Advanced Search</h5>
 
                 <div className="d-flex flex-column g-4">
                     {/* CATEGORY */}
@@ -85,17 +86,16 @@ export default function Searchbar() {
                     <hr />
 
                     {/* SELETTORE DEL PREZZO */}
-                    <label for="range1" className="form-label">PRICE RANGE</label>
-                    <input type="range" className="form-range" id="range1" />
+                    <SliderPrice />
 
                 </div>
 
                 {/* BOTTONI IN FONDO CHE NON SAPREI COME CHIAMARE :C */}
                 <div className="d-flex align-items-center justify-content-between mt-4">
 
-                    <div className="d-flex gap-3">
+                    <div className="d-flex gap-3 flex-wrap">
                         <button className="btn btn-dark text-light px-4">Search</button>
-                        <button className="btn btn-link text-decoration-none">Reset</button>
+                        <button className="btn btn-secondary text-decoration-none">Reset</button>
                     </div>
                 </div>
             </div>

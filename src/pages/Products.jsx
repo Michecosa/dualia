@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
 
-import Searchbar from "../components/Searchbar";
+
+import SearchButton from "../components/SearchButton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -27,12 +28,12 @@ export default function Products() {
     <div className="container mt-5">
 
 
-      <div className="row mb-3">
+      <div id="p_daddy" className="row mb-3">
         <div className="col-3">
-          <Searchbar />
+          <SearchButton />
         </div>
         <div className="col">
-          <h4 className="mb-3">MICHELA TI ODIO</h4>
+          <h2 className="mb-3">Products</h2>
           <div className="row gap-3">
             {products.map((p) => (
               <Card
@@ -47,22 +48,6 @@ export default function Products() {
       </div>
 
 
-
-
-
-
-
-      <div className="row gap-3 justify-content-center">
-        {products.map((p) => (
-          <Card
-            key={p.product_id}
-            title={p.name}
-            img={p.url_image}
-            price={"€" + p.price}
-            path={`/products/${p.product_id}`}
-          />
-        ))}
-      </div>
 
     </div>
 

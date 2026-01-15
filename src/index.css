@@ -246,15 +246,94 @@ footer a:hover {
   color: #e3be85;
 }
 
-/* #region cart */
-
 /* #region searchbar */
 
+#slider {
+  .slider-container {
+    position: relative;
+    height: 36px;
+  }
 
-/* --- SEZIONE FILTRI AVANZATI --- */
+  .slider-container input {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    -webkit-appearance: none;
+    background: transparent;
 
+    top: 50%;
+    transform: translateY(-50%);
+
+  }
+
+  /* track base */
+  .slider-track {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #6c757d;
+    /* bootstrap secondary */
+    border-radius: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+  }
+
+  /* barra piena dark */
+  .slider-range {
+    position: absolute;
+    height: 4px;
+    border-radius: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* thumbs */
+  input::-webkit-slider-thumb {
+    pointer-events: auto;
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #212529;
+    /* bootstrap dark */
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+
+  input::-moz-range-thumb {
+    pointer-events: auto;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #212529;
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+
+  /* rimuove track default */
+  input::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+
+  input::-moz-range-track {
+    background: transparent;
+  }
+
+
+
+}
+
+#search_button {
+  display: none;
+}
 
 /* #endregion searchbar */
+
+/* #region cart */
+
 #shopping_cart {
   .card {
     margin: auto;
@@ -266,17 +345,20 @@ footer a:hover {
       margin-left: 3rem;
     }
   }
+
   @media (max-width: 767px) {
     .card {
       margin: 3vh auto;
     }
   }
+
   .cart {
     background-color: #fff;
     padding: 4vh 5vh;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
   }
+
   @media (max-width: 767px) {
     .cart {
       padding: 4vh;
@@ -284,61 +366,77 @@ footer a:hover {
       border-top-right-radius: 1rem;
     }
   }
+
   .summary {
     background-color: #ddd;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: rgb(65, 65, 65);
   }
+
   @media (max-width: 767px) {
     .summary {
       border-top-right-radius: unset;
       border-bottom-left-radius: 1rem;
     }
   }
+
   .summary .col-2 {
     padding: 0;
   }
+
   .summary .col-10 {
     padding: 0;
   }
+
   .row {
     margin: 0;
   }
+
   .title b {
     font-size: 1.5rem;
   }
+
   .main {
     margin: 0;
     padding: 2vh 0;
     width: 100%;
   }
+
   .col-2,
   .col {
     padding: 0 1vh;
   }
+
   a {
     padding: 0 1vh;
   }
+
   .close {
     margin-left: auto;
     font-size: 0.7rem;
   }
+
   img {
     width: 3.5rem;
   }
+
   .back-to-shop {
     margin-top: 4.5rem;
   }
+
   h5 {
     margin-top: 4vh;
   }
+
   hr {
     margin-top: 1.25rem;
   }
+
   form {
     padding: 2vh 0;
   }
+
   select {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1.5vh 1vh;
@@ -347,6 +445,7 @@ footer a:hover {
     width: 100%;
     background-color: rgb(247, 247, 247);
   }
+
   input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
@@ -355,9 +454,11 @@ footer a:hover {
     width: 100%;
     background-color: rgb(247, 247, 247);
   }
+
   input:focus::-webkit-input-placeholder {
     color: transparent;
   }
+
   .btn {
     background-color: #000;
     border-color: #000;
@@ -368,6 +469,7 @@ footer a:hover {
     padding: 1vh;
     border-radius: 0;
   }
+
   .btn:focus {
     box-shadow: none;
     outline: none;
@@ -377,28 +479,31 @@ footer a:hover {
     -webkit-user-select: none;
     transition: none;
   }
+
   .btn:hover {
     color: white;
   }
+
   a {
     color: black;
   }
+
   a:hover {
     color: black;
     text-decoration: none;
   }
+
   #code {
-    background-image: linear-gradient(
-        to left,
+    background-image: linear-gradient(to left,
         rgba(255, 255, 255, 0.253),
-        rgba(255, 255, 255, 0.185)
-      ),
+        rgba(255, 255, 255, 0.185)),
       url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center;
   }
 }
+
 /* #endregion cart */
 
 /*** RESPONSIVE ***/
@@ -410,8 +515,8 @@ footer a:hover {
 
 @media screen and (min-width: 710px) {
   .dualia-card-50 {
-    flex: 1 1 calc(50%);
-    max-width: calc(50%);
+    flex: 1 1 calc(33%);
+
   }
 }
 
@@ -461,11 +566,23 @@ footer a:hover {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+
+
+  #p_daddy {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    }
+  }
+
 }
 
 @media screen and (min-width: 1080px) {
   .dualia-card-25 {
     flex: 1 1 calc(25%);
+    max-width: 32%;
+
   }
 
   .jumbotron {
