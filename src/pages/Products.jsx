@@ -63,7 +63,8 @@ export default function Products() {
                 key={p.product_id}
                 title={p.name}
                 img={p.url_image}
-                price={"€" + p.price}
+                fullprice={p.full_price}
+                price={p.price}
                 path={`/products/${p.product_id}`}
               />
             ))}
