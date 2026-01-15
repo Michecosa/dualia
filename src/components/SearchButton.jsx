@@ -1,21 +1,24 @@
 import Searchbar from "./Searchbar";
 
-export default function SearchButton() {
+export default function SearchButton({ onSearch }) {
+  return (
+    <section className="p-0">
+      <div className="p-3 d-lg-none">
+        <button
+          className="btn btn-dark w-100"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#sidebarFilters"
+        >
+          Filtri di ricerca
+        </button>
+      </div>
 
-    return (
-        <section className="p-3 m-0 border-0 bd-example m-0 border-0">
-
-            <p className="d-inline-flex gap-1 d-lg-none">
-                <button className="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                    Search filter
-                </button>
-            </p>
-            <div className="collapse show" id="collapseExample">
-                <div className="card card-body">
-                    <Searchbar />
-                </div>
-            </div>
-
-        </section>
-    )
+      <div className="collapse d-lg-block" id="sidebarFilters">
+        <div className="border-0 shadow-none">
+          <Searchbar onSearch={onSearch} />
+        </div>
+      </div>
+    </section>
+  );
 }

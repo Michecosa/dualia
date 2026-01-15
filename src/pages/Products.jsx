@@ -1,38 +1,47 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Card from "../components/Card";
-
-
 import SearchButton from "../components/SearchButton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
+  const fetchProducts = (filters = {}) => {
+    const cleanFilters = {};
+
+    for (let key in filters) {
+      if (filters[key] !== "") {
+        cleanFilters[key] = filters[key];
+      }
+    }
+
+    setSearchParams(cleanFilters);
+
     axios
-      .get("http://localhost:3000/api/products")
+      .get(`http://localhost:3000/api/products/search`, {
+        params: cleanFilters,
+      })
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
       })
-      .catch(() => {
-        console.error("API offline or broke");
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   if (loading) return <p>loading...</p>;
 
   return (
-
-
     <div className="container mt-5">
-
-
       <div id="p_daddy" className="row mb-3">
         <div className="col-3">
-          <SearchButton />
+          <SearchButton onSearch={fetchProducts} />
         </div>
         <div className="col">
           <h2 className="mb-3">Products</h2>
@@ -46,14 +55,9 @@ export default function Products() {
                 path={`/products/${p.product_id}`}
               />
             ))}
-          </div></div>
-
-
+          </div>
+        </div>
       </div>
-
-
-
     </div>
-
   );
 }

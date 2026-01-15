@@ -1,106 +1,136 @@
+import { useState } from "react";
 import SliderPrice from "./SliderPrice";
 
+export default function Searchbar({ onSearch }) {
+  const [filters, setFilters] = useState({
+    category: "",
+    color: "",
+    sale: "",
+    order: "",
+    minPrice: "",
+    maxPrice: "",
+  });
 
-export default function Searchbar() {
+  const updateFilter = (name, value) => {
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
 
-    // rangeOutput.textContent = rangeInput.value;
+  const handleReset = () => {
+    const empty = {
+      category: "",
+      color: "",
+      sale: "",
+      order: "",
+      minPrice: "",
+      maxPrice: "",
+    };
+    setFilters(empty);
+    onSearch(empty);
+  };
 
-    // rangeInput.addEventListener('input', function () {
-    //     rangeOutput.textContent = this.value;
-    // });
+  return (
+    <div className="sidebar-filters">
+      <h5 className="mb-4 mt-2 fw-bold">Filtri Ricerca</h5>
 
-    return (
-        <>
+      <div className="filter-group">
+        <label className="filter-label">Categoria</label>
+        <select
+          className="form-select shadow-none"
+          value={filters.category}
+          onChange={(e) => updateFilter("category", e.target.value)}
+        >
+          <option value="">Tutte le categorie</option>
+          <option value="Decorations">Decorations</option>
+          <option value="Lighting">Lighting</option>
+          <option value="Candles and Scents">Candles and Scents</option>
+          <option value="Clocks and Frames">Clocks and Frames</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Zen Garden">Zen Garden</option>
+        </select>
+      </div>
 
-            <div className="container-fluid pt-3">
-                <h5 className="mb-4">Advanced Search</h5>
+      <div className="filter-group">
+        <label className="filter-label">Colore</label>
+        <select
+          className="form-select shadow-none"
+          value={filters.color}
+          onChange={(e) => updateFilter("color", e.target.value)}
+        >
+          <option value="">Tutti i colori</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+        </select>
+      </div>
 
-                <div className="d-flex flex-column g-4">
-                    {/* CATEGORY */}
-                    <div className="p-2">
-                        <label className="form-label">CATEGORY</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>Decorations</option>
-                            <option>Lighting</option>
-                            <option>Candles and Scents</option>
-                            <option>Clock and Frames</option>
-                            <option>Forniture</option>
-                            <option>Zen Garden</option>
-                        </select>
-                    </div>
+      {/* SALE */}
+      <div className="filter-group">
+        <label className="filter-label">In Offerta</label>
+        <div className="btn-group w-100" role="group">
+          <input
+            type="radio"
+            className="btn-check"
+            name="sale"
+            id="saleAll"
+            checked={filters.sale === ""}
+            onChange={() => updateFilter("sale", "")}
+          />
+          <label className="btn btn-outline-secondary btn-sm" htmlFor="saleAll">
+            Tutti
+          </label>
 
-                    {/* COLOR */}
-                    <div className="p-2">
-                        <label className="form-label">COLOR</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>Black</option>
-                            <option>White</option>
-                        </select>
-                    </div>
+          <input
+            type="radio"
+            className="btn-check"
+            name="sale"
+            id="saleYes"
+            checked={filters.sale === "yes"}
+            onChange={() => updateFilter("sale", "yes")}
+          />
+          <label className="btn btn-outline-secondary btn-sm" htmlFor="saleYes">
+            Sì
+          </label>
+        </div>
+      </div>
 
-                    {/* SALE */}
-                    <div className="p-2">
-                        <label className="form-label">SALE</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
+      <div className="filter-group">
+        <label className="filter-label">Ordina per</label>
+        <select
+          className="form-select shadow-none"
+          value={filters.order}
+          onChange={(e) => updateFilter("order", e.target.value)}
+        >
+          <option value="">Nessun ordine</option>
+          <option value="price_asc">Prezzo: Crescente</option>
+          <option value="price_desc">Prezzo: Decrescente</option>
+          <option value="name_asc">Nome: A-Z</option>
+          <option value="name_desc">Nome: Z-A</option>
+        </select>
+      </div>
 
-                    {/* PRICE */}
-                    <div className="p-2">
-                        <label className="form-label">PRICE</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>Increasing</option>
-                            <option>Decreasing</option>
-                        </select>
-                    </div>
+      <hr className="my-4" />
 
-                    {/* ORDER */}
-                    <div className="p-2">
-                        <label className="form-label">ORDER</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>A -> Z</option>
-                            <option>Z -> A</option>
-                        </select>
-                    </div>
+      {/* PREZZO */}
+      <div className="filter-group">
+        <label className="filter-label">Range di Prezzo</label>
+        <SliderPrice
+          onChange={(min, max) =>
+            setFilters({ ...filters, minPrice: min, maxPrice: max })
+          }
+        />
+      </div>
 
-                    {/* LATEST PRODUCTS */}
-                    <div className="p-2">
-                        <label className="form-label">LATEST</label>
-                        <select className="form-select border-secondary">
-                            <option>-</option>
-                            <option>Che devo mette'?</option>
-                            <option>non ho capito</option>
-                            <option>voglio morire</option>
-                            <option>uccidetemi</option>
-                            <option>non scherzo</option>
-                        </select>
-                    </div>
-
-                    <hr />
-
-                    {/* SELETTORE DEL PREZZO */}
-                    <SliderPrice />
-
-                </div>
-
-                {/* BOTTONI IN FONDO CHE NON SAPREI COME CHIAMARE :C */}
-                <div className="d-flex align-items-center justify-content-between mt-4">
-
-                    <div className="d-flex gap-3 flex-wrap">
-                        <button className="btn btn-dark text-light px-4">Search</button>
-                        <button className="btn btn-secondary text-decoration-none">Reset</button>
-                    </div>
-                </div>
-            </div>
-
-
-        </>
-    )
+      {/* ACTION BUTTONS */}
+      <div className="d-grid gap-2 mt-5">
+        <button className="btn btn-dark py-2" onClick={() => onSearch(filters)}>
+          Applica Filtri
+        </button>
+        <button
+          className="btn btn-link btn-sm text-decoration-none text-muted"
+          onClick={handleReset}
+        >
+          Reset filtri
+        </button>
+      </div>
+    </div>
+  );
 }
