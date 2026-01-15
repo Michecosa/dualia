@@ -147,9 +147,7 @@ export default function Cart() {
                             <div className="col text-right">€ {total.toFixed(2)}</div>
                         </div>
                         <button className="btn btn_checkout" onClick={() => navigate("/checkout")}>CHECKOUT</button>
-                    </div>
-
-                </div>
+                    </div>                </div>
             </div>
 
             {/* Bottone torna indietro */}
