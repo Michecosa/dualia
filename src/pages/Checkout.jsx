@@ -43,11 +43,6 @@ export default function Checkout() {
 
     return (
         <div className="container mt-5">
-            <Link to="/cart" className="btn btn-outline-dark mb-4 rounded-1">
-                <i className="bi bi-arrow-left me-2"></i>
-                Back to Cart
-            </Link>
-
             <h2 className="mb-4">Checkout</h2>
 
             <div className="row">
@@ -93,7 +88,7 @@ export default function Checkout() {
 
                         {/* SHIPPING ADDRESS */}
                         <div className="card mb-4">
-                            <div className="card-body">
+                            <div className="card-body mb-3">
                                 <h4 className="card-title mb-4">Shipping Address</h4>
 
                                 <div className="row mb-3">
@@ -164,7 +159,7 @@ export default function Checkout() {
                 </div>
 
                 {/* ORDER SUMMARY */}
-                <div className="col-md-4">
+                <div className="col-md-4 mb-4">
                     <div className="card h-100">
                         <div className="card-body">
                             <h4 className="card-title mb-4">Order Summary</h4>
@@ -206,7 +201,7 @@ export default function Checkout() {
 
                             <button
                                 type="submit"
-                                className="btn btn-dualia-dark rounded-1 w-100 py-2"
+                                className="btn btn-dualia-dark-checkout w-100 py-2"
                                 onClick={handlePlaceOrder}
                             >
                                 <i className="bi bi-check-circle me-2"></i>
@@ -216,6 +211,11 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
+
+            <Link to="/cart" className="btn btn-back-to__ mb-4 rounded-0" onClick={() => navigate("/cart")}>
+                <i className="bi bi-arrow-left me-2"></i>
+                Back to Cart
+            </Link>
         </div>
     );
 }

@@ -71,45 +71,44 @@ export default function Cart() {
                         ) : (
                             // Mappa tutti i prodotti nel carrello
                             cart.map(item => (
-                                <div key={item.product_id} className="row border-bottom">
-                                    <div className="row py-3 align-items-center">
-                                        <div className="col-2">
-                                            <img
-                                                className="img-fluid rounded-1"
-                                                src={item.url_image}
-                                                alt={item.name}
-                                                style={{ width: '100px', height: '100px', objectFit: 'cover' }}
-                                            />
-                                        </div>
+                                <div key={item.product_id} className="row border-bottom py-3 align-items-center">
 
-                                        <div className="col">
-                                            <div>{item.name}</div>
-                                        </div>
+                                    {/* immagine */}
+                                    <div className="col-4 col-sm-3">
+                                        <img
+                                            className="img rounded-1"
+                                            src={item.url_image}
+                                            alt={item.name}
+                                            style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                                        />
+                                    </div>
 
-                                        <div className="col">
-                                            <button
-                                                className="btn btn-sm"
-                                                onClick={() => decreaseQuantity(item.product_id)}
-                                            >
-                                                -
-                                            </button>
-                                            <span className="mx-2">{item.quantity}</span>
-                                            <button
-                                                className="btn btn-sm"
-                                                onClick={() => increaseQuantity(item.product_id)}
-                                            >
-                                                +
-                                            </button>
-                                        </div>
+                                    {/* info prodotto */}
+                                    <div className="col-8 col-sm-9">
+                                        <div className="d-flex flex-column flex-sm-row justify-content-between">
 
-                                        <div className="col d-flex">
-                                            € {(item.price * item.quantity).toFixed(2)}
-                                            <button
-                                                className="close fw-bold ms-auto"
-                                                onClick={() => removeItem(item.product_id)}
-                                            >
-                                                X
-                                            </button>
+                                            {/* prodotto */}
+                                            <div className="d-flex align-items-center">
+                                                <span className="display_res d-none me-3 fw-medium">Product:</span>
+                                                <span className="ms-1">{item.name}</span>
+                                            </div>
+
+                                            {/* quantità */}
+                                            <div className="d-flex align-items-center">
+                                                <span className="display_res d-none me-2 fw-medium">Quantity:</span>
+                                                <button className="btn btn-sm btn_quantity" onClick={() => decreaseQuantity(item.product_id)}>-</button>
+                                                <span className="mx-2">{item.quantity}</span>
+                                                <button className="btn btn-sm btn_quantity" onClick={() => increaseQuantity(item.product_id)}>+</button>
+                                                <button className="close_mobile d-none fw-bold" onClick={() => removeItem(item.product_id)}>X</button>
+                                            </div>
+
+                                            {/* prezzo */}
+                                            <div className="cart_price d-flex align-items-center justify-content-between gap-2">
+                                                <span className="display_res d-none me-4 fw-medium">Price:</span>
+                                                <span className="ms-1">€ {(item.price * item.quantity).toFixed(2)}</span>
+                                                <button className="close fw-bold" onClick={() => removeItem(item.product_id)}>X</button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
