@@ -446,7 +446,16 @@ footer a:hover {
 }
 
 /* tablet lg */
-@media (max-width: 991px) {
+@media screen and (max-width: 991px) and (min-width: 768px) {
+
+  .p-sub {
+    width: 75%;
+  }
+
+  .p-home {
+    width: 75%;
+  }
+
   footer .container {
     max-width: 100%;
     padding-left: 2rem;
