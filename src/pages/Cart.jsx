@@ -1,5 +1,8 @@
+import {useNavigate} from "react-router-dom"
+
 export default function Cart() {
 
+    const navigate = useNavigate();
     return (
         <>
             <div className="card_custom_cart">
@@ -42,7 +45,7 @@ export default function Cart() {
                     </div>
 
                     {/* sommario */}
-                    <div class="col-md-3 summary">
+                    <div className="col-md-3 summary">
                         <div>
                             <h4 className="mt-3">Summary</h4>
                         </div>
@@ -50,16 +53,16 @@ export default function Cart() {
                         {/* separator */}
                         <div className="separator"></div>
 
-                        <div class="row">
-                            <div class="col p-0 mb-4">ITEMS 3</div>
-                            <div class="col text-right">€ 132.00</div>
+                        <div className="row">
+                            <div className="col p-0 mb-4">ITEMS 3</div>
+                            <div className="col text-right">€ 132.00</div>
                         </div>
 
                         {/* form */}
                         <form className="py-3">
                             <p>SHIPPING</p>
                             <select>
-                                <option class="text-muted">Standard-Delivery - € 5.00</option>
+                                <option className="text-muted">Standard-Delivery - € 5.00</option>
                             </select>
                             <p>GIVE CODE</p>
                             <input placeholder="Enter your code" />
@@ -68,11 +71,11 @@ export default function Cart() {
                         {/* separator */}
                         <div className="separator"></div>
 
-                        <div class="row">
-                            <div class="col p-0">TOTAL</div>
-                            <div class="col text-right">€ 137.00</div>
+                        <div className="row">
+                            <div className="col p-0">TOTAL</div>
+                            <div className="col text-right">€ 137.00</div>
                         </div>
-                        <button class="btn btn_checkout">CHECKOUT</button>
+                        <button className="btn btn_checkout" onClick={() => navigate("/checkout")}>CHECKOUT</button>
                     </div>
 
                 </div>
