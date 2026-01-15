@@ -26,6 +26,7 @@ export default function Products() {
 
   return (
 
+
     <div className="container mt-5">
 
 
@@ -46,6 +47,7 @@ export default function Products() {
               />
             ))}
           </div></div>
+
 
       </div>
 
