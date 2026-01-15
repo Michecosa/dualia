@@ -113,8 +113,8 @@ export default function Searchbar({ onSearch }) {
       <div className="filter-group">
         <label className="filter-label">Range di Prezzo</label>
         <SliderPrice
-          onChange={(min, max) =>
-            setFilters({ ...filters, minPrice: min, maxPrice: max })
+          onChange={({ min, max }) =>
+            setFilters((prev) => ({ ...prev, minPrice: min, maxPrice: max }))
           }
         />
       </div>
