@@ -11,7 +11,25 @@ const Wishlist = () => {
 
     const handleRemove = (productId) => {
         removeFromWishlist(productId);
-        setWishlist(getWishlist()); // Ricarica la lista
+        setWishlist(getWishlist());
+    };
+
+    const handleAddToCart = (item) => {
+        // Prendi il carrello dal localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Cerca se il prodotto esiste già
+        const existingItem = cart.find(cartItem => cartItem.product_id === item.product_id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ ...item, quantity: 1 });
+        }
+
+        // Salva nel localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${item.name} added to cart!`);
     };
 
     return (
@@ -46,7 +64,7 @@ const Wishlist = () => {
                                         {/* Bottone Shopping Bag - Aggiungi al carrello */}
                                         <button
                                             className="btn btn-dualia-dark rounded-1 flex-grow-1"
-                                            onClick={() => console.log('Add to cart:', item.product_id)}
+                                            onClick={() => handleAddToCart(item)}
                                         >
                                             <i className="bi bi-bag me-2"></i>
                                             Add to Cart

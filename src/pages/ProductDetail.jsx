@@ -35,6 +35,30 @@ export default function ProductDetail() {
         }
     };
 
+    const handleAddToCart = () => {
+        // Prendi il carrello dal localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Cerca se il prodotto esiste già
+        const existingItem = cart.find(item => item.product_id === product.product_id);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                product_id: product.product_id,
+                name: product.name,
+                price: product.price,
+                url_image: product.url_image,
+                quantity: quantity
+            });
+        }
+
+        // Salva nel localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${quantity} x ${product.name} added to cart!`);
+    };
+
     const incrementQuantity = () => setQuantity(quantity + 1);
     const decrementQuantity = () => quantity > 1 && setQuantity(quantity - 1);
 
@@ -89,7 +113,10 @@ export default function ProductDetail() {
                             style={{ border: "none", fontSize: "1.2rem" }}> + </button>
                     </div>
 
-                    <button className="btn btn-dualia-dark rounded-1 me-2">Add to Cart</button>
+                    <button className="btn btn-dualia-dark rounded-1 me-2" onClick={handleAddToCart}>
+                        <i className="bi bi-bag me-2"></i>
+                        Add to Cart
+                    </button>
 
                     <button className="btn btn-outline-dark btn_wishlist py-2"
                         onClick={toggleWishlist}>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function Checkout() {
@@ -13,6 +13,20 @@ export default function Checkout() {
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
+
+    // State per il carrello
+    const [cart, setCart] = useState([]);
+    const shipping = 5.00;
+
+    // Carica il carrello dal localStorage
+    useEffect(() => {
+        const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        setCart(savedCart);
+    }, []);
+
+    // Calcola il subtotale
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const total = subtotal + shipping;
 
     function handlePlaceOrder(e) {
         e.preventDefault();
@@ -155,21 +169,39 @@ export default function Checkout() {
                         <div className="card-body">
                             <h4 className="card-title mb-4">Order Summary</h4>
 
+                            {/* Lista prodotti */}
+                            {cart.length === 0 ? (
+                                <p className="text-muted">No items in cart</p>
+                            ) : (
+                                <div className="mb-3">
+                                    {cart.map((item) => (
+                                        <div key={item.product_id} className="d-flex justify-content-between mb-2">
+                                            <span>
+                                                {item.name} x{item.quantity}
+                                            </span>
+                                            <span>€ {(item.price * item.quantity).toFixed(2)}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            <hr />
+
                             <div className="d-flex justify-content-between mb-2">
                                 <span className="text-muted">Subtotal</span>
-                                <span>€ 132.00</span>
+                                <span>€ {subtotal.toFixed(2)}</span>
                             </div>
 
                             <div className="d-flex justify-content-between mb-3">
                                 <span className="text-muted">Shipping</span>
-                                <span>€ 5.00</span>
+                                <span>€ {shipping.toFixed(2)}</span>
                             </div>
 
                             <hr />
 
                             <div className="d-flex justify-content-between mb-4">
                                 <strong>TOTAL</strong>
-                                <strong>€ 137.00</strong>
+                                <strong>€ {total.toFixed(2)}</strong>
                             </div>
 
                             <button
