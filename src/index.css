@@ -333,7 +333,6 @@ footer a:hover {
 /* carrello */
 
 .card_custom_cart {
-  font-size: 0.8rem;
   font-weight: bold;
 
   .cart {
@@ -409,11 +408,14 @@ footer a:hover {
     outline: none;
   }
 
+  .btn {
+    --bs-btn-border-width: 0;
+  }
+
   .btn_checkout {
     background-color: black;
     color: white;
     width: 100%;
-    font-size: 0.7rem;
     margin-top: 2rem;
     padding: 0.5rem;
     border-radius: 0;

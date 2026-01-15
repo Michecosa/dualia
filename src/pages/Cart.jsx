@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Cart() {
@@ -90,7 +91,7 @@ export default function Cart() {
                                             {/* prodotto */}
                                             <div className="d-flex align-items-center">
                                                 <span className="display_res d-none me-3 fw-medium">Product:</span>
-                                                <span className="ms-1">{item.name}</span>
+                                                <span className="ms-2">{item.name}</span>
                                             </div>
 
                                             {/* quantità */}
@@ -105,7 +106,7 @@ export default function Cart() {
                                             {/* prezzo */}
                                             <div className="cart_price d-flex align-items-center justify-content-between gap-2">
                                                 <span className="display_res d-none me-4 fw-medium">Price:</span>
-                                                <span className="ms-1">€ {(item.price * item.quantity).toFixed(2)}</span>
+                                                <span className="ms-3">€ {(item.price * item.quantity).toFixed(2)}</span>
                                                 <button className="close fw-bold" onClick={() => removeItem(item.product_id)}>X</button>
                                             </div>
 
@@ -146,16 +147,15 @@ export default function Cart() {
                             <div className="col text-right">€ {total.toFixed(2)}</div>
                         </div>
                         <button className="btn btn_checkout" onClick={() => navigate("/checkout")}>CHECKOUT</button>
-                    </div>                </div>
+                    </div>
+                </div>
             </div>
 
             {/* Bottone torna indietro */}
-            <div>
-                <button className="btn btn-back_to_shop" onClick={() => navigate("/products")}>
-                    <i className="bi bi-arrow-left me-2"></i>
-                    Back to shop
-                </button>
-            </div>
+            <Link to="/products" className="btn btn-back-to__ rounded-0 m-4" onClick={() => navigate("/products")}>
+                <i className="bi bi-arrow-left me-2"></i>
+                Back to Shop
+            </Link>
         </>
     );
 }
