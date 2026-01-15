@@ -90,7 +90,13 @@ export default function ProductDetail() {
                 </div>
                 <div className="col-lg-6">
                     <h1 className="mb-3">{product.name}</h1>
-                    <h3 className="text-muted mb-4">€{product.price}</h3>
+                    {/* <h3 className="text-muted mb-4">€{product.price}</h3> */}
+                    <h3 className="text-muted mb-4">
+                        {product.price < product.full_price
+                            ? (<><strong id="scontato">{product.price}€</strong><s className="ms-3">{product.full_price}€</s></>)
+                            : product.price + "€"
+                        }
+                    </h3>
                     <p className="lead mb-4">{product.description}</p>
 
                     <p className="mb-4">
