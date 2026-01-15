@@ -38,10 +38,10 @@ export default function Searchbar({ onSearch }) {
 
   return (
     <div className="sidebar-filters">
-      <h5 className="mb-4 mt-2 fw-bold">Search Filters</h5>
+      <h5 className="mb-3 mt-2 fw-bold">Search Filters</h5>
 
       <div className="filter-group">
-        <label className="filter-label">Category</label>
+        <label className="filter-label mb-1">Category</label>
         <select
           className="form-select shadow-none"
           value={filters.category}
@@ -58,7 +58,7 @@ export default function Searchbar({ onSearch }) {
       </div>
 
       <div className="filter-group">
-        <label className="filter-label">Color</label>
+        <label className="filter-label mb-1 mt-3">Color</label>
         <select
           className="form-select shadow-none"
           value={filters.color}
@@ -72,7 +72,7 @@ export default function Searchbar({ onSearch }) {
 
       {/* SALE */}
       <div className="filter-group">
-        <label className="filter-label">On Sale</label>
+        <label className="filter-label mb-1 mt-3">On Sale</label>
 
         <div className="btn-group w-100" role="group">
           <input
@@ -103,7 +103,7 @@ export default function Searchbar({ onSearch }) {
       </div>
 
       <div className="filter-group">
-        <label className="filter-label">Order by</label>
+        <label className="filter-label mb-1 mt-3">Order by</label>
 
         <select
           className="form-select shadow-none"
@@ -122,7 +122,7 @@ export default function Searchbar({ onSearch }) {
 
       {/* PREZZO */}
       <div className="filter-group">
-        <label className="filter-label">Price Range</label>
+        <label className="filter-label mb-1">Price Range</label>
 
         <SliderPrice
           onChange={({ min, max }) =>
@@ -133,13 +133,13 @@ export default function Searchbar({ onSearch }) {
 
       {/* ACTION BUTTONS */}
       <div className="d-grid gap-2 mt-5">
-        <button className="btn btn-dark py-2" onClick={handleApply}>
+        <button className="btn btn-filter-searchbar p-1 rounded-1" onClick={handleApply}>
           Apply Filters
         </button>
 
         <Link
           to="/products"
-          className="btn btn-link btn-sm text-decoration-none text-muted"
+          className="btn btn-reset-searchbar btn-sm text-decoration-none"
           onClick={handleReset}
         >
           Reset filters

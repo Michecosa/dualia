@@ -65,7 +65,9 @@ modal-content {
 
 .btn-dualia-dark,
 .btn_newsletter,
+.btn-filter-searchbar,
 .btn-cart,
+.btn-add-to-cart,
 .btn-dualia-dark-checkout,
 a.btn.btn-back-to__ {
   background-color: black;
@@ -76,7 +78,8 @@ a.btn.btn-back-to__ {
 }
 
 .btn-dualia-dark,
-.btn-dualia-dark-checkout {
+.btn-dualia-dark-checkout,
+.btn-filter-searchbar {
   color: white;
 }
 
@@ -91,9 +94,16 @@ a.btn.btn-back-to__:active {
 }
 
 .btn-cart:hover,
-.btn-cart:active {
+.btn-cart:active,
+.btn-add-to-cart:hover,
+.btn-filter-searchbar:hover {
   background-color: rgb(52, 52, 52) !important;
   color: #e3be85 !important;
+}
+
+.btn-reset-searchbar {
+  color: black;
+  border-color: #e3be85;
 }
 
 /* Raga scusate ma mi dava fastidio che le card si ridimensionassero a scatti */
@@ -244,6 +254,30 @@ footer a:hover {
 .btn_wishlist .bi-heart,
 .btn_wishlist .bi-heart-fill {
   color: #e3be85;
+}
+
+/* searchbar */
+#saleAll:checked+.btn,
+#saleYes:checked+.btn {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.filter-group .btn-outline-secondary {
+  --bs-btn-border-width: 1px;
+  color: black;
+  border-color: black;
+}
+
+.filter-group .btn-outline-secondary:hover {
+  color: #e3be85;
+}
+
+
+.form-select,
+.form-select:focus {
+  border-color: black;
 }
 
 /* #region searchbar */

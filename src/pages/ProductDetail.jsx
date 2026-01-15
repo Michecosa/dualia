@@ -119,7 +119,7 @@ export default function ProductDetail() {
                             style={{ border: "none", fontSize: "1.2rem" }}> + </button>
                     </div>
 
-                    <button className="btn btn-dualia-dark rounded-1 me-2" onClick={handleAddToCart}>
+                    <button className="btn btn-dualia-dark btn-add-to-cart rounded-1 me-2" onClick={handleAddToCart}>
                         <i className="bi bi-bag me-2"></i>
                         Add to Cart
                     </button>

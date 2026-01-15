@@ -63,7 +63,7 @@ const Wishlist = () => {
                                     <div className="mt-auto d-flex gap-2">
                                         {/* Bottone Shopping Bag - Aggiungi al carrello */}
                                         <button
-                                            className="btn btn-dualia-dark rounded-1 flex-grow-1"
+                                            className="btn btn-add-to-cart btn-dualia-dark rounded-1 flex-grow-1"
                                             onClick={() => handleAddToCart(item)}
                                         >
                                             <i className="bi bi-bag me-2"></i>
