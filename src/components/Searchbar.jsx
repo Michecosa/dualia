@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SliderPrice from "./SliderPrice";
+import { Link } from "react-router-dom";
 
 export default function Searchbar({ onSearch }) {
   const [filters, setFilters] = useState({
@@ -15,31 +16,38 @@ export default function Searchbar({ onSearch }) {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleApply = () => {
+    const cleanFilters = {};
+    for (const key in filters) {
+      if (filters[key]) cleanFilters[key] = filters[key];
+    }
+    onSearch(cleanFilters);
+  };
+
   const handleReset = () => {
-    const empty = {
+    setFilters({
       category: "",
       color: "",
       sale: "",
       order: "",
       minPrice: "",
       maxPrice: "",
-    };
-    setFilters(empty);
-    onSearch(empty);
+    });
+    onSearch({});
   };
 
   return (
     <div className="sidebar-filters">
-      <h5 className="mb-4 mt-2 fw-bold">Filtri Ricerca</h5>
+      <h5 className="mb-4 mt-2 fw-bold">Search Filters</h5>
 
       <div className="filter-group">
-        <label className="filter-label">Categoria</label>
+        <label className="filter-label">Category</label>
         <select
           className="form-select shadow-none"
           value={filters.category}
           onChange={(e) => updateFilter("category", e.target.value)}
         >
-          <option value="">Tutte le categorie</option>
+          <option value="">All categories</option>
           <option value="Decorations">Decorations</option>
           <option value="Lighting">Lighting</option>
           <option value="Candles and Scents">Candles and Scents</option>
@@ -50,13 +58,13 @@ export default function Searchbar({ onSearch }) {
       </div>
 
       <div className="filter-group">
-        <label className="filter-label">Colore</label>
+        <label className="filter-label">Color</label>
         <select
           className="form-select shadow-none"
           value={filters.color}
           onChange={(e) => updateFilter("color", e.target.value)}
         >
-          <option value="">Tutti i colori</option>
+          <option value="">All colors</option>
           <option value="Black">Black</option>
           <option value="White">White</option>
         </select>
@@ -64,7 +72,8 @@ export default function Searchbar({ onSearch }) {
 
       {/* SALE */}
       <div className="filter-group">
-        <label className="filter-label">In Offerta</label>
+        <label className="filter-label">On Sale</label>
+
         <div className="btn-group w-100" role="group">
           <input
             type="radio"
@@ -75,7 +84,7 @@ export default function Searchbar({ onSearch }) {
             onChange={() => updateFilter("sale", "")}
           />
           <label className="btn btn-outline-secondary btn-sm" htmlFor="saleAll">
-            Tutti
+            All
           </label>
 
           <input
@@ -86,24 +95,26 @@ export default function Searchbar({ onSearch }) {
             checked={filters.sale === "yes"}
             onChange={() => updateFilter("sale", "yes")}
           />
+
           <label className="btn btn-outline-secondary btn-sm" htmlFor="saleYes">
-            Sì
+            Yes
           </label>
         </div>
       </div>
 
       <div className="filter-group">
-        <label className="filter-label">Ordina per</label>
+        <label className="filter-label">Order by</label>
+
         <select
           className="form-select shadow-none"
           value={filters.order}
           onChange={(e) => updateFilter("order", e.target.value)}
         >
           <option value="">Nessun ordine</option>
-          <option value="price_asc">Prezzo: Crescente</option>
-          <option value="price_desc">Prezzo: Decrescente</option>
-          <option value="name_asc">Nome: A-Z</option>
-          <option value="name_desc">Nome: Z-A</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="name_asc">Name: A-Z</option>
+          <option value="name_desc">Name: Z-A</option>
         </select>
       </div>
 
@@ -111,7 +122,8 @@ export default function Searchbar({ onSearch }) {
 
       {/* PREZZO */}
       <div className="filter-group">
-        <label className="filter-label">Range di Prezzo</label>
+        <label className="filter-label">Price Range</label>
+
         <SliderPrice
           onChange={({ min, max }) =>
             setFilters((prev) => ({ ...prev, minPrice: min, maxPrice: max }))
@@ -121,15 +133,17 @@ export default function Searchbar({ onSearch }) {
 
       {/* ACTION BUTTONS */}
       <div className="d-grid gap-2 mt-5">
-        <button className="btn btn-dark py-2" onClick={() => onSearch(filters)}>
-          Applica Filtri
+        <button className="btn btn-dark py-2" onClick={handleApply}>
+          Apply Filters
         </button>
-        <button
+
+        <Link
+          to="/products"
           className="btn btn-link btn-sm text-decoration-none text-muted"
           onClick={handleReset}
         >
-          Reset filtri
-        </button>
+          Reset filters
+        </Link>
       </div>
     </div>
   );
