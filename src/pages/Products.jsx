@@ -41,7 +41,7 @@ export default function Products() {
   return (
     <div className="container mt-5">
       <div id="p_daddy" className="row mb-3">
-        <div className="col-3">
+        <div className="col-lg-3">
           <SearchButton
             onSearch={(newFilters) => {
               const currentParams = {};
