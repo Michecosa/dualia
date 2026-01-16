@@ -192,7 +192,7 @@ export default function Cart() {
                           Price:
                         </span>
                         <span className="ms-3">
-                          € {(item.price * item.quantity).toFixed(2)}
+                          € {parseFloat(item.price).toFixed(2)}
                         </span>
                         <button
                           className="close fw-bold"
