@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function Checkout() {
   );
   const total = subtotal + shipping - discount;
 
-  function handlePlaceOrder(e) {
+  async function handlePlaceOrder(e) {
     e.preventDefault();
 
     if (
@@ -67,17 +68,34 @@ export default function Checkout() {
       state,
       postalCode,
       country,
-      total_amount: total,
       promotion_id: promotionId,
-      items: cart,
+      items: cart.map((item) => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+      })),
     };
 
-    console.log("Dati pronti per l'ordine:", orderData);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/orders",
+        orderData
+      );
 
-    alert("Order placed successfully! Thank you!");
-    localStorage.removeItem("cart");
-    localStorage.removeItem("checkout_data");
-    navigate("/");
+      if (response.data.ok) {
+        alert("Order placed successfully! Thank you!");
+
+        localStorage.removeItem("cart");
+        localStorage.removeItem("checkout_data");
+
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Errore durante l'ordine:", error);
+      const errorMessage =
+        error.response?.data?.error ||
+        "Si è verificato un errore durante l'invio dell'ordine.";
+      alert(errorMessage);
+    }
   }
 
   return (
