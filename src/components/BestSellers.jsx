@@ -48,7 +48,7 @@ export default function BestSellers() {
             img={img5}
             title="Ashtray white"
             price="814.99"
-            fullprice="814.99"
+            fullprice="819.99"
             path="/products/ashtray-white"
             bestSellers="dualia-card-20"
           />
