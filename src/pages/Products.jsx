@@ -58,16 +58,26 @@ export default function Products() {
         <div className="col">
           <h2 className="mb-3">Products</h2>
           <div className="row gap-3">
-            {products.map((p) => (
-              <Card
-                key={p.product_id}
-                title={p.name}
-                img={p.url_image}
-                fullprice={p.full_price}
-                price={p.price}
-                path={`/products/${p.product_id}`}
-              />
-            ))}
+            {products.length > 0 ? (
+              products.map((p) => (
+                <Card
+                  key={p.product_id}
+                  title={p.name}
+                  img={p.url_image}
+                  fullprice={p.full_price}
+                  price={p.price}
+                  path={`/products/${p.product_id}`}
+                />
+              ))
+            ) : (
+              <div className="col-12 text-center py-5">
+                <h3>No products found</h3>
+                <p className="text-muted">
+                  Try adjusting your filters or search terms to find what you're
+                  looking for.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
