@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import Modal from "../components/Modal";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export default function Checkout() {
   const [discount, setDiscount] = useState(0);
   const [promotionId, setPromotionId] = useState(null);
   const shipping = 5.0;
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalType, setModalType] = useState("success");
 
   // Carica il carrello dal localStorage
   useEffect(() => {
@@ -56,9 +60,11 @@ export default function Checkout() {
       !country ||
       !agreedToTerms
     ) {
-      alert(
+      setModalMessage(
         "Please fill all required fields and accept the terms and conditions."
       );
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
@@ -96,7 +102,9 @@ export default function Checkout() {
       const errorMessage =
         error.response?.data?.error ||
         "Si è verificato un errore durante l'invio dell'ordine.";
-      alert(errorMessage);
+      setModalMessage(errorMessage);
+      setModalType("error");
+      setShowModal(true);
     }
   }
 
@@ -299,6 +307,14 @@ export default function Checkout() {
         <i className="bi bi-arrow-left me-2"></i>
         Back to Cart
       </Link>
+
+      {showModal && (
+        <Modal
+          message={modalMessage}
+          onClose={() => setShowModal(false)}
+          type={modalType}
+        />
+      )}
     </div>
   );
 }

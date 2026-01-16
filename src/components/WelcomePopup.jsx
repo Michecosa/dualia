@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import Modal from "./Modal";
 
 export default function WelcomePopup() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalType, setModalType] = useState("success");
 
   useEffect(() => {
     // Mostra il popup solo se non è mai stato visto
@@ -35,11 +39,15 @@ export default function WelcomePopup() {
         throw new Error("Errore durante l'invio");
       }
 
-      alert("Thanks for subscribing!");
+      setModalMessage("Thanks for subscribing! 10% discount applied!");
+      setModalType("success");
+      setShowModal(true);
       handleClose();
     } catch (error) {
       console.error(error);
-      alert("Something went wrong. Try again.");
+      setModalMessage("Something went wrong. Try again.");
+      setModalType("error");
+      setShowModal(true);
     }
   };
 
@@ -83,6 +91,14 @@ export default function WelcomePopup() {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <Modal
+          message={modalMessage}
+          onClose={() => setShowModal(false)}
+          type={modalType}
+        />
+      )}
     </>
   );
 }

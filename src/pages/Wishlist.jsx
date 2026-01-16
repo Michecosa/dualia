@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getWishlist, removeFromWishlist } from '../wishlistUtils';
 import { Link } from 'react-router-dom';
+import Modal from '../components/Modal';
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     useEffect(() => {
         setWishlist(getWishlist());
@@ -29,7 +32,8 @@ const Wishlist = () => {
 
         // Salva nel localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${item.name} added to cart!`);
+        setModalMessage(`${item.name} added to cart!`);
+        setShowModal(true);
     };
 
     return (
@@ -84,6 +88,14 @@ const Wishlist = () => {
                         </div>
                     ))}
                 </div>
+            )}
+
+            {showModal && (
+                <Modal
+                    message={modalMessage}
+                    onClose={() => setShowModal(false)}
+                    type="success"
+                />
             )}
         </div>
     );
