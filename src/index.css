@@ -164,9 +164,40 @@ a.btn.btn-back-to__:active {
 }
 
 .cuore {
-  top: 2%;
-  left: 6%;
-  border-radius: 0px
+  top: -1%;
+  right: 8%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background-color: #00000017 !important;
+  border-color: transparent;
+  box-shadow: 0px 4px 8px 2px #0000001f;
+}
+
+.cuore.btn.btn-outline-dark:hover {
+  background-color: transparent !important;
+  /* togli lo sfondo */
+  border-color: transparent !important;
+  /* opzionale */
+}
+
+.cuore:hover .bi {
+  color: #e3be85 !important;
+  /* cambia colore icona */
+}
+
+/* stato base */
+.cuore .bi-bookmark-heart {
+  color: white;
+  transition: color 0.2s ease;
+}
+
+/* stato attivo */
+.cuore.liked .bi-bookmark-heart {
+  color: #e3be85;
 }
 
 /* footer */
@@ -574,6 +605,17 @@ footer a:hover {
     display: block !important
   }
 
+  /* cuore */
+  .cuore {
+    width: 3.2rem;
+    height: 3.2rem;
+    top: -2.2%;
+  }
+
+  .cuore .bi-bookmark-heart,
+  .cuore.liked .bi-bookmark-heart {
+    font-size: 2.4rem !important;
+  }
 }
 
 @media screen and (min-width: 710px) {

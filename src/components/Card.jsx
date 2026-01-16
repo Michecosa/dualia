@@ -36,9 +36,8 @@ export default function Card({
 
       <button
         onClick={toggleWishlist}
-        className="wishlist-btn cuore btn btn-outline-dark btn_wishlist py-2 position-absolute"
-      >
-        <i className={`bi ${liked ? "bi-heart-fill" : "bi-heart"}`}></i>
+        className={`wishlist-btn cuore btn btn-outline-dark btn_wishlist py-0 position-absolute ${liked ? "liked" : ""}`}>
+        <i className="bi bi-bookmark-heart fs-3"></i>
       </button>
 
 
