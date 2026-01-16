@@ -87,7 +87,7 @@ export default function Checkout() {
         localStorage.removeItem("cart");
         localStorage.removeItem("checkout_data");
 
-        navigate("/");
+        navigate("/thank-you");
       }
     } catch (error) {
       console.error("Errore durante l'ordine:", error);
