@@ -92,8 +92,8 @@ a.btn.btn-back-to__:active {
 
 .btn-dualia-dark:hover,
 .btn-dualia-dark:active {
-  background-color: #e3be85 !important;
-  color: black !important;
+  background-color: black !important;
+  color: white !important;
 }
 
 .btn-cart:hover,
@@ -108,6 +108,12 @@ a.btn.btn-back-to__:active {
 .btn-reset-searchbar {
   color: black;
   border-color: #e3be85;
+}
+
+.btn-dualia-dark:hover-hp,
+.btn-dualia-dark:active-hp {
+  background-color: black;
+  color: white;
 }
 
 /* Raga scusate ma mi dava fastidio che le card si ridimensionassero a scatti */
