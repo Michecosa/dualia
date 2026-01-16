@@ -16,6 +16,7 @@ export default function BestSellers() {
             img={img1}
             title="Hourglass white"
             price="324.99"
+            fullprice="334.99"
             path="/products/hourglass-white"
             bestSellers="dualia-card-20"
           />
@@ -23,6 +24,7 @@ export default function BestSellers() {
             img={img2}
             title="Lantern black"
             price="304.99"
+            fullprice="404.99"
             path="/products/lantern-black"
             bestSellers="dualia-card-20"
           />
@@ -30,13 +32,15 @@ export default function BestSellers() {
             img={img3}
             title="Diffuser black"
             price="72.99"
+            fullprice="80.99"
             path="/products/diffuser-black"
             bestSellers="dualia-card-20"
           />
           <CardHome
             img={img4}
             title="Clock black"
-            price="439.99"
+            price="449.99"
+            fullprice="449.99"
             path="/products/clock-black"
             bestSellers="dualia-card-20"
           />
@@ -44,6 +48,7 @@ export default function BestSellers() {
             img={img5}
             title="Ashtray white"
             price="814.99"
+            fullprice="814.99"
             path="/products/ashtray-white"
             bestSellers="dualia-card-20"
           />
@@ -51,6 +56,7 @@ export default function BestSellers() {
             img={img6}
             title="Lamp White"
             price="409.99"
+            fullprice="609.99"
             path="/products/lamp-white"
             bestSellers="dualia-card-20"
           />
