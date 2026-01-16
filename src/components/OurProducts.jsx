@@ -14,7 +14,8 @@ export default function OurProducts() {
           <CardHome
             img={img1}
             title="Incense Burner black"
-            price="157.99"
+            price="282.99"
+            fullprice="282.99"
             path="/products/incense-burner-black"
           />
           <CardHome
