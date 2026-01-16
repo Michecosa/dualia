@@ -2,15 +2,12 @@ import { Link } from 'react-router-dom';
 
 export default function ThankYou() {
     return (
-        <div className="container mt-5">
-            <div className="text-center py-5">
-                {/* Logo Dualia */}
+        <div className="container">
+            <div className="text-center" style={{ paddingTop: '8rem', paddingBottom: '8rem' }}>
                 <img
-                    src="/src/assets/Loghi_Dualia/Logo_Dualia_Nero.png"
+                    src="/src/assets/Loghi_Dualia/logo_dualia_header.png"
                     alt="Dualia Logo"
-                    style={{ height: '80px', marginBottom: '2rem' }}/>
-
-
+                    style={{ height: '80px', marginBottom: '3rem' }} />
 
                 <h1 className="mb-4">Thank You for Your Order!</h1>
 
@@ -18,11 +15,11 @@ export default function ThankYou() {
                     Your order has been successfully placed.
                 </p>
 
-                <p className="text-muted mb-5">
+                <p className="text-muted" style={{ marginBottom: '4rem' }}>
                     You will receive a confirmation email shortly.
                 </p>
 
-                <Link to="/" className="btn btn-dualia-dark rounded-1 px-4 py-2">
+                <Link to="/" className="btn btn-dualia-thank-you rounded-1 px-4 py-2">
                     <i className="bi bi-house-door me-2"></i>
                     Back to Home
                 </Link>
