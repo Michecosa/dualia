@@ -69,7 +69,7 @@ export default function Searchbar({ onSearch }) {
 
       {/* SALE */}
       <div className="filter-group">
-        <label className="filter-label mb-1 mt-3">On Sale</label>
+        <label className="filter-label mb-1 mt-3">Show</label>
 
         <div className="btn-group w-100" role="group">
           <input
@@ -94,7 +94,7 @@ export default function Searchbar({ onSearch }) {
           />
 
           <label className="btn btn-outline-secondary btn-sm" htmlFor="saleYes">
-            Yes
+            On Sale
           </label>
         </div>
       </div>
