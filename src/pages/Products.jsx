@@ -66,6 +66,10 @@ export default function Products() {
                 price={p.price}
                 fullprice={p.full_price}
                 path={`/products/${p.product_id}`}
+                prodRes="dualia-card-res"
+                productId={p.product_id}
+                productData={p} // 👈 così hai tutto l’oggetto in wishlist
+
               />
             ))}
           </div>
