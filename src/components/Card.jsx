@@ -26,10 +26,10 @@ export default function Card({
               {price < fullprice ? (
                 <>
                   <strong id="scontato">{price}€</strong>
-                  <s className="ms-3">€{fullprice}</s>
+                  <s className="ms-3">{fullprice}€</s>
                 </>
               ) : (
-                "€" + price
+                price + "€"
               )}
             </p>
           </div>
