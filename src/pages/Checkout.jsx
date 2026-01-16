@@ -62,6 +62,38 @@ export default function Checkout() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const nameRegex = /^[A-Za-zÀ-ÿ\s']{2,}$/;
+    if (!nameRegex.test(firstName)) {
+      alert(
+        "First Name must be at least 2 characters long and contain only letters."
+      );
+      return;
+    }
+
+    if (!nameRegex.test(lastName)) {
+      alert(
+        "Last Name must be at least 2 characters long and contain only letters."
+      );
+      return;
+    }
+
+    const pcRegex = /^[0-9]{5}$/;
+    if (!pcRegex.test(postalCode)) {
+      alert("Postal Code must be exactly 5 digits.");
+      return;
+    }
+
+    if (city.trim().length < 2 || country.trim().length < 2) {
+      alert("City and Country names are too short.");
+      return;
+    }
+
     const orderData = {
       firstName,
       lastName,
@@ -93,9 +125,7 @@ export default function Checkout() {
       }
     } catch (error) {
       console.error("Errore durante l'ordine:", error);
-      const errorMessage =
-        error.response?.data?.error ||
-        "Si è verificato un errore durante l'invio dell'ordine.";
+      const errorMessage = error.response?.data?.error || "An error occurred.";
       alert(errorMessage);
     }
   }
