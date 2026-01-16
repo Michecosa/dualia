@@ -14,6 +14,7 @@ export default function Checkout() {
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   // State per il carrello
   const [cart, setCart] = useState([]);
@@ -52,9 +53,12 @@ export default function Checkout() {
       !street ||
       !city ||
       !postalCode ||
-      !country
+      !country ||
+      !agreedToTerms
     ) {
-      alert("Please fill all required fields");
+      alert(
+        "Please fill all required fields and accept the terms and conditions."
+      );
       return;
     }
 
@@ -264,6 +268,20 @@ export default function Checkout() {
               <div className="d-flex justify-content-between mb-4">
                 <strong>TOTAL</strong>
                 <strong>€ {total.toFixed(2)}</strong>
+              </div>
+
+              <div className="form-check mb-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="terms"
+                  required
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                />
+                <label className="form-check-label" htmlFor="terms">
+                  I accept the terms and conditions *
+                </label>
               </div>
 
               <button
