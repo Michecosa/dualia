@@ -301,8 +301,7 @@ export default function Checkout() {
               <button
                 type="submit"
                 className="btn btn-dualia-dark-checkout w-100 py-2"
-                onClick={handlePlaceOrder}
-              >
+                onClick={handlePlaceOrder}>
                 <i className="bi bi-check-circle me-2"></i>
                 PLACE ORDER
               </button>
