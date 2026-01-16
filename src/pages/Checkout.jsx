@@ -95,7 +95,15 @@ export default function Checkout() {
         localStorage.removeItem("cart");
         localStorage.removeItem("checkout_data");
 
-        navigate("/thank-you");
+        setTimeout(() => {
+          setModalMessage("Order confirmed! Processing your order...");
+          setModalType("success");
+          setShowModal(true);
+        }, 2000);
+
+        setTimeout(() => {
+          navigate("/thank-you");
+        }, 6000);
       }
     } catch (error) {
       console.error("Errore durante l'ordine:", error);
