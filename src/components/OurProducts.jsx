@@ -22,18 +22,21 @@ export default function OurProducts() {
             img={img2}
             title="Ashtray Black"
             price="814.99"
+            fullprice="819.99"
             path="/products/ashtray-black"
           />
           <CardHome
             img={img3}
             title="Floor Lamp black"
-            price="1119.99"
+            price="1149.99"
+            fullprice="1149.99"
             path="/products/floor-lamp-black"
           />
           <CardHome
             img={img4}
             title="Zen Garden black"
             price="69.99"
+            fullprice="89.99"
             path="/products/zen-garden-black"
           />
         </div>
