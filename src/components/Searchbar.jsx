@@ -17,10 +17,7 @@ export default function Searchbar({ onSearch }) {
   };
 
   const handleApply = () => {
-    const cleanFilters = {};
-    for (const key in filters) {
-      if (filters[key]) cleanFilters[key] = filters[key];
-    }
+    const cleanFilters = { ...filters };
     onSearch(cleanFilters);
   };
 
@@ -110,7 +107,7 @@ export default function Searchbar({ onSearch }) {
           value={filters.order}
           onChange={(e) => updateFilter("order", e.target.value)}
         >
-          <option value="">Nessun ordine</option>
+          <option value="">No order</option>
           <option value="price_asc">Price: Low to High</option>
           <option value="price_desc">Price: High to Low</option>
           <option value="name_asc">Name: A-Z</option>
@@ -133,7 +130,10 @@ export default function Searchbar({ onSearch }) {
 
       {/* ACTION BUTTONS */}
       <div className="d-grid gap-2 mt-5">
-        <button className="btn btn-filter-searchbar p-1 rounded-1" onClick={handleApply}>
+        <button
+          className="btn btn-filter-searchbar p-1 rounded-1"
+          onClick={handleApply}
+        >
           Apply Filters
         </button>
 
