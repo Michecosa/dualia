@@ -22,7 +22,7 @@ const NotFound = () => {
             <br />
             <p>Don't worry, it happens to the best of us. Let us get you back on the right track.</p>
             <br />
-            <Link to="/"><button className="btn btn-dualia-dark">Let's go back to Home</button></Link>
+            <Link to="/"><button className="btn btn-dualia-thank-you">Let's go back to Home</button></Link>
             <br />
             <br />
         </div>
