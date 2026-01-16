@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function Checkout() {
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   // State per il carrello
   const [cart, setCart] = useState([]);
@@ -41,7 +43,7 @@ export default function Checkout() {
   );
   const total = subtotal + shipping - discount;
 
-  function handlePlaceOrder(e) {
+  async function handlePlaceOrder(e) {
     e.preventDefault();
 
     if (
@@ -51,9 +53,12 @@ export default function Checkout() {
       !street ||
       !city ||
       !postalCode ||
-      !country
+      !country ||
+      !agreedToTerms
     ) {
-      alert("Please fill all required fields");
+      alert(
+        "Please fill all required fields and accept the terms and conditions."
+      );
       return;
     }
 
@@ -67,17 +72,32 @@ export default function Checkout() {
       state,
       postalCode,
       country,
-      total_amount: total,
       promotion_id: promotionId,
-      items: cart,
+      items: cart.map((item) => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+      })),
     };
 
-    console.log("Dati pronti per l'ordine:", orderData);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/orders",
+        orderData
+      );
 
-    alert("Order placed successfully! Thank you!");
-    localStorage.removeItem("cart");
-    localStorage.removeItem("checkout_data");
-    navigate("/");
+      if (response.data.ok) {
+        localStorage.removeItem("cart");
+        localStorage.removeItem("checkout_data");
+
+        navigate("/thank-you");
+      }
+    } catch (error) {
+      console.error("Errore durante l'ordine:", error);
+      const errorMessage =
+        error.response?.data?.error ||
+        "Si è verificato un errore durante l'invio dell'ordine.";
+      alert(errorMessage);
+    }
   }
 
   return (
@@ -246,6 +266,20 @@ export default function Checkout() {
               <div className="d-flex justify-content-between mb-4">
                 <strong>TOTAL</strong>
                 <strong>€ {total.toFixed(2)}</strong>
+              </div>
+
+              <div className="form-check mb-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="terms"
+                  required
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                />
+                <label className="form-check-label" htmlFor="terms">
+                  I accept the terms and conditions *
+                </label>
               </div>
 
               <button

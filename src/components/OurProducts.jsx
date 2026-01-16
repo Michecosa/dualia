@@ -14,25 +14,25 @@ export default function OurProducts() {
           <Card
             img={img1}
             title="Incense Burner black"
-            price="&euro;157.99"
+            price="157.99"
             path="/products/incense-burner-black"
           />
           <Card
             img={img2}
             title="Ashtray Black"
-            price="&euro;814.99"
+            price="814.99"
             path="/products/ashtray-black"
           />
           <Card
             img={img3}
             title="Floor Lamp black"
-            price="&euro;1119.99"
+            price="1119.99"
             path="/products/floor-lamp-black"
           />
           <Card
             img={img4}
             title="Zen Garden black"
-            price="&euro;69.99"
+            price="69.99"
             path="/products/zen-garden-black"
           />
         </div>
