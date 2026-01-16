@@ -39,7 +39,7 @@ export default function Products() {
   if (loading) return <p>loading...</p>;
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid product_res mt-5">
       <div id="p_daddy" className="row mb-3">
         <div className="col-lg-3">
           <SearchButton
@@ -67,6 +67,7 @@ export default function Products() {
                   fullprice={p.full_price}
                   price={p.price}
                   path={`/products/${p.product_id}`}
+                  prodRes="dualia-card-res"
                 />
               ))
             ) : (
