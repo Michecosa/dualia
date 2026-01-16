@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SliderPrice from "./SliderPrice";
-import { Link } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 export default function Searchbar({ onSearch }) {
+  const [searchParams] = useSearchParams();
+
   const [filters, setFilters] = useState({
-    category: "",
-    color: "",
-    sale: "",
-    order: "",
-    minPrice: "",
-    maxPrice: "",
+    category: searchParams.get("category") || "",
+    color: searchParams.get("color") || "",
+    sale: searchParams.get("sale") || "",
+    order: searchParams.get("order") || "",
+    minPrice: searchParams.get("minPrice") || "",
+    maxPrice: searchParams.get("maxPrice") || "",
   });
+
+  useEffect(() => {
+    setFilters({
+      category: searchParams.get("category") || "",
+      color: searchParams.get("color") || "",
+      sale: searchParams.get("sale") || "",
+      order: searchParams.get("order") || "",
+      minPrice: searchParams.get("minPrice") || "",
+      maxPrice: searchParams.get("maxPrice") || "",
+    });
+  }, [searchParams]);
 
   const updateFilter = (name, value) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
@@ -122,6 +135,8 @@ export default function Searchbar({ onSearch }) {
         <label className="filter-label mb-1">Price Range</label>
 
         <SliderPrice
+          initialMin={filters.minPrice}
+          initialMax={filters.maxPrice}
           onChange={({ min, max }) =>
             setFilters((prev) => ({ ...prev, minPrice: min, maxPrice: max }))
           }

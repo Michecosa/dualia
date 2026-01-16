@@ -57,6 +57,11 @@ export default function Products() {
         </div>
         <div className="col">
           <h2 className="mb-3">Products</h2>
+          {searchParams.get("q") && (
+            <p className="mb-3">
+              Showing results for: <strong>{searchParams.get("q")}</strong>
+            </p>
+          )}
           <div className="row gap-3">
             {products.length > 0 ? (
               products.map((p) => (
