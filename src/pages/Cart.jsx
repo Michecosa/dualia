@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react"; //useEffect l'ho rimosso
+import { useCart } from "../components/CartContext";
 
 export default function Cart() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  const { cartItems, addToCart, removeFromCart, removeAllOfProduct, clearCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [discountData, setDiscountData] = useState({
     valid: false,
@@ -19,13 +21,13 @@ export default function Cart() {
   };
 
   // Carica il carrello dal localStorage
-  useEffect(() => {
+  /*useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(savedCart);
-  }, []);
+  }, []);*/
 
   // Funzione per aumentare la quantità
-  const increaseQuantity = (productId) => {
+  /*const increaseQuantity = (productId) => {
     const updatedCart = cart.map((item) =>
       item.product_id === productId
         ? { ...item, quantity: item.quantity + 1 }
@@ -46,27 +48,65 @@ export default function Cart() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     resetDiscount();
+  };*/
+  // Questo aggiorna l'Header all'istante
+  const increaseQuantity = (product) => {
+    addToCart(product);
+    resetDiscount();
+  };
+
+  const decreaseQuantity = (productId) => {
+    removeFromCart(productId);
+    resetDiscount();
   };
 
   // Funzione per rimuovere un prodotto
-  const removeItem = (productId) => {
+  /*const removeItem = (productId) => {
     const updatedCart = cart.filter((item) => item.product_id !== productId);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     resetDiscount();
+  };*/
+  // Rimuove tutte le istanze di quel prodotto
+  /*const removeItem = (productId) => {
+    const itemsToRemove = cartItems.filter((item) => item.product_id === productId);
+    itemsToRemove.forEach(() => removeFromCart(productId));
+    resetDiscount();
+  };*/
+
+  const removeItem = (productId) => {
+    removeAllOfProduct(productId);
+    resetDiscount();
   };
 
+  const handleEmptyCart = () => {
+    clearCart();
+    resetDiscount();
+  };
+
+  const groupedCart = cartItems.reduce((acc, item) => {
+    const found = acc.find((i) => i.product_id === item.product_id);
+    if (found) {
+      found.quantity += 1;
+    } else {
+      acc.push({ ...item, quantity: 1 });
+    }
+    return acc;
+  }, []);
+
   // Calcola il subtotale
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
+  const subtotal = cartItems.reduce(
+    (total, item) => total + parseFloat(item.price || 0),
     0
   );
   const shipping = 5.0;
   const total = subtotal + shipping - discountData.amount;
+  // Conteggio totale degli oggetti
+  const itemsCount = cartItems.length;
 
   const handleCheckout = () => {
     const checkoutData = {
-      cart,
+      cart: groupedCart,
       subtotal,
       discount: discountData.amount,
       promotion_id: discountData.promotion_id,
@@ -76,7 +116,7 @@ export default function Cart() {
     navigate("/checkout");
   };
 
-  const itemsCount = cart.reduce((count, item) => count + item.quantity, 0);
+  //const itemsCount = cart.reduce((count, item) => count + item.quantity, 0);
 
   const handleApplyDiscount = async (e) => {
     e.preventDefault();
@@ -124,15 +164,15 @@ export default function Cart() {
             </div>
 
             {/* Mostra messaggio se il carrello è vuoto */}
-            {cart.length === 0 ? (
+            {groupedCart.length === 0 ? (
               <div className="text-center py-5">
                 <p className="lead">Ups! Your cart is empty.</p>
               </div>
             ) : (
               // Mappa tutti i prodotti nel carrello
-              cart.map((item) => (
+              groupedCart.map((item, index) => (
                 <div
-                  key={item.product_id}
+                  key={`cart-item-${item.product_id}-${index}`}
                   className="row border-bottom py-3 align-items-center"
                 >
                   {/* immagine */}
@@ -174,7 +214,7 @@ export default function Cart() {
                         <span className="mx-2">{item.quantity}</span>
                         <button
                           className="btn btn-sm btn_quantity"
-                          onClick={() => increaseQuantity(item.product_id)}
+                          onClick={() => increaseQuantity(item)}
                         >
                           +
                         </button>
@@ -274,15 +314,27 @@ export default function Cart() {
         </div>
       </div>
 
-      {/* Bottone torna indietro */}
-      <Link
-        to="/products"
-        className="btn btn-back-to__ rounded-0 m-4"
-        onClick={() => navigate("/products")}
-      >
-        <i className="bi bi-arrow-left me-2"></i>
-        Back to Shop
-      </Link>
+      <div className="d-flex flex-wrap align-items-center">
+        {/* Bottone torna indietro */}
+        <Link
+          to="/products"
+          className="btn btn-back-to__ rounded-0 m-4"
+          onClick={() => navigate("/products")}
+        >
+          <i className="bi bi-arrow-left me-2"></i>
+          Back to Shop
+        </Link>
+        {/* Bottone svuota carrello */}
+        {cartItems.length > 0 && (
+          <button
+            className="btn btn-cart  rounded-0 m-4"
+            onClick={handleEmptyCart}
+          >
+            <i className="bi bi-trash me-2"></i>
+            Remove all products
+          </button>
+        )}
+      </div>
     </>
   );
 }

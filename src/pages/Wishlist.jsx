@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getWishlist, removeFromWishlist } from '../wishlistUtils';
 import { Link } from 'react-router-dom';
+import { useCart } from "../components/CartContext";
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         setWishlist(getWishlist());
@@ -15,8 +17,9 @@ const Wishlist = () => {
     };
 
     const handleAddToCart = (item) => {
+
         // Prendi il carrello dal localStorage
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        /*const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Cerca se il prodotto esiste già
         const existingItem = cart.find(cartItem => cartItem.product_id === item.product_id);
@@ -29,6 +32,8 @@ const Wishlist = () => {
 
         // Salva nel localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${item.name} added to cart!`);*/
+        addToCart(item);
         alert(`${item.name} added to cart!`);
     };
 

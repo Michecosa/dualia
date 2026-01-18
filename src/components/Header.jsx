@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/Loghi_Dualia/logo_dualia_header.png";
+import { useCart } from "../components/CartContext";
+import { getWishlist } from "../wishlistUtils";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const [hasWishlistItems, setHasWishlistItems] = useState(getWishlist().length > 0);
+
+  useEffect(() => {
+    const handleWishlistUpdate = () => {
+      setHasWishlistItems(getWishlist().length > 0);
+    };
+    window.addEventListener("wishlistUpdated", handleWishlistUpdate);
+    return () => {
+      window.removeEventListener("wishlistUpdated", handleWishlistUpdate);
+    };
+  }, []);
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && searchTerm.trim() !== "") {
@@ -14,6 +27,9 @@ export default function Header() {
       setShowSearch(false);
     }
   };
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems ? cartItems.length : 0;
 
   return (
     <>
@@ -82,14 +98,27 @@ export default function Header() {
                 {/* wishlist icon */}
                 <Link
                   to="/wishlist"
-                  className="icon_link"
+                  className="icon_link position-relative"
                   aria-label="Heart Wishlist Page"
                 >
                   <i className="bi bi-heart"></i>
+                  {hasWishlistItems && (
+                    <span
+                      className="position-absolute top-0 start-100 translate-middle p-1 border border-light rounded-circle"
+                      style={{ marginTop: "2px", marginLeft: "-2px", backgroundColor: "#e3be85" }}
+                    >
+                      <span className="visually-hidden">BUY ME</span>
+                    </span>
+                  )}
                 </Link>
                 {/* cart icon */}
-                <NavLink to="/cart" className="icon_link" aria-label="Cart">
+                <NavLink to="/cart" className="icon_link position-relative" aria-label="Cart">
                   <i className="bi bi-bag"></i>
+                  {cartCount > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark" style={{ backgroundColor: "#e3be85" }}>
+                      {cartCount > 99 ? "99+" : cartCount}
+                    </span>
+                  )}
                 </NavLink>
               </div>
             </div>

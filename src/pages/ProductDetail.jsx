@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { addToWishlist, removeFromWishlist, isInWishlist } from "../wishlistUtils";
+import { useCart } from "../components/CartContext";
 
 
 export default function ProductDetail() {
@@ -10,6 +11,8 @@ export default function ProductDetail() {
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
     const [favorite, setFavorite] = useState(false);
+
+    const { addToCart } = useCart();
 
     useEffect(() => {
         axios
@@ -36,6 +39,9 @@ export default function ProductDetail() {
     };
 
     const handleAddToCart = () => {
+        for (let i = 0; i < quantity; i++) {
+            addToCart(product);
+        }
         // Prendi il carrello dal localStorage
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
 

@@ -8,26 +8,29 @@ import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import NotFound from './components/NotFound';
 import ThankYou from "./pages/Thankyou";
+import { CartProvider } from "./components/CartContext";
 
 
 
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/products" element={<Products />}></Route>
-          <Route path="/products/:id" element={<ProductDetail />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/wishlist" element={<Wishlist />}></Route>
-          <Route path="/checkout" element={<Checkout />}></Route>
-          <Route path="*" element={<NotFound />} />
-          <Route path="/thank-you" element={<ThankYou />}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<Homepage />}></Route>
+            <Route path="/products" element={<Products />}></Route>
+            <Route path="/products/:id" element={<ProductDetail />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/wishlist" element={<Wishlist />}></Route>
+            <Route path="/checkout" element={<Checkout />}></Route>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/thank-you" element={<ThankYou />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 
