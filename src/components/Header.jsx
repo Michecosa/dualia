@@ -95,7 +95,7 @@ export default function Header() {
                 <NavLink to="/cart" className="icon_link position-relative" aria-label="Cart">
                   <i className="bi bi-bag"></i>
                   {cartCount > 0 && (
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark" style={{ backgroundColor: "#e3be85" }}>
                       {cartCount > 99 ? "99+" : cartCount}
                     </span>
                   )}
