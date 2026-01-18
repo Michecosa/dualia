@@ -29,8 +29,16 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    const removeAllOfProduct = (productId) => {
+        setCartItems((prev) => prev.filter(item => item.product_id !== productId));
+    };
+
+    const clearCart = () => {
+        setCartItems([]);
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, removeAllOfProduct, clearCart }}>
             {children}
         </CartContext.Provider>
     );

@@ -6,7 +6,7 @@ import { useCart } from "../components/CartContext";
 export default function Cart() {
   const navigate = useNavigate();
   // const [cart, setCart] = useState([]);
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, addToCart, removeFromCart, removeAllOfProduct, clearCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [discountData, setDiscountData] = useState({
     valid: false,
@@ -68,9 +68,19 @@ export default function Cart() {
     resetDiscount();
   };*/
   // Rimuove tutte le istanze di quel prodotto
-  const removeItem = (productId) => {
+  /*const removeItem = (productId) => {
     const itemsToRemove = cartItems.filter((item) => item.product_id === productId);
     itemsToRemove.forEach(() => removeFromCart(productId));
+    resetDiscount();
+  };*/
+
+  const removeItem = (productId) => {
+    removeAllOfProduct(productId);
+    resetDiscount();
+  };
+
+  const handleEmptyCart = () => {
+    clearCart();
     resetDiscount();
   };
 
@@ -304,15 +314,27 @@ export default function Cart() {
         </div>
       </div>
 
-      {/* Bottone torna indietro */}
-      <Link
-        to="/products"
-        className="btn btn-back-to__ rounded-0 m-4"
-        onClick={() => navigate("/products")}
-      >
-        <i className="bi bi-arrow-left me-2"></i>
-        Back to Shop
-      </Link>
+      <div className="d-flex flex-wrap align-items-center">
+        {/* Bottone torna indietro */}
+        <Link
+          to="/products"
+          className="btn btn-back-to__ rounded-0 m-4"
+          onClick={() => navigate("/products")}
+        >
+          <i className="bi bi-arrow-left me-2"></i>
+          Back to Shop
+        </Link>
+        {/* Bottone svuota carrello */}
+        {cartItems.length > 0 && (
+          <button
+            className="btn btn-cart  rounded-0 m-4"
+            onClick={handleEmptyCart}
+          >
+            <i className="bi bi-trash me-2"></i>
+            Remove all products
+          </button>
+        )}
+      </div>
     </>
   );
 }
