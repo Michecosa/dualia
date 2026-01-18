@@ -53,7 +53,7 @@ export default function Searchbar({ onSearch }) {
       <div className="filter-group">
         <label className="filter-label mb-1">Category</label>
         <select
-          className="form-select shadow-none"
+          className="form-select shadow-none rounded-0"
           value={filters.category}
           onChange={(e) => updateFilter("category", e.target.value)}
         >
@@ -70,7 +70,7 @@ export default function Searchbar({ onSearch }) {
       <div className="filter-group">
         <label className="filter-label mb-1 mt-3">Color</label>
         <select
-          className="form-select shadow-none"
+          className="form-select shadow-none rounded-0"
           value={filters.color}
           onChange={(e) => updateFilter("color", e.target.value)}
         >
@@ -116,7 +116,7 @@ export default function Searchbar({ onSearch }) {
         <label className="filter-label mb-1 mt-3">Order by</label>
 
         <select
-          className="form-select shadow-none"
+          className="form-select shadow-none rounded-0"
           value={filters.order}
           onChange={(e) => updateFilter("order", e.target.value)}
         >
@@ -146,7 +146,7 @@ export default function Searchbar({ onSearch }) {
       {/* ACTION BUTTONS */}
       <div className="d-grid gap-2 mt-5">
         <button
-          className="btn btn-filter-searchbar p-1 rounded-1"
+          className="btn btn-filter-searchbar p-1 rounded-0"
           onClick={handleApply}
         >
           Apply Filters
@@ -154,7 +154,7 @@ export default function Searchbar({ onSearch }) {
 
         <Link
           to="/products"
-          className="btn btn-reset-searchbar btn-sm text-decoration-none"
+          className="btn btn-reset-searchbar btn-sm text-decoration-none rounded-0"
           onClick={handleReset}
         >
           Reset filters

@@ -138,7 +138,7 @@ export default function Cart() {
                   {/* immagine */}
                   <div className="col-4 col-sm-3">
                     <img
-                      className="img rounded-1"
+                      className="img rounded-0"
                       src={item.url_image}
                       alt={item.name}
                       style={{
@@ -236,7 +236,7 @@ export default function Cart() {
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                 />
-                <button type="submit" className="btn btn-dark btn-sm">
+                <button type="submit" className="btn btn-dark btn-sm rounded-0">
                   APPLY
                 </button>
               </div>

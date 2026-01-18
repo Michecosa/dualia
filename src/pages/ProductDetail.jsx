@@ -88,7 +88,7 @@ export default function ProductDetail() {
                     <img
                         src={product.url_image}
                         alt={product.name}
-                        className="img-fluid rounded"
+                        className="img-fluid rounded-0"
                         style={{ width: "100%", objectFit: "cover" }} />
                 </div>
                 <div className="col-lg-6">
@@ -113,7 +113,7 @@ export default function ProductDetail() {
                         <strong className="me-3">Quantity:</strong>
 
                         <button
-                            className="btn btn-plus"
+                            className="btn btn-plus rounded-1"
                             onClick={decrementQuantity}
                             disabled={quantity === 1}
                             style={{ border: "none", fontSize: "1.2rem" }}> − </button>
@@ -121,17 +121,17 @@ export default function ProductDetail() {
                         <span className="mx-3 fs-5 fw-bold">{quantity}</span>
 
                         <button
-                            className="btn btn-plus"
+                            className="btn btn-plus rounded-1"
                             onClick={incrementQuantity}
                             style={{ border: "none", fontSize: "1.2rem" }}> + </button>
                     </div>
 
-                    <button className="btn btn-dualia-dark btn-add-to-cart rounded-1 me-2" onClick={handleAddToCart}>
+                    <button className="btn btn-dualia-dark btn-add-to-cart rounded-0 me-2" onClick={handleAddToCart}>
                         <i className="bi bi-bag me-2"></i>
                         Add to Cart
                     </button>
 
-                    <button className="btn btn-outline-dark btn_wishlist py-2"
+                    <button className="btn btn-outline-dark btn_wishlist py-2 rounded-0"
                         onClick={toggleWishlist}>
                         <i className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}></i>
                     </button>

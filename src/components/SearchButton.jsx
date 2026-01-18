@@ -5,12 +5,12 @@ export default function SearchButton({ onSearch }) {
     <section className="p-0">
       <div className="p-3 d-lg-none">
         <button
-          className="btn btn-dark w-100"
+          className="btn btn-dark w-100 rounded-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#sidebarFilters"
         >
-          Filtri di ricerca
+          Search filters
         </button>
       </div>
 

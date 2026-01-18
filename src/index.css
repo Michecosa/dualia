@@ -323,12 +323,14 @@ footer a:hover {
   background-color: black;
   color: white;
   border-color: black;
+  border-radius: 0;
 }
 
 .filter-group .btn-outline-secondary {
   --bs-btn-border-width: 1px;
   color: black;
   border-color: black;
+  border-radius: 0;
 }
 
 .filter-group .btn-outline-secondary:hover {
@@ -350,6 +352,12 @@ footer a:hover {
 /* #region searchbar */
 
 #slider {
+  border-radius: 0px !important;
+
+  .badge {
+    border-radius: 0px !important;
+  }
+
   .slider-container {
     position: relative;
     height: 36px;

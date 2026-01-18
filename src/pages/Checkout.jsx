@@ -138,7 +138,7 @@ export default function Checkout() {
         <div className="col-md-8">
           <form onSubmit={handlePlaceOrder}>
             {/* BILLING INFORMATION */}
-            <div className="card mb-4">
+            <div className="card mb-4 rounded-0">
               <div className="card-body">
                 <h4 className="card-title mb-4">Billing Information</h4>
 
@@ -147,7 +147,7 @@ export default function Checkout() {
                     <label className="form-label">First Name *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                     />
@@ -156,7 +156,7 @@ export default function Checkout() {
                     <label className="form-label">Last Name *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                     />
@@ -167,7 +167,7 @@ export default function Checkout() {
                   <label className="form-label">Email *</label>
                   <input
                     type="email"
-                    className="form-control rounded-1"
+                    className="form-control rounded-0"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -176,7 +176,7 @@ export default function Checkout() {
             </div>
 
             {/* SHIPPING ADDRESS */}
-            <div className="card mb-4">
+            <div className="card mb-4 rounded-0">
               <div className="card-body mb-3">
                 <h4 className="card-title mb-4">Shipping Address</h4>
 
@@ -185,7 +185,7 @@ export default function Checkout() {
                     <label className="form-label">Street *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
                     />
@@ -194,7 +194,7 @@ export default function Checkout() {
                     <label className="form-label">House Number</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={houseNumber}
                       onChange={(e) => setHouseNumber(e.target.value)}
                     />
@@ -206,7 +206,7 @@ export default function Checkout() {
                     <label className="form-label">City *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                     />
@@ -215,7 +215,7 @@ export default function Checkout() {
                     <label className="form-label">State/Province</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={state}
                       onChange={(e) => setState(e.target.value)}
                     />
@@ -227,7 +227,7 @@ export default function Checkout() {
                     <label className="form-label">Postal Code *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={postalCode}
                       onChange={(e) => setPostalCode(e.target.value)}
                     />
@@ -236,7 +236,7 @@ export default function Checkout() {
                     <label className="form-label">Country *</label>
                     <input
                       type="text"
-                      className="form-control rounded-1"
+                      className="form-control rounded-0"
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
                     />
@@ -249,7 +249,7 @@ export default function Checkout() {
 
         {/* ORDER SUMMARY */}
         <div className="col-md-4 mb-4">
-          <div className="card h-100">
+          <div className="card h-100  rounded-0">
             <div className="card-body">
               <h4 className="card-title mb-4">Order Summary</h4>
 
@@ -300,7 +300,7 @@ export default function Checkout() {
 
               <div className="form-check mb-3">
                 <input
-                  className="form-check-input"
+                  className="form-check-input rounded-0"
                   type="checkbox"
                   id="terms"
                   required

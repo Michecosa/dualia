@@ -47,11 +47,11 @@ const Wishlist = () => {
                 <div className="row">
                     {wishlist.map(item => (
                         <div key={item.product_id} className="col-md-6 col-lg-4 mb-4">
-                            <div className="card h-100">
+                            <div className="card h-100 rounded-0">
                                 <Link to={`/products/${item.product_id}`}>
                                     <img
                                         src={item.url_image}
-                                        className="card-img-top"
+                                        className="card-img-top rounded-0"
                                         alt={item.name}
                                         style={{ height: '250px', objectFit: 'cover' }}
                                     />
@@ -63,7 +63,7 @@ const Wishlist = () => {
                                     <div className="mt-auto d-flex gap-2">
                                         {/* Bottone Shopping Bag - Aggiungi al carrello */}
                                         <button
-                                            className="btn btn-add-to-cart btn-dualia-dark rounded-1 flex-grow-1"
+                                            className="btn btn-add-to-cart btn-dualia-dark rounded-0 flex-grow-1"
                                             onClick={() => handleAddToCart(item)}
                                         >
                                             <i className="bi bi-bag me-2"></i>
@@ -72,7 +72,7 @@ const Wishlist = () => {
 
                                         {/* Bottone Cuore - Rimuovi dalla wishlist */}
                                         <button
-                                            className="btn btn-outline-dark btn_wishlist py-2"
+                                            className="btn btn-outline-dark btn_wishlist py-2 rounded-0"
                                             onClick={() => handleRemove(item.product_id)}
                                             title="Remove from wishlist"
                                         >
