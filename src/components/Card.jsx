@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { addToWishlist, removeFromWishlist, isInWishlist } from "../wishlistUtils";
+import {
+  addToWishlist,
+  removeFromWishlist,
+  isInWishlist,
+} from "../wishlistUtils";
+import BookmarkIcon from "./BookmarkIcon"; // Importa il nuovo componente
 
 export default function Card({
   img,
@@ -32,16 +37,31 @@ export default function Card({
   };
 
   return (
-    <div className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4 position-relative`}>
-
+    <div
+      className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4 position-relative`}
+    >
       <button
         onClick={toggleWishlist}
-        className={`wishlist-btn cuore btn btn-outline-dark btn_wishlist py-0 position-absolute ${liked ? "liked" : ""}`}>
-        <i className="bi bi-bookmark-heart fs-3"></i>
+        className="position-absolute"
+        style={{
+          top: "-8px",
+          right: "10px",
+          width: "60px", // MICHELA QUI PER LE DIMENSIONI DEL BOOKMARK
+          border: "none",
+          background: "none",
+          padding: 0,
+          zIndex: 10,
+          cursor: "pointer",
+        }}
+      >
+        <BookmarkIcon liked={liked} />
       </button>
 
-
-      <Link to={path} className="m-0 p-0 text-decoration-none" style={{ color: "inherit" }}>
+      <Link
+        to={path}
+        className="m-0 p-0 text-decoration-none"
+        style={{ color: "inherit" }}
+      >
         <img src={img} className="dualia-card-img" alt={title} />
         <div className="dualia-card-body mt-2">
           <h5 className="dualia-card-title">{title}</h5>
@@ -57,6 +77,6 @@ export default function Card({
           </p>
         </div>
       </Link>
-    </div >
+    </div>
   );
 }
