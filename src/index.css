@@ -200,6 +200,20 @@ a.btn.btn-back-to__:active {
   color: #e3be85;
 }
 
+.badge-promo {
+  position: absolute;
+  top: 2%;
+  left: 20px;
+  background-color: black;
+  color: #e3be85;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 0.075rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0;
+  z-index: 10;
+}
+
 /* footer */
 footer {
   background-color: black;

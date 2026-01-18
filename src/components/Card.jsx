@@ -40,6 +40,7 @@ export default function Card({
     <div
       className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4 position-relative`}
     >
+      {price < fullprice && (<span className="badge-promo">PROMO</span>)}
       <button
         onClick={toggleWishlist}
         className="position-absolute"

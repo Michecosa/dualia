@@ -9,10 +9,13 @@ export default function CardHome({
     prodRes,
     fullprice,
 }) {
+    const isPromo = Number(price) < Number(fullprice);
     return (
         <>
             <div
-                className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4`}>
+                className={`dualia-card dualia-card-50 dualia-card-25 ${bestSellers} ${prodRes} flex-grow-1 mb-4 position-relative`}>
+
+                {isPromo && <span className="badge-promo">PROMO</span>}
                 <Link
                     to={path}
                     className="m-0 p-0 text-decoration-none"

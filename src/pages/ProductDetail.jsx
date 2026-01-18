@@ -81,7 +81,10 @@ export default function ProductDetail() {
     return (
         <div className="container my-5">
             <div className="row">
-                <div className="col-lg-6 mb-4">
+                <div className="col-lg-6 mb-4 position-relative">
+                    {product.price < product.full_price && (
+                        <span className="badge-promo position-absolute">PROMO</span>
+                    )}
                     <img
                         src={product.url_image}
                         alt={product.name}
@@ -92,10 +95,14 @@ export default function ProductDetail() {
                     <h1 className="mb-3">{product.name}</h1>
                     {/* <h3 className="text-muted mb-4">€{product.price}</h3> */}
                     <h3 className="text-muted mb-4">
-                        {product.price < product.full_price
-                            ? (<><strong id="scontato">{product.price}€</strong><s className="ms-3">{product.full_price}€</s></>)
-                            : product.price + "€"
-                        }
+                        {product.price < product.full_price ? (
+                            <>
+                                <strong id="scontato">{product.price}€</strong>
+                                <s className="ms-3">{product.full_price}€</s>
+                            </>
+                        ) : (
+                            product.price + "€"
+                        )}
                     </h3>
                     <p className="lead mb-4">{product.description}</p>
 

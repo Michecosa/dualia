@@ -15,7 +15,7 @@ export default function BookmarkIcon({ liked }) {
         style={{ width: "100%", height: "100%" }}
       >
         <path
-          fill="white"
+          fill="black"
           d="M 8.9999994,3 H 20.999999 c 1.108,0 1.999999,0.892 1.999999,2 l 2e-6,22.00001 -8,-6 -8,6 1e-7,-22 c 0,-1.108 0.892,-1.99989 1.9999999,-2 z"
         />
       </svg>
