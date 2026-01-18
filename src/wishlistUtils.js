@@ -3,9 +3,15 @@ export const getWishlist = () => {
     return wishlist ? JSON.parse(wishlist) : [];
 }
 
+//Avvisa Header di aggiornarsi
+const saveAndNotify = (wishlist) => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    window.dispatchEvent(new Event("wishlistUpdated"));
+};
+
 //salva la wishlist nel localStorage
 export const saveWishlist = (wishlist) => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    saveAndNotify(wishlist);
 };
 
 //aggiunge il prodotto alla wishlist
@@ -15,7 +21,8 @@ export const addToWishlist = (product) => {
 
     if (!exists) {
         wishlist.push(product)
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        //localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        saveAndNotify(wishlist);
     }
 };
 
@@ -23,7 +30,8 @@ export const addToWishlist = (product) => {
 export const removeFromWishlist = (productId) => {
     const wishlist = getWishlist();
     const newWishlist = wishlist.filter(p => p.product_id !== productId)
-    localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+    //localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+    saveAndNotify(newWishlist);
 };
 
 // controlla se un prodotto è nella wishlist
