@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/Loghi_Dualia/logo_dualia_header.png";
+import { useCart } from "../components/CartContext";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
@@ -14,6 +15,9 @@ export default function Header() {
       setShowSearch(false);
     }
   };
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems ? cartItems.length : 0;
 
   return (
     <>
@@ -88,8 +92,13 @@ export default function Header() {
                   <i className="bi bi-heart"></i>
                 </Link>
                 {/* cart icon */}
-                <NavLink to="/cart" className="icon_link" aria-label="Cart">
+                <NavLink to="/cart" className="icon_link position-relative" aria-label="Cart">
                   <i className="bi bi-bag"></i>
+                  {cartCount > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                      {cartCount > 99 ? "99+" : cartCount}
+                    </span>
+                  )}
                 </NavLink>
               </div>
             </div>
