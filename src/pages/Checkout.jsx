@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import TermsModal from "../components/TermsModal";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -298,6 +299,7 @@ export default function Checkout() {
                 <strong>€ {total.toFixed(2)}</strong>
               </div>
 
+              {/* inzio modi */}
               <div className="form-check mb-3">
                 <input
                   className="form-check-input"
@@ -310,7 +312,17 @@ export default function Checkout() {
                 <label className="form-check-label" htmlFor="terms">
                   I accept the terms and conditions *
                 </label>
+
+                <button
+                  type="button"
+                  className="btn btn-link p-0 ms-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#termsModal"
+                >
+                  Read
+                </button>
               </div>
+              {/* fine modi */}
 
               <button
                 type="submit"
@@ -329,6 +341,8 @@ export default function Checkout() {
         <i className="bi bi-arrow-left me-2"></i>
         Back to Cart
       </Link>
+
+      <TermsModal />
     </div>
   );
 }
