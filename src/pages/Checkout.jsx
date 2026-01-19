@@ -21,7 +21,7 @@ export default function Checkout() {
   const [cart, setCart] = useState([]);
   const [discount, setDiscount] = useState(0);
   const [promotionId, setPromotionId] = useState(null);
-  const shipping = 5.0;
+  const [shipping, setShipping] = useState(5.0);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalType, setModalType] = useState("success");
@@ -34,6 +34,9 @@ export default function Checkout() {
       setCart(checkoutInfo.cart || []);
       setDiscount(checkoutInfo.discount || 0);
       setPromotionId(checkoutInfo.promotion_id || null);
+      setShipping(
+        checkoutInfo.shipping !== undefined ? checkoutInfo.shipping : 5.0,
+      );
     } else {
       const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
       setCart(savedCart);
@@ -43,7 +46,7 @@ export default function Checkout() {
   // Calcolo del subtotale e totale (sottraendo lo sconto)
   const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0,
   );
   const total = subtotal + shipping - discount;
 
@@ -61,7 +64,7 @@ export default function Checkout() {
       !agreedToTerms
     ) {
       setModalMessage(
-        "Please fill all required fields and accept the terms and conditions."
+        "Please fill all required fields and accept the terms and conditions.",
       );
       setModalType("error");
       setShowModal(true);
@@ -77,14 +80,14 @@ export default function Checkout() {
     const nameRegex = /^[A-Za-zÀ-ÿ\s']{2,}$/;
     if (!nameRegex.test(firstName)) {
       alert(
-        "First Name must be at least 2 characters long and contain only letters."
+        "First Name must be at least 2 characters long and contain only letters.",
       );
       return;
     }
 
     if (!nameRegex.test(lastName)) {
       alert(
-        "Last Name must be at least 2 characters long and contain only letters."
+        "Last Name must be at least 2 characters long and contain only letters.",
       );
       return;
     }
@@ -111,6 +114,7 @@ export default function Checkout() {
       postalCode,
       country,
       promotion_id: promotionId,
+      shipping_cost: shipping,
       items: cart.map((item) => ({
         product_id: item.product_id,
         quantity: item.quantity,
@@ -120,7 +124,7 @@ export default function Checkout() {
     try {
       const response = await axios.post(
         "http://localhost:3000/orders",
-        orderData
+        orderData,
       );
 
       if (response.data.ok) {
@@ -333,7 +337,8 @@ export default function Checkout() {
               <button
                 type="submit"
                 className="btn btn-dualia-dark-checkout w-100 py-2"
-                onClick={handlePlaceOrder}>
+                onClick={handlePlaceOrder}
+              >
                 <i className="bi bi-check-circle me-2"></i>
                 PLACE ORDER
               </button>
