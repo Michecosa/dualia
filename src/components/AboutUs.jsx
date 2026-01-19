@@ -81,7 +81,7 @@ export default function AboutUs() {
                     <div className="col-md-6">
                         <div className="border p-4 h-100 d-flex flex-column justify-content-center">
                             <h3>Free Shipping</h3>
-                            <p className="text-muted mb-0">Delivery is on us for all orders over €99.</p>
+                            <p className="text-muted mb-0">Delivery is on us for all orders over €999.99</p>
                         </div>
                     </div>
                     <div className="col-md-6">
