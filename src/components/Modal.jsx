@@ -10,8 +10,8 @@ export default function Modal({ message, onClose, duration = 4000, type = 'succe
 
     return (
         <div
-            className="position-fixed top-50 start-50 translate-middle bg-black rounded-3 p-4 text-center"
-            style={{ zIndex: 9999, minWidth: '320px', maxWidth: '500px' }}>
+            className="position-fixed start-50 translate-middle-x bg-black p-4 text-center mx-3"
+            style={{ zIndex: 9999, minWidth: '280px', maxWidth: '500px', top: '30%' }}>
 
             <button
                 className="position-absolute top-0 end-0 m-2 border-0 bg-transparent"
