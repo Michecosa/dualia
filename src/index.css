@@ -331,8 +331,8 @@ footer a:hover {
 }
 
 /* searchbar */
-#saleAll:checked + .btn,
-#saleYes:checked + .btn {
+#saleAll:checked+.btn,
+#saleYes:checked+.btn {
   background-color: black;
   color: white;
   border-color: black;
@@ -735,6 +735,7 @@ footer a:hover {
 }
 
 @media screen and (max-width: 767.99px) {
+
   /* header */
   .nav_home {
     padding-top: 1rem;
