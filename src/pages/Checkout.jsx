@@ -3,9 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "../components/Modal";
 import TermsModal from "../components/TermsModal";
+import { useCart } from "../components/CartContext";
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const { clearCart } = useCart();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -129,7 +131,7 @@ export default function Checkout() {
       );
 
       if (response.data.ok) {
-        localStorage.removeItem("cart");
+        clearCart();
         localStorage.removeItem("checkout_data");
 
         setTimeout(() => {
