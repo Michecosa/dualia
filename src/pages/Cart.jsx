@@ -284,7 +284,13 @@ export default function Cart() {
             {/* form */}
             <form className="py-3" onSubmit={handleApplyDiscount}>
               <p className="d-flex">SHIPPING
-                <span className="shipping-info">i</span>
+                <span className="shipping-info">i
+                  
+                  <span className="d-none show-shipping-info">Standard delivery: 4-7 days
+                        <hr />
+                        Express delivery: 1-3 days
+                  </span>
+                </span>
               </p>
 
               <select

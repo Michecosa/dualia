@@ -540,6 +540,10 @@ footer a:hover {
     font-weight: bold;
     text-decoration: none;
   }
+.show-shipping-info:hover{
+  display:block
+}
+
 .shipping-info {
     font-size: 13px;
       margin: 5px 0 0 5px;
