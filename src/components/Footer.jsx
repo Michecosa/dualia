@@ -7,9 +7,9 @@ const exploreLinks = [
 ]
 
 const supportLinks = [
-    { id: 1, name: "Shipping & returns" },
-    { id: 2, name: "Order tracking" },
-    { id: 4, name: "Contact" },
+    { id: 1, name: "Shipping & returns", path: "/" },
+    { id: 2, name: "Order tracking", path: "/" },
+    { id: 4, name: "Contact", path: "/contact" },
 ]
 
 const socialLinks = [
@@ -72,7 +72,7 @@ export default function Footer() {
                                 supportLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <Link to="/">{link.name}</Link>
+                                            <Link to={link.path}>{link.name}</Link>
                                         </small>
                                     </li>
                                 ))

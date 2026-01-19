@@ -8,6 +8,7 @@ import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import NotFound from './components/NotFound';
 import ThankYou from "./pages/Thankyou";
+import Contact from "./pages/Contact";
 import { CartProvider } from "./components/CartContext";
 
 
@@ -25,8 +26,9 @@ function App() {
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/wishlist" element={<Wishlist />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
-            <Route path="*" element={<NotFound />} />
+            <Route path="/contact" element={<Contact />}></Route>
             <Route path="/thank-you" element={<ThankYou />}></Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

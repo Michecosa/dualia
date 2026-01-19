@@ -78,33 +78,43 @@ export default function Checkout() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
+      setModalMessage("Please enter a valid email address.");
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
     const nameRegex = /^[A-Za-zÀ-ÿ\s']{2,}$/;
     if (!nameRegex.test(firstName)) {
-      alert(
+      setModalMessage(
         "First Name must be at least 2 characters long and contain only letters.",
       );
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
     if (!nameRegex.test(lastName)) {
-      alert(
+      setModalMessage(
         "Last Name must be at least 2 characters long and contain only letters.",
       );
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
     const pcRegex = /^[0-9]{5}$/;
     if (!pcRegex.test(postalCode)) {
-      alert("Postal Code must be exactly 5 digits.");
+      setModalMessage("Postal Code must be exactly 5 digits.");
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
     if (city.trim().length < 2 || country.trim().length < 2) {
-      alert("City and Country names are too short.");
+      setModalMessage("City and Country names are too short.");
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
