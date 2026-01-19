@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import TermsModal from "./TermsModal";
 
 const exploreLinks = [
     { id: 1, name: "Products", path: "/products" },
@@ -7,7 +9,7 @@ const exploreLinks = [
 ]
 
 const supportLinks = [
-    { id: 1, name: "Shipping & returns", path: "/" },
+    { id: 1, name: "Shipping & returns", isModal: true },
     { id: 2, name: "Order tracking", path: "/" },
     { id: 4, name: "Contact", path: "/contact" },
 ]
@@ -72,7 +74,18 @@ export default function Footer() {
                                 supportLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <Link to={link.path}>{link.name}</Link>
+                                            {link.isModal ? (
+                                                <a
+                                                    href="#"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#termsModal"
+                                                    onClick={(e) => e.preventDefault()}
+                                                >
+                                                    {link.name}
+                                                </a>
+                                            ) : (
+                                                <Link to={link.path}>{link.name}</Link>
+                                            )}
                                         </small>
                                     </li>
                                 ))
@@ -126,6 +139,9 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+
+            {/* Terms Modal */}
+            <TermsModal />
         </footer>
     )
 }
