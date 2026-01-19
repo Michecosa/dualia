@@ -141,10 +141,10 @@ export default function Checkout() {
         localStorage.removeItem("checkout_data");
 
         setTimeout(() => {
-          setModalMessage("Order confirmed! Processing your order...");
+          setModalMessage("Order confirmed!");
           setModalType("success");
           setShowModal(true);
-        }, 500);
+        }, 100);
 
         setTimeout(() => {
           navigate("/thank-you");
@@ -165,7 +165,25 @@ export default function Checkout() {
 
   return (
     <div className="container mt-5">
-      {isLoading && <LogoAnimation />}
+      {isLoading && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+            backdropFilter: "blur(2px)",
+          }}
+        >
+          <LogoAnimation />
+        </div>
+      )}
 
       <h2 className="mb-4">Checkout</h2>
 
