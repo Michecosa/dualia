@@ -337,8 +337,8 @@ export default function Checkout() {
                   I accept
                 </label>
 
-                <button
-
+                <a
+                  href="#"
                   id="termini-btn"
                   type="button"
                   className="p-0 ms-2"
@@ -346,7 +346,7 @@ export default function Checkout() {
                   data-bs-target="#termsModal"
                 >
                   the terms and conditions
-                </button>
+                </a>
               </div>
               {/* FINE TERMININI E CONDIZIONI */}
 

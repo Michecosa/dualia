@@ -92,8 +92,10 @@ a.btn.btn-back-to__:active {
 /* stile solo per il bottone termini e condizioni */
 #termini-btn {
   background-color: white;
-  color: #024AD8;
+  /* color: #024AD8; */
+  color: #cb8925;
   border: 0px;
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
