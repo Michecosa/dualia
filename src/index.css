@@ -540,22 +540,59 @@ footer a:hover {
     font-weight: bold;
     text-decoration: none;
   }
-.show-shipping-info:hover{
-  display:block
-}
 
-.shipping-info {
+  .shipping-info {
     font-size: 13px;
-      margin: 5px 0 0 5px;
-      background-color: transparent;
-      border: 1px solid black;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-}
+    margin: 5px 0 0 5px;
+    background-color: transparent;
+    border: 1px solid black;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .shipping-info:hover {
+    background-color: #f8f8f8;
+    border-color: #e3be85;
+  }
+
+  .shipping-info .show-shipping-info {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #e3be85;
+    color: #e3be85;
+    padding: 10px 15px;
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    z-index: 1000;
+    font-size: 12px;
+    min-width: 200px;
+  }
+
+  .shipping-info:hover .show-shipping-info {
+    display: block !important;
+  }
+
+  .shipping-info .show-shipping-info hr {
+    margin: 5px 0;
+    border-color: #e3be85;
+  }
+
+  .show-shipping-info:hover {
+    display: block;
+  }
+
   .close,
   .close_mobile {
     width: 5px;
