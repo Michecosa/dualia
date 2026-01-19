@@ -6,13 +6,7 @@ import { useCart } from "../components/CartContext";
 export default function Cart() {
   const navigate = useNavigate();
   // const [cart, setCart] = useState([]);
-  const {
-    cartItems,
-    addToCart,
-    removeFromCart,
-    removeAllOfProduct,
-    clearCart,
-  } = useCart();
+  const { cartItems, addToCart, removeFromCart, removeAllOfProduct, clearCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [discountData, setDiscountData] = useState({
     valid: false,
@@ -103,15 +97,9 @@ export default function Cart() {
   // Calcola il subtotale
   const subtotal = cartItems.reduce(
     (total, item) => total + parseFloat(item.price || 0),
-    0,
+    0
   );
-
-  // SOGLIA PER LA SPEDIZIONE GRATUITA
-  const free_shipping_threshold = 999.99;
-
-  const shipping =
-    subtotal >= free_shipping_threshold || subtotal === 0 ? 0 : 5.0;
-
+  const shipping = 5.0;
   const total = subtotal + shipping - discountData.amount;
   // Conteggio totale degli oggetti
   const itemsCount = cartItems.length;
@@ -120,7 +108,6 @@ export default function Cart() {
     const checkoutData = {
       cart: groupedCart,
       subtotal,
-      shipping,
       discount: discountData.amount,
       promotion_id: discountData.promotion_id,
       total: total,
@@ -141,7 +128,7 @@ export default function Cart() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ promo_code: promoCode, subtotal: subtotal }),
-        },
+        }
       );
       const data = await response.json();
       if (response.ok && data.valid) {
@@ -207,10 +194,10 @@ export default function Cart() {
                     <div className="d-flex flex-column flex-sm-row justify-content-between">
                       {/* prodotto */}
                       <div className="d-flex align-items-center">
-                        <span className="display_res d-none me-3 fw-medium">
-                          Product:
+                        <span className="display_res d-none me-3 fw-medium">Product:</span>
+                        <span className="product-name ms-2">
+                          {item.name}
                         </span>
-                        <span className="ms-2">{item.name}</span>
                       </div>
 
                       {/* quantità */}
@@ -224,7 +211,7 @@ export default function Cart() {
                         >
                           -
                         </button>
-                        <span className="mx-2">{item.quantity}</span>
+                        <span className="mx-2 product-quantity">{item.quantity}</span>
                         <button
                           className="btn btn-sm btn_quantity"
                           onClick={() => increaseQuantity(item)}
@@ -235,7 +222,7 @@ export default function Cart() {
                           className="close_mobile d-none fw-bold"
                           onClick={() => removeItem(item.product_id)}
                         >
-                          X
+                          <i class="fa-solid fa-x fa-sm remove-product"></i>
                         </button>
                       </div>
 
@@ -244,14 +231,14 @@ export default function Cart() {
                         <span className="display_res d-none me-4 fw-medium">
                           Price:
                         </span>
-                        <span className="ms-3">
+                        <span className="ms-3 product-price">
                           € {parseFloat(item.price).toFixed(2)}
                         </span>
                         <button
                           className="close fw-bold"
                           onClick={() => removeItem(item.product_id)}
                         >
-                          X
+                          <i class="fa-solid fa-x fa-sm remove-product"></i>
                         </button>
                       </div>
                     </div>
@@ -270,36 +257,18 @@ export default function Cart() {
             <div className="separator"></div>
 
             <div className="row">
-              <div className="col p-0 mb-4">ITEMS {itemsCount}</div>
-              <div className="col text-right">€ {subtotal.toFixed(2)}</div>
+              <div className="col-5 p-0 mb-4">ITEMS {itemsCount}</div>
+              <div className="col-7 p-0 text-right">€ {subtotal.toFixed(2)}</div>
             </div>
 
             {/* form */}
             <form className="py-3" onSubmit={handleApplyDiscount}>
               <p>SHIPPING</p>
-              <select disabled className="mb-3">
+              <select>
                 <option className="text-muted">
-                  {shipping === 0
-                    ? "Free Delivery - € 0.00"
-                    : `Standard-Delivery - € ${shipping.toFixed(2)}`}
+                  Standard-Delivery - € {shipping.toFixed(2)}
                 </option>
               </select>
-
-              {subtotal > 0 && subtotal < free_shipping_threshold && (
-                <small className="text-muted fw-light d-block mb-5">
-                  Add{" "}
-                  <span className="fw-bold">
-                    € {(free_shipping_threshold - subtotal).toFixed(2)}
-                  </span>{" "}
-                  more for FREE shipping!
-                </small>
-              )}
-              {subtotal >= free_shipping_threshold && (
-                <small className="text-muted fw-normal d-block  mb-5">
-                  Your shipping is free!
-                </small>
-              )}
-
               <p>GIVE CODE</p>
               <div className="d-flex gap-2">
                 <input
@@ -318,7 +287,7 @@ export default function Cart() {
               )}
               {discountData.valid && (
                 <small className="d-block fw-light mt-1">
-                  Discount: -€ {discountData.amount.toFixed(2)}
+                  Discount: -€{discountData.amount.toFixed(2)}
                 </small>
               )}
             </form>
@@ -335,8 +304,8 @@ export default function Cart() {
             )}
 
             <div className="row">
-              <div className="col p-0">TOTAL</div>
-              <div className="col text-right">€ {total.toFixed(2)}</div>
+              <div className="col-5 p-0">TOTAL</div>
+              <div className="col-7 p-0 text-right">€ {total.toFixed(2)}</div>
             </div>
             <button className="btn btn_checkout" onClick={handleCheckout}>
               CHECKOUT

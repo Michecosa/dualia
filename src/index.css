@@ -483,6 +483,14 @@ footer a:hover {
     width: 3.5rem;
   }
 
+  .product-name,
+  .product-price {
+    width: 110px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   a {
     color: black;
     text-decoration: none;
@@ -501,7 +509,6 @@ footer a:hover {
     border: none;
     margin-left: auto;
     margin-right: 1rem;
-    font-size: 0.7rem;
   }
 
   .summary {
@@ -525,6 +532,14 @@ footer a:hover {
     border: 1px solid black;
     padding: 0.5rem;
     outline: none;
+  }
+
+  .remove-product {
+    font-size: 0.85rem;
+    text-shadow:
+      0 0 0 currentColor,
+      0.5px 0 currentColor,
+      -0.5px 0 currentColor;
   }
 
   .btn {

@@ -104,8 +104,8 @@ export default function Header() {
                   <i className="bi bi-heart"></i>
                   {hasWishlistItems && (
                     <span
-                      className="position-absolute top-0 start-100 translate-middle p-1 border border-light rounded-circle"
-                      style={{ marginTop: "2px", marginLeft: "-2px", backgroundColor: "#e3be85" }}
+                      className="position-absolute top-0 start-100 translate-middle border border-light rounded-circle"
+                      style={{ marginTop: "2px", marginLeft: "-2px", backgroundColor: "#e3be85", padding: "0.30rem" }}
                     >
                       <span className="visually-hidden">BUY ME</span>
                     </span>
