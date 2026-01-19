@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Modal from "../components/Modal";
+import TermsModal from "../components/TermsModal";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -320,9 +321,10 @@ export default function Checkout() {
                 <strong>€ {total.toFixed(2)}</strong>
               </div>
 
+              {/* TERMINI E CONDIZIONI CON MODALE */}
               <div className="form-check mb-3">
                 <input
-                  className="form-check-input rounded-0"
+                  className="form-check-input"
                   type="checkbox"
                   id="terms"
                   required
@@ -330,9 +332,19 @@ export default function Checkout() {
                   onChange={(e) => setAgreedToTerms(e.target.checked)}
                 />
                 <label className="form-check-label" htmlFor="terms">
-                  I accept the terms and conditions *
+                  I accept
                 </label>
+
+                <button
+                  type="button"
+                  className="btn btn-link p-0 ms-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#termsModal"
+                >
+                  the terms and conditions
+                </button>
               </div>
+              {/* FINE TERMININI E CONDIZIONI */}
 
               <button
                 type="submit"
@@ -359,6 +371,8 @@ export default function Checkout() {
           type={modalType}
         />
       )}
+
+      <TermsModal />
     </div>
   );
 }
