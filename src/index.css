@@ -89,6 +89,16 @@ a.btn.btn-back-to__:active {
   color: #e3be85 !important;
 }
 
+/* stile solo per il bottone termini e condizioni */
+#termini-btn {
+  background-color: white;
+  color: #024AD8;
+  border: 0px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 .btn-dualia-dark:hover,
 .btn-dualia-dark:active {

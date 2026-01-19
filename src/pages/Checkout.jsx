@@ -338,8 +338,10 @@ export default function Checkout() {
                 </label>
 
                 <button
+
+                  id="termini-btn"
                   type="button"
-                  className="btn btn-link p-0 ms-2"
+                  className="p-0 ms-2"
                   data-bs-toggle="modal"
                   data-bs-target="#termsModal"
                 >
