@@ -354,7 +354,11 @@ export default function Cart() {
               <div className="col-5 p-0">TOTAL</div>
               <div className="col-7 p-0 text-right">€ {total.toFixed(2)}</div>
             </div>
-            <button className="btn btn_checkout" onClick={handleCheckout}>
+            <button
+              className="btn btn_checkout"
+              onClick={handleCheckout}
+              disabled={itemsCount === 0}
+            >
               CHECKOUT
             </button>
           </div>
