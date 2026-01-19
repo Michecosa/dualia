@@ -363,6 +363,46 @@ footer a:hover {
 
 /* #region searchbar */
 
+/* #region logoanimation */
+
+.logo-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+#cornice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+
+  z-index: 2;
+}
+
+#cerchio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  animation: spin 8s linear infinite;
+  transform-origin: center;
+  z-index: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* #endregion logoanimation */
+
 #slider {
   border-radius: 0px !important;
 
