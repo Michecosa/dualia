@@ -283,7 +283,10 @@ export default function Cart() {
 
             {/* form */}
             <form className="py-3" onSubmit={handleApplyDiscount}>
-              <p>SHIPPING</p>
+              <p className="d-flex">SHIPPING
+                <span className="shipping-info">i</span>
+              </p>
+
               <select
                 className="mb-3"
                 value={selectedShippingRate}

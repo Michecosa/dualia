@@ -540,7 +540,18 @@ footer a:hover {
     font-weight: bold;
     text-decoration: none;
   }
-
+.shipping-info {
+    font-size: 13px;
+      margin: 5px 0 0 5px;
+      background-color: transparent;
+      border: 1px solid black;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
   .close,
   .close_mobile {
     width: 5px;
