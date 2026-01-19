@@ -26,6 +26,8 @@ export default function Cart() {
     setPromoCode("");
   };
 
+  const [selectedShippingRate, setSelectedShippingRate] = useState(5.0);
+
   // Carica il carrello dal localStorage
   /*useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -109,7 +111,9 @@ export default function Cart() {
   const free_shipping_threshold = 999.99;
 
   const shipping =
-    subtotal >= free_shipping_threshold || subtotal === 0 ? 0 : 5.0;
+    subtotal >= free_shipping_threshold || subtotal === 0
+      ? 0
+      : selectedShippingRate;
 
   const total = subtotal + shipping - discountData.amount;
   // Conteggio totale degli oggetti
@@ -280,11 +284,38 @@ export default function Cart() {
             {/* form */}
             <form className="py-3" onSubmit={handleApplyDiscount}>
               <p>SHIPPING</p>
-              <select>
-                <option className="text-muted">
-                  Standard-Delivery - € {shipping.toFixed(2)}
-                </option>
+              <select
+                className="mb-3"
+                value={selectedShippingRate}
+                onChange={(e) =>
+                  setSelectedShippingRate(parseFloat(e.target.value))
+                }
+              >
+                {subtotal >= free_shipping_threshold || subtotal === 0 ? (
+                  <option value="0">Free Delivery - € 0.00</option>
+                ) : (
+                  <>
+                    <option value="5">Standard Delivery - € 5.00</option>
+                    <option value="10">Express Delivery - € 10.00</option>
+                  </>
+                )}
               </select>
+
+              {subtotal > 0 && subtotal < free_shipping_threshold && (
+                <small className="text-muted fw-light d-block mb-5">
+                  Add{" "}
+                  <span className="fw-bold">
+                    € {(free_shipping_threshold - subtotal).toFixed(2)}
+                  </span>{" "}
+                  more for FREE shipping!
+                </small>
+              )}
+              {subtotal >= free_shipping_threshold && (
+                <small className="text-muted fw-normal d-block  mb-5">
+                  Your shipping is free!
+                </small>
+              )}
+
               <p>GIVE CODE</p>
               <div className="d-flex gap-2">
                 <input
