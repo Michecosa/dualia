@@ -4,8 +4,10 @@ import axios from "axios";
 import Modal from "../components/Modal";
 import TermsModal from "../components/TermsModal";
 import { useCart } from "../components/CartContext";
+import LogoAnimation from "../components/LogoAnimation";
 
 export default function Checkout() {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { clearCart } = useCart();
 
@@ -124,6 +126,8 @@ export default function Checkout() {
       })),
     };
 
+    setIsLoading(true);
+
     try {
       const response = await axios.post(
         "http://localhost:3000/orders",
@@ -131,6 +135,8 @@ export default function Checkout() {
       );
 
       if (response.data.ok) {
+        setIsLoading(false);
+
         clearCart();
         localStorage.removeItem("checkout_data");
 
@@ -138,13 +144,15 @@ export default function Checkout() {
           setModalMessage("Order confirmed! Processing your order...");
           setModalType("success");
           setShowModal(true);
-        }, 2000);
+        }, 500);
 
         setTimeout(() => {
           navigate("/thank-you");
-        }, 6000);
+        }, 4500);
       }
     } catch (error) {
+      setIsLoading(false);
+
       console.error("Errore durante l'ordine:", error);
       const errorMessage =
         error.response?.data?.error ||
@@ -157,6 +165,8 @@ export default function Checkout() {
 
   return (
     <div className="container mt-5">
+      {isLoading && <LogoAnimation />}
+
       <h2 className="mb-4">Checkout</h2>
 
       <div className="row">
