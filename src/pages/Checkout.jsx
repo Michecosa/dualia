@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import Modal from "../components/Modal";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ export default function Checkout() {
   const [discount, setDiscount] = useState(0);
   const [promotionId, setPromotionId] = useState(null);
   const shipping = 5.0;
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalType, setModalType] = useState("success");
 
   // Carica il carrello dal localStorage
   useEffect(() => {
@@ -56,9 +60,11 @@ export default function Checkout() {
       !country ||
       !agreedToTerms
     ) {
-      alert(
+      setModalMessage(
         "Please fill all required fields and accept the terms and conditions."
       );
+      setModalType("error");
+      setShowModal(true);
       return;
     }
 
@@ -121,12 +127,24 @@ export default function Checkout() {
         localStorage.removeItem("cart");
         localStorage.removeItem("checkout_data");
 
-        navigate("/thank-you");
+        setTimeout(() => {
+          setModalMessage("Order confirmed! Processing your order...");
+          setModalType("success");
+          setShowModal(true);
+        }, 2000);
+
+        setTimeout(() => {
+          navigate("/thank-you");
+        }, 6000);
       }
     } catch (error) {
       console.error("Errore durante l'ordine:", error);
-      const errorMessage = error.response?.data?.error || "An error occurred.";
-      alert(errorMessage);
+      const errorMessage =
+        error.response?.data?.error ||
+        "Si è verificato un errore durante l'invio dell'ordine.";
+      setModalMessage(errorMessage);
+      setModalType("error");
+      setShowModal(true);
     }
   }
 
@@ -315,8 +333,7 @@ export default function Checkout() {
               <button
                 type="submit"
                 className="btn btn-dualia-dark-checkout w-100 py-2"
-                onClick={handlePlaceOrder}
-              >
+                onClick={handlePlaceOrder}>
                 <i className="bi bi-check-circle me-2"></i>
                 PLACE ORDER
               </button>
@@ -329,6 +346,14 @@ export default function Checkout() {
         <i className="bi bi-arrow-left me-2"></i>
         Back to Cart
       </Link>
+
+      {showModal && (
+        <Modal
+          message={modalMessage}
+          onClose={() => setShowModal(false)}
+          type={modalType}
+        />
+      )}
     </div>
   );
 }

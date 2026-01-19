@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { addToWishlist, removeFromWishlist, isInWishlist } from "../wishlistUtils";
 import { useCart } from "../components/CartContext";
+import Modal from "../components/Modal";
+
 
 
 export default function ProductDetail() {
@@ -11,6 +13,8 @@ export default function ProductDetail() {
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
     const [favorite, setFavorite] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     const { addToCart } = useCart();
 
@@ -62,7 +66,8 @@ export default function ProductDetail() {
 
         // Salva nel localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${quantity} x ${product.name} added to cart!`);
+        setModalMessage(`${quantity} x ${product.name} added to cart!`);
+        setShowModal(true);
     };
 
     const incrementQuantity = () => setQuantity(quantity + 1);
@@ -143,6 +148,14 @@ export default function ProductDetail() {
                     </button>
                 </div>
             </div>
+
+            {showModal && (
+                <Modal
+                    message={modalMessage}
+                    onClose={() => setShowModal(false)}
+                    type="success"
+                />
+            )}
         </div>
     );
 }
