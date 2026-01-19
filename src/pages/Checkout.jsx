@@ -310,7 +310,7 @@ export default function Checkout() {
                   onChange={(e) => setAgreedToTerms(e.target.checked)}
                 />
                 <label className="form-check-label" htmlFor="terms">
-                  I accept the terms and conditions *
+                  I accept
                 </label>
 
                 <button
@@ -319,7 +319,7 @@ export default function Checkout() {
                   data-bs-toggle="modal"
                   data-bs-target="#termsModal"
                 >
-                  Read
+                  the terms and conditions
                 </button>
               </div>
               {/* fine modi */}
