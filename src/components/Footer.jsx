@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 const exploreLinks = [
-    { id: 1, name: "Products" },
-    { id: 2, name: "Promotions" },
-    { id: 4, name: "About us" },
+    { id: 1, name: "Products", path: "/products" },
+    { id: 2, name: "Promotions", path: "/" },
+    { id: 4, name: "About us", path: "/" },
 ]
 
 const supportLinks = [
@@ -56,7 +56,7 @@ export default function Footer() {
                                 exploreLinks.map((link) => (
                                     <li key={link.id}>
                                         <small className="copyright_content">
-                                            <Link to="/">{link.name}</Link>
+                                            <Link to={link.path}>{link.name}</Link>
                                         </small>
                                     </li>
                                 ))
