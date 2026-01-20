@@ -141,7 +141,6 @@ export default function Footer() {
             </ul>
           </div>
 
-<<<<<<< HEAD
           <div className="separatore mb-4"></div>
 
           {/* policy */}
@@ -165,7 +164,6 @@ export default function Footer() {
               <small className="copyright_content">
                 <Link to="#">Powered by Pilates Team</Link>
               </small>
-=======
                             <small className="copyright_content">© 2026,
                                 <Link to="#">Dualia  - </Link>
                             </small>
@@ -175,7 +173,6 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
->>>>>>> b42c879 (add PilatesTeam page and update footer link to Pilates Team)
             </div>
           </div>
         </div>
