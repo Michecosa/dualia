@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout";
 import NotFound from './components/NotFound';
 import ThankYou from "./pages/Thankyou";
 import Contact from "./pages/Contact";
+import PilatesTeam from "./pages/PilatesTeam";
 import { CartProvider } from "./components/CartContext";
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
+            <Route path="/pilates-team" element={<PilatesTeam />}></Route>
             <Route path="/thank-you" element={<ThankYou />}></Route>
             <Route path="*" element={<NotFound />} />
           </Route>
