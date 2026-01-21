@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
+import LogoAnimation from "./LogoAnimationHomepage";
 
 export default function WelcomePopup() {
   const [show, setShow] = useState(false);
@@ -7,9 +8,9 @@ export default function WelcomePopup() {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalType, setModalType] = useState("success");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Mostra il popup solo se non è mai stato visto
     if (!localStorage.getItem("welcomeSeen")) {
       setShow(true);
     }
@@ -22,22 +23,19 @@ export default function WelcomePopup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch(
         "http://localhost:3000/api/emails/newsletter",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
-        }
+        },
       );
 
-      if (!response.ok) {
-        throw new Error("Errore durante l'invio");
-      }
+      if (!response.ok) throw new Error("Errore durante l'invio");
 
       handleClose();
 
@@ -46,17 +44,28 @@ export default function WelcomePopup() {
         setModalMessage("Thanks for subscribing! 10% discount applied!");
         setModalType("success");
         setShowModal(true);
+        setLoading(false);
       }, 300);
     } catch (error) {
       console.error(error);
       setModalMessage("Something went wrong. Try again.");
       setModalType("error");
       setShowModal(true);
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {loading && (
+        <div
+          className="position-fixed top-0 start-0 w-100 vh-100"
+          style={{ zIndex: 2000 }}
+        >
+          <LogoAnimation />
+        </div>
+      )}
+
       {show && (
         <>
           <div className="modal-backdrop fade show" onClick={handleClose}></div>
@@ -65,7 +74,11 @@ export default function WelcomePopup() {
               <div className="modal-content">
                 <div className="modal-header align-items-start">
                   <h4 className="modal-title">Welcome to Dualia</h4>
-                  <button className="btn-close" onClick={handleClose}></button>
+                  <button
+                    className="btn-close"
+                    onClick={handleClose}
+                    disabled={loading}
+                  ></button>
                 </div>
                 <div className="modal-body">
                   <p className="fs-2 text-center">
@@ -74,7 +87,9 @@ export default function WelcomePopup() {
                   <p className="fs-5 text-center">
                     Promise not to blow up your inbox
                   </p>
-                  <p className="text-center mb-4">Get 10% off your first order</p>
+                  <p className="text-center mb-4">
+                    Get 10% off your first order
+                  </p>
                   <form onSubmit={handleSubmit}>
                     <input
                       type="email"
@@ -83,8 +98,13 @@ export default function WelcomePopup() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      disabled={loading}
                     />
-                    <button type="submit" className="btn btn-dark w-100 rounded-5">
+                    <button
+                      type="submit"
+                      className="btn btn-dark w-100 rounded-5"
+                      disabled={loading}
+                    >
                       Unlock 10% off
                     </button>
                   </form>
