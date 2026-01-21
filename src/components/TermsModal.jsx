@@ -162,7 +162,7 @@ export default function TermsModal() {
                     </div>
 
                     <div className="modal-footer">
-                        <button className="btn btn-dark" data-bs-dismiss="modal">
+                        <button className="btn btn-dark" style={{ borderRadius: "0px" }} data-bs-dismiss="modal">
                             close
                         </button>
                     </div>
