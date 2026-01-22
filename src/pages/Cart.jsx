@@ -285,10 +285,10 @@ export default function Cart() {
             <form className="py-3" onSubmit={handleApplyDiscount}>
               <p className="d-flex">SHIPPING
                 <span className="shipping-info">i
-                  
+
                   <span className="d-none show-shipping-info">Standard delivery: 4-7 days
-                        <hr />
-                        Express delivery: 1-3 days
+                    <hr />
+                    Express delivery: 1-3 days
                   </span>
                 </span>
               </p>
@@ -352,8 +352,8 @@ export default function Cart() {
 
             {discountData.valid && (
               <div className="row text-muted mb-2">
-                <div className="col fw-light p-0">discount</div>
-                <div className="col fw-light text-right">
+                <div className="col-5 p-0 fw-light p-0">Discount</div>
+                <div className="col-7 p-0 fw-light text-right">
                   -€ {discountData.amount.toFixed(2)}
                 </div>
               </div>
