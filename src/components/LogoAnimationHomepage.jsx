@@ -1,5 +1,5 @@
-import cerchio from "../assets/logo-oro.png";
-import cornice from "../assets/cornice-oro.png";
+import cerchio from "../assets/cerchio.png";
+import cornice from "../assets/cornice.png";
 
 export default function LogoAnimation() {
   return (
