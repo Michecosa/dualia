@@ -59,8 +59,13 @@ export default function WelcomePopup() {
     <>
       {loading && (
         <div
-          className="position-fixed top-0 start-0 w-100 vh-100"
-          style={{ zIndex: 2000 }}
+          className="position-fixed top-0 start-0 w-100 vh-100 d-flex align-items-center justify-content-center"
+          style={{
+            zIndex: 2000,
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(2px)",
+          }}
         >
           <LogoAnimation />
         </div>
