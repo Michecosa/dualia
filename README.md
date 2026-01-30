@@ -38,19 +38,24 @@ This project is built using a **decoupled architecture** to ensure scalability a
 ### Folder Structure
 
 ```
-dualia/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── layout/
-│   ├── pages/
-│   └── App.js
-│   └── index.css
-│   └── main.jsx
-│   └── whishlistUtils.js
-├── package.json
-⋮
-└── README.md
+├── 📁 db_dualia
+│   └── 📄 dualia-eng.sql
+├── 📁 src
+│   ├── 📁 assets
+│   ├── 📁 components
+│   ├── 📁 layout
+│   ├── 📁 pages
+│   ├── 📄 App.jsx
+│   ├── 🎨 index.css
+│   ├── 📄 main.jsx
+│   └── 📄 wishlistUtils.js
+├── ⚙️ .gitignore
+├── 📝 README.md
+├── 📄 eslint.config.js
+├── 🌐 index.html
+├── ⚙️ package-lock.json
+├── ⚙️ package.json
+└── 📄 vite.config.js
 ```
 
 ## Front-end
