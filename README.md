@@ -8,7 +8,6 @@ Dualia is a sophisticated full-stack e-commerce platform dedicated to minimalist
 
 ```bash
 git clone <repository-url>
-cd dualia
 ```
 
 2. Install dependencies:
@@ -25,13 +24,27 @@ Start the development server:
 npm run dev
 ```
 
-## Project Architecture
+## Database Setup
 
-This project is built using a **decoupled architecture** to ensure scalability and clean separation of concerns. The system is divided into two independent units:
+The project includes a pre-configured MySQL database export located in the `db_dualia` folder. You need to import it to use it with the [Backend Repository](https://github.com/Michecosa/team-1).
+Follow these steps to set it up:
 
-- **Frontend (Current Repo):** A responsive Single Page Application (SPA) built with **Vite**, **React**, and **Bootstrap**. It handles the UI/UX, state management for the cart/wishlist, and communicates with the API.
-- **Backend (External Repo):** A dedicated server-side application that manages the logic, database (MySQL), and RESTful endpoints.
-  - 🔗 **View Backend Repository:** [https://github.com/Michecosa/team-1](https://github.com/Michecosa/team-1)
+1.  **Create the Database**: Open your MySQL terminal or GUI (like MySQL Workbench or phpMyAdmin) and run:
+    ```sql
+    CREATE DATABASE db_dualia;
+    ```
+2.  **Import the Schema**: Use the **Data Import** feature in MySQL and select `db_dualia/dualia-eng.sql` as the Self-Contained File to import.
+
+3.  **Backend Configuration**: Ensure your backend environment variables (in your `.env` file) match your local MySQL credentials:
+    - **DB_HOST**: `localhost`
+    - **DB_USER**: `your_username`
+    - **DB_PASSWORD**: `your_password`
+    - **DB_DATABASE**: `db_dualia`
+
+4.  **Email Service (Mailtrap)**:
+    To enable newsletter subscriptions and order confirmation emails, you need to set up a [Mailtrap](https://mailtrap.io/) account. Once registered, add your credentials to the backend `.env` file:
+    - **MAILTRAP_USER**: `your_username`
+    - **MAILTRAP_PASS**: `your_password`
 
 ---
 
@@ -63,16 +76,14 @@ This project is built using a **decoupled architecture** to ensure scalability a
 - **Responsive Homepage**: Features hero sections, "Our Products" categories, and "Best Sellers".
 - **Product Catalog**: Advanced filtering and sorting of home decor items.
 - **Wishlist System**: Users can save their favorite items for later.
-- **Interactive Shopping Cart**: Real-time updates with discount code support (e.g., `WELCOME10`).
+- **Interactive Shopping Cart**: Real-time updates with discount code support.
 - **Complete Checkout Flow**: Secure multi-step process including billing/shipping info and payment processing simulation.
 - **Order Confirmation**: Dynamic "Thank You" page with automated confirmation messaging.
 
 ## Back-end
 
-- **RESTful API**: Handles product data, categories, and user orders.
-- **User Management**: (If applicable) Authentication and order history.
-- **Order Processing**: Validation of shipping details and inventory management.
-- **Newsletter Integration**: Functional subscription footer for marketing.
+- Serves a REST API to manage products, create and track orders, apply discounts, and send related emails.
+- Provides basic request validation/error handling via `middlewares/`.
 
 ## Visual Overview
 
